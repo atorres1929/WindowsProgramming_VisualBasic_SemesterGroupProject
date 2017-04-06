@@ -1,6 +1,7 @@
 ﻿Public Class frmMain
     Private RoleInfo As frmRoles
     Private MemberInfo As frmMembers
+    Private EventsInfo As frmEvents
 #Region "Toolbar"
     Private Sub tsbMember_Click(sender As Object, e As EventArgs) Handles tsbMember.Click
         Me.Hide()
@@ -69,6 +70,7 @@
         'instantiate a form object for each form in the application
         MemberInfo = New frmMembers
         RoleInfo = New frmRoles
+        EventsInfo = New frmEvents
         'open the database
         Try
             myDB.OpenDB()
