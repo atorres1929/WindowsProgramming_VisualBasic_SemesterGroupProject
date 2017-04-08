@@ -73,6 +73,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CDB.vb" />
+    <Compile Include="CMember.vb" />
+    <Compile Include="CMembers.vb" />
     <Compile Include="CRole.vb" />
     <Compile Include="CRoles.vb" />
     <Compile Include="frmEvents.Designer.vb">
@@ -123,6 +125,9 @@
   <ItemGroup>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMembers.resx">
+      <DependentUpon>frmMembers.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRoles.resx">
       <DependentUpon>frmRoles.vb</DependentUpon>
