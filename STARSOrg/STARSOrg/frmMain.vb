@@ -21,6 +21,13 @@
         Me.Show()
     End Sub
 
+    Private Sub tsbEvent_Click(sender As Object, e As EventArgs) Handles tsbEvent.Click
+        Me.Hide()
+        EventsInfo.ShowDialog()
+        Me.Show()
+        PerformNextAction()
+    End Sub
+
     Private Sub tsbProxy_MouseEnter(sender As Object, e As EventArgs) Handles tsbHome.MouseEnter, tsbCourse.MouseEnter, tsbEvent.MouseEnter, tsbHelp.MouseEnter, tsbLogOut.MouseEnter, tsbMember.MouseEnter, tsbRole.MouseEnter, tsbRSVP.MouseEnter, tsbSemester.MouseEnter, tsbTutor.MouseEnter
         'We need to do this only because we put our images in the BackgroundImage property instead of the Image property
         Dim tsbProxy As ToolStripButton

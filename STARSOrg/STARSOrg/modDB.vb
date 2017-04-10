@@ -4,7 +4,7 @@ Module modDB
 
     'Sebastian's Database: F:\StarsOrg\STARSOrg\STARSDB.mdf
 
-    Public gstrConn As String = "Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename= F:\StarsOrg\STARSOrg\STARSDB.mdf;Integrated Security=True"
+    Public gstrConn As String = "Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename= E:\StarsOrg\STARSOrg\STARSDB.mdf;Integrated Security=True"
     'Database objects
     Public objSQLConn As SqlConnection
     Public objSQLCommand As SqlCommand

@@ -83,6 +83,12 @@
     <Compile Include="frmEvents.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmEventsRSVP.Designer.vb">
+      <DependentUpon>frmEventsRSVP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEventsRSVP.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmMain.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +129,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmEvents.resx">
+      <DependentUpon>frmEvents.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>
     </EmbeddedResource>
