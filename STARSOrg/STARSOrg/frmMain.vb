@@ -2,6 +2,7 @@
     Private RoleInfo As frmRoles
     Private MemberInfo As frmMembers
     Private EventsInfo As frmEvents
+    Private RSVPInfo As frmEventsRSVP
 #Region "Toolbar"
     Private Sub tsbMember_Click(sender As Object, e As EventArgs) Handles tsbMember.Click
         Me.Hide()
@@ -24,6 +25,13 @@
     Private Sub tsbEvent_Click(sender As Object, e As EventArgs) Handles tsbEvent.Click
         Me.Hide()
         EventsInfo.ShowDialog()
+        Me.Show()
+        PerformNextAction()
+    End Sub
+
+    Private Sub tsbRSVP_Click(sender As Object, e As EventArgs) Handles tsbRSVP.Click
+        Me.Hide()
+        RSVPInfo.ShowDialog()
         Me.Show()
         PerformNextAction()
     End Sub
@@ -78,6 +86,7 @@
         MemberInfo = New frmMembers
         RoleInfo = New frmRoles
         EventsInfo = New frmEvents
+        RSVPInfo = New frmEventsRSVP
         'open the database
         Try
             myDB.OpenDB()

@@ -132,6 +132,9 @@
     <EmbeddedResource Include="frmEvents.resx">
       <DependentUpon>frmEvents.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmEventsRSVP.resx">
+      <DependentUpon>frmEventsRSVP.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>
     </EmbeddedResource>

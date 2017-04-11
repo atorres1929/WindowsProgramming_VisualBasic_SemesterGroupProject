@@ -46,7 +46,31 @@ Partial Class frmEvents
         Me.ToolStripSeparator9 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripSeparator11 = New System.Windows.Forms.ToolStripSeparator()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.grpNewEv = New System.Windows.Forms.GroupBox()
+        Me.chkNewEv = New System.Windows.Forms.CheckBox()
+        Me.grpEditEv = New System.Windows.Forms.GroupBox()
+        Me.mskEndDate = New System.Windows.Forms.MaskedTextBox()
+        Me.mskStartDate = New System.Windows.Forms.MaskedTextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.txtSemID = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.btnCancel = New System.Windows.Forms.Button()
+        Me.btnSave = New System.Windows.Forms.Button()
+        Me.txtEventDesc = New System.Windows.Forms.TextBox()
+        Me.txtEventID = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.grpEvents = New System.Windows.Forms.GroupBox()
+        Me.lstEvents = New System.Windows.Forms.ListBox()
+        Me.txtEvTypeID = New System.Windows.Forms.TextBox()
+        Me.txtLocation = New System.Windows.Forms.TextBox()
         Me.ToolStrip1.SuspendLayout()
+        Me.grpNewEv.SuspendLayout()
+        Me.grpEditEv.SuspendLayout()
+        Me.grpEvents.SuspendLayout()
         Me.SuspendLayout()
         '
         'ToolStrip1
@@ -257,22 +281,256 @@ Partial Class frmEvents
         Me.Label1.Location = New System.Drawing.Point(41, 115)
         Me.Label1.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(1314, 65)
+        Me.Label1.Size = New System.Drawing.Size(1324, 65)
         Me.Label1.TabIndex = 3
         Me.Label1.Text = "EVENTS"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'grpNewEv
+        '
+        Me.grpNewEv.Controls.Add(Me.chkNewEv)
+        Me.grpNewEv.Location = New System.Drawing.Point(41, 224)
+        Me.grpNewEv.Margin = New System.Windows.Forms.Padding(6)
+        Me.grpNewEv.Name = "grpNewEv"
+        Me.grpNewEv.Padding = New System.Windows.Forms.Padding(6)
+        Me.grpNewEv.Size = New System.Drawing.Size(584, 115)
+        Me.grpNewEv.TabIndex = 4
+        Me.grpNewEv.TabStop = False
+        Me.grpNewEv.Text = "New Event"
+        '
+        'chkNewEv
+        '
+        Me.chkNewEv.AutoSize = True
+        Me.chkNewEv.Location = New System.Drawing.Point(44, 46)
+        Me.chkNewEv.Margin = New System.Windows.Forms.Padding(6)
+        Me.chkNewEv.Name = "chkNewEv"
+        Me.chkNewEv.Size = New System.Drawing.Size(209, 29)
+        Me.chkNewEv.TabIndex = 0
+        Me.chkNewEv.Text = "Add a New Event"
+        Me.chkNewEv.UseVisualStyleBackColor = True
+        '
+        'grpEditEv
+        '
+        Me.grpEditEv.Controls.Add(Me.txtLocation)
+        Me.grpEditEv.Controls.Add(Me.txtEvTypeID)
+        Me.grpEditEv.Controls.Add(Me.mskEndDate)
+        Me.grpEditEv.Controls.Add(Me.mskStartDate)
+        Me.grpEditEv.Controls.Add(Me.Label8)
+        Me.grpEditEv.Controls.Add(Me.Label7)
+        Me.grpEditEv.Controls.Add(Me.Label6)
+        Me.grpEditEv.Controls.Add(Me.Label5)
+        Me.grpEditEv.Controls.Add(Me.txtSemID)
+        Me.grpEditEv.Controls.Add(Me.Label4)
+        Me.grpEditEv.Controls.Add(Me.btnCancel)
+        Me.grpEditEv.Controls.Add(Me.btnSave)
+        Me.grpEditEv.Controls.Add(Me.txtEventDesc)
+        Me.grpEditEv.Controls.Add(Me.txtEventID)
+        Me.grpEditEv.Controls.Add(Me.Label3)
+        Me.grpEditEv.Controls.Add(Me.Label2)
+        Me.grpEditEv.Location = New System.Drawing.Point(693, 224)
+        Me.grpEditEv.Margin = New System.Windows.Forms.Padding(6)
+        Me.grpEditEv.Name = "grpEditEv"
+        Me.grpEditEv.Padding = New System.Windows.Forms.Padding(6)
+        Me.grpEditEv.Size = New System.Drawing.Size(672, 767)
+        Me.grpEditEv.TabIndex = 6
+        Me.grpEditEv.TabStop = False
+        Me.grpEditEv.Text = "Edit Event"
+        '
+        'mskEndDate
+        '
+        Me.mskEndDate.Location = New System.Drawing.Point(206, 571)
+        Me.mskEndDate.Mask = "00/00/0000"
+        Me.mskEndDate.Name = "mskEndDate"
+        Me.mskEndDate.Size = New System.Drawing.Size(392, 31)
+        Me.mskEndDate.TabIndex = 14
+        Me.mskEndDate.ValidatingType = GetType(Date)
+        '
+        'mskStartDate
+        '
+        Me.mskStartDate.Location = New System.Drawing.Point(206, 508)
+        Me.mskStartDate.Mask = "00/00/0000"
+        Me.mskStartDate.Name = "mskStartDate"
+        Me.mskStartDate.Size = New System.Drawing.Size(392, 31)
+        Me.mskStartDate.TabIndex = 13
+        Me.mskStartDate.ValidatingType = GetType(Date)
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(38, 447)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(147, 25)
+        Me.Label8.TabIndex = 12
+        Me.Label8.Text = "Event Type ID"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(38, 508)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(108, 25)
+        Me.Label7.TabIndex = 11
+        Me.Label7.Text = "Start Date"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(38, 571)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(101, 25)
+        Me.Label6.TabIndex = 10
+        Me.Label6.Text = "End Date"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(38, 634)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(94, 25)
+        Me.Label5.TabIndex = 9
+        Me.Label5.Text = "Location"
+        '
+        'txtSemID
+        '
+        Me.txtSemID.Location = New System.Drawing.Point(206, 384)
+        Me.txtSemID.Margin = New System.Windows.Forms.Padding(6)
+        Me.txtSemID.MaxLength = 15
+        Me.txtSemID.Name = "txtSemID"
+        Me.txtSemID.Size = New System.Drawing.Size(392, 31)
+        Me.txtSemID.TabIndex = 8
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(38, 384)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(129, 25)
+        Me.Label4.TabIndex = 7
+        Me.Label4.Text = "Semester ID"
+        '
+        'btnCancel
+        '
+        Me.btnCancel.Location = New System.Drawing.Point(438, 706)
+        Me.btnCancel.Margin = New System.Windows.Forms.Padding(6)
+        Me.btnCancel.Name = "btnCancel"
+        Me.btnCancel.Size = New System.Drawing.Size(160, 40)
+        Me.btnCancel.TabIndex = 5
+        Me.btnCancel.Text = "Cancel"
+        Me.btnCancel.UseVisualStyleBackColor = True
+        '
+        'btnSave
+        '
+        Me.btnSave.Location = New System.Drawing.Point(206, 706)
+        Me.btnSave.Margin = New System.Windows.Forms.Padding(6)
+        Me.btnSave.Name = "btnSave"
+        Me.btnSave.Size = New System.Drawing.Size(160, 40)
+        Me.btnSave.TabIndex = 4
+        Me.btnSave.Text = "Save"
+        Me.btnSave.UseVisualStyleBackColor = True
+        '
+        'txtEventDesc
+        '
+        Me.txtEventDesc.Location = New System.Drawing.Point(206, 90)
+        Me.txtEventDesc.Margin = New System.Windows.Forms.Padding(6)
+        Me.txtEventDesc.MaxLength = 100
+        Me.txtEventDesc.Multiline = True
+        Me.txtEventDesc.Name = "txtEventDesc"
+        Me.txtEventDesc.Size = New System.Drawing.Size(392, 262)
+        Me.txtEventDesc.TabIndex = 3
+        '
+        'txtEventID
+        '
+        Me.txtEventID.Location = New System.Drawing.Point(206, 38)
+        Me.txtEventID.Margin = New System.Windows.Forms.Padding(6)
+        Me.txtEventID.MaxLength = 15
+        Me.txtEventID.Name = "txtEventID"
+        Me.txtEventID.Size = New System.Drawing.Size(392, 31)
+        Me.txtEventID.TabIndex = 2
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(38, 90)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(120, 25)
+        Me.Label3.TabIndex = 1
+        Me.Label3.Text = "Description"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(38, 44)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(93, 25)
+        Me.Label2.TabIndex = 0
+        Me.Label2.Text = "Event ID"
+        '
+        'grpEvents
+        '
+        Me.grpEvents.Controls.Add(Me.lstEvents)
+        Me.grpEvents.Location = New System.Drawing.Point(41, 379)
+        Me.grpEvents.Margin = New System.Windows.Forms.Padding(6)
+        Me.grpEvents.Name = "grpEvents"
+        Me.grpEvents.Padding = New System.Windows.Forms.Padding(6)
+        Me.grpEvents.Size = New System.Drawing.Size(584, 612)
+        Me.grpEvents.TabIndex = 7
+        Me.grpEvents.TabStop = False
+        Me.grpEvents.Text = "EVENTS"
+        '
+        'lstEvents
+        '
+        Me.lstEvents.FormattingEnabled = True
+        Me.lstEvents.ItemHeight = 25
+        Me.lstEvents.Location = New System.Drawing.Point(30, 42)
+        Me.lstEvents.Margin = New System.Windows.Forms.Padding(6)
+        Me.lstEvents.Name = "lstEvents"
+        Me.lstEvents.Size = New System.Drawing.Size(524, 554)
+        Me.lstEvents.TabIndex = 0
+        '
+        'txtEvTypeID
+        '
+        Me.txtEvTypeID.Location = New System.Drawing.Point(206, 447)
+        Me.txtEvTypeID.Margin = New System.Windows.Forms.Padding(6)
+        Me.txtEvTypeID.MaxLength = 15
+        Me.txtEvTypeID.Name = "txtEvTypeID"
+        Me.txtEvTypeID.Size = New System.Drawing.Size(392, 31)
+        Me.txtEvTypeID.TabIndex = 15
+        '
+        'txtLocation
+        '
+        Me.txtLocation.Location = New System.Drawing.Point(206, 634)
+        Me.txtLocation.Margin = New System.Windows.Forms.Padding(6)
+        Me.txtLocation.MaxLength = 15
+        Me.txtLocation.Name = "txtLocation"
+        Me.txtLocation.Size = New System.Drawing.Size(392, 31)
+        Me.txtLocation.TabIndex = 16
         '
         'frmEvents
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1390, 735)
+        Me.ClientSize = New System.Drawing.Size(1390, 1005)
+        Me.Controls.Add(Me.grpEvents)
+        Me.Controls.Add(Me.grpEditEv)
+        Me.Controls.Add(Me.grpNewEv)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Name = "frmEvents"
         Me.Text = "frmEvents"
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
+        Me.grpNewEv.ResumeLayout(False)
+        Me.grpNewEv.PerformLayout()
+        Me.grpEditEv.ResumeLayout(False)
+        Me.grpEditEv.PerformLayout()
+        Me.grpEvents.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -301,4 +559,25 @@ Partial Class frmEvents
     Friend WithEvents ToolStripSeparator9 As ToolStripSeparator
     Friend WithEvents ToolStripSeparator11 As ToolStripSeparator
     Friend WithEvents Label1 As Label
+    Friend WithEvents grpNewEv As GroupBox
+    Friend WithEvents chkNewEv As CheckBox
+    Friend WithEvents grpEditEv As GroupBox
+    Friend WithEvents btnCancel As Button
+    Friend WithEvents btnSave As Button
+    Friend WithEvents txtEventDesc As TextBox
+    Friend WithEvents txtEventID As TextBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents grpEvents As GroupBox
+    Friend WithEvents lstEvents As ListBox
+    Friend WithEvents Label8 As Label
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents txtSemID As TextBox
+    Friend WithEvents Label4 As Label
+    Friend WithEvents mskEndDate As MaskedTextBox
+    Friend WithEvents mskStartDate As MaskedTextBox
+    Friend WithEvents txtLocation As TextBox
+    Friend WithEvents txtEvTypeID As TextBox
 End Class
