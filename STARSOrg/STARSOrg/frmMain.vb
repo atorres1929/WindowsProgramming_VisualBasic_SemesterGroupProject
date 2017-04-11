@@ -1,4 +1,5 @@
 ﻿Public Class frmMain
+    Private LoginScreen As frmLogin
     Private RoleInfo As frmRoles
     Private MemberInfo As frmMembers
     Private EventsInfo As frmEvents
@@ -87,6 +88,7 @@
         RoleInfo = New frmRoles
         EventsInfo = New frmEvents
         RSVPInfo = New frmEventsRSVP
+        LoginScreen = New frmLogin
         'open the database
         Try
             myDB.OpenDB()
@@ -94,6 +96,7 @@
             MessageBox.Show("Unable to open database. Connection string = " & gstrConn & " Program will end", "DB error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             EndProgram()
         End Try
+        LoginScreen.ShowDialog()
     End Sub
 
     Private Sub EndProgram()
