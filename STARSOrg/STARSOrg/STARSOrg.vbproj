@@ -47,10 +47,13 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -73,6 +76,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CDB.vb" />
+    <Compile Include="CEvent.vb" />
+    <Compile Include="CEvents.vb" />
     <Compile Include="CMember.vb" />
     <Compile Include="CMembers.vb" />
     <Compile Include="CRole.vb" />
@@ -81,6 +86,12 @@
       <DependentUpon>frmEvents.vb</DependentUpon>
     </Compile>
     <Compile Include="frmEvents.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEventsReport.Designer.vb">
+      <DependentUpon>frmEventsReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEventsReport.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmEventsRSVP.Designer.vb">
@@ -131,6 +142,9 @@
   <ItemGroup>
     <EmbeddedResource Include="frmEvents.resx">
       <DependentUpon>frmEvents.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEventsReport.resx">
+      <DependentUpon>frmEventsReport.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEventsRSVP.resx">
       <DependentUpon>frmEventsRSVP.vb</DependentUpon>
