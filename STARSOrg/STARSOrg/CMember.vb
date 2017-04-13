@@ -6,14 +6,15 @@ Public Class CMember
     Private _mstrLastName As String
     Private _mstrMiddleIn As String
     Private _mstrEmail As String
-
-    'does this work since its a masked textbox
-    'Private _mstrPhoneNumber As String
+    Private _mstrPhoneNumber As String
 
     'do i pass the string location of the picture
-    'Private _mstrPicture As String
+    Private _mstrPicture As String
 
     Private _IsNewMember As Boolean
+
+    Private _mstrRoleID As String
+
 
     'Constructor for a New Member
     Public Sub New()
@@ -22,8 +23,9 @@ Public Class CMember
         _mstrEmail = ""
         _mstrMiddleIn = ""
         _mstrPantherID = ""
-        '_mstrPhoneNumber=""
-        '_mstrPicture=""
+        _mstrPhoneNumber = ""
+        _mstrPicture = ""
+        _mstrRoleID = ""
     End Sub
 
 
@@ -74,23 +76,23 @@ Public Class CMember
         End Set
     End Property
 
-    'Public Property PhoneNumber As String
-    '    Get
-    '        Return _mstrPhoneNumber
-    '    End Get
-    '    Set(strval As String)
-    '        _mstrPhoneNumber = strval
-    '    End Set
-    'End Property
+    Public Property PhoneNumber As String
+        Get
+            Return _mstrPhoneNumber
+        End Get
+        Set(strval As String)
+            _mstrPhoneNumber = strval
+        End Set
+    End Property
 
-    'Public Property Picture As String
-    '    Get
-    '        Return _mstrPicture
-    '    End Get
-    '    Set(strval As String)
-    '        _mstrPicture = strval
-    '    End Set
-    'End Property
+    Public Property Picture As String
+        Get
+            Return _mstrPicture
+        End Get
+        Set(strval As String)
+            _mstrPicture = strval
+        End Set
+    End Property
 
     Public Property IsNewMember As Boolean
         Get
@@ -102,4 +104,44 @@ Public Class CMember
     End Property
 #End Region
 
+    Public ReadOnly Property GetSaveParametersMembers() As ArrayList
+        Get
+            Dim params As New ArrayList
+            params.Add(New SqlParameter("PID", _mstrPantherID))
+            params.Add(New SqlParameter("FName", _mstrFirstName))
+            params.Add(New SqlParameter("LName", _mstrLastName))
+            params.Add(New SqlParameter("MI", _mstrMiddleIn))
+            params.Add(New SqlParameter("Email", _mstrEmail))
+            params.Add(New SqlParameter("Phone", _mstrPhoneNumber))
+            params.Add(New SqlParameter("PhotoPath", _mstrPicture))
+            params.Add(New SqlParameter("RoleID", _mstrRoleID))
+            ' one for the combo box 
+
+            Return params
+        End Get
+    End Property
+
+
+    Public Function Save() As Integer
+        If IsNewMember Then
+            Dim params As New ArrayList
+            params.Add(New SqlParameter("PID", _mstrPantherID))
+            ''params.Add(New SqlParameter("FName", _mstrFirstName))
+            ''params.Add(New SqlParameter("LName", _mstrLastName))
+            ''params.Add(New SqlParameter("MI", _mstrMiddleIn))
+            ''params.Add(New SqlParameter("Email", _mstrEmail))
+            ''params.Add(New SqlParameter("Phone", _mstrPhoneNumber))
+            ''params.Add(New SqlParameter("PhotoPath", _mstrPicture))
+            ''params.Add(New SqlParameter("RoleID", _mstrRoleID))
+            ' one for the combo box 
+
+
+            Dim strRESULT As String = myDB.GetSingleValueFromSP("sp_CheckMemberPIDExists", params)
+            If Not strRESULT = 0 Then
+                Return -1
+            End If
+        End If
+        'TODO saveMember stored procedure
+        Return myDB.ExecSP("sp_SaveMember", GetSaveParametersMembers)
+    End Function
 End Class
