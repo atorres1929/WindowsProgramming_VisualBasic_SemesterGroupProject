@@ -96,7 +96,6 @@
             MessageBox.Show("Unable to open database. Connection string = " & gstrConn & " Program will end", "DB error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             EndProgram()
         End Try
-        LoginScreen.ShowDialog()
     End Sub
 
     Private Sub EndProgram()
@@ -121,5 +120,12 @@
 
     Private Sub tsbLogOut_Click(sender As Object, e As EventArgs) Handles tsbLogOut.Click
         EndProgram()
+    End Sub
+
+    Private Sub frmMain_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+        Me.Enabled = False
+        LoginScreen.Show()
+        LoginScreen.Focus()
+        LoginScreen.Location = New Point(Me.Location.X + Me.Width / 4, Me.Location.Y + Me.Height / 4)
     End Sub
 End Class

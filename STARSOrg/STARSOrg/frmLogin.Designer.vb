@@ -61,7 +61,7 @@ Partial Class frmLogin
         'btnLogin
         '
         Me.btnLogin.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnLogin.Location = New System.Drawing.Point(147, 169)
+        Me.btnLogin.Location = New System.Drawing.Point(157, 169)
         Me.btnLogin.Name = "btnLogin"
         Me.btnLogin.Size = New System.Drawing.Size(74, 31)
         Me.btnLogin.TabIndex = 3
@@ -71,7 +71,7 @@ Partial Class frmLogin
         'chkGuest
         '
         Me.chkGuest.AutoSize = True
-        Me.chkGuest.Location = New System.Drawing.Point(134, 242)
+        Me.chkGuest.Location = New System.Drawing.Point(144, 242)
         Me.chkGuest.Name = "chkGuest"
         Me.chkGuest.Size = New System.Drawing.Size(97, 17)
         Me.chkGuest.TabIndex = 4
@@ -90,7 +90,7 @@ Partial Class frmLogin
         'btnChangePassword
         '
         Me.btnChangePassword.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnChangePassword.Location = New System.Drawing.Point(105, 206)
+        Me.btnChangePassword.Location = New System.Drawing.Point(117, 206)
         Me.btnChangePassword.Name = "btnChangePassword"
         Me.btnChangePassword.Size = New System.Drawing.Size(148, 30)
         Me.btnChangePassword.TabIndex = 6
@@ -121,6 +121,7 @@ Partial Class frmLogin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.Azure
         Me.ClientSize = New System.Drawing.Size(385, 287)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
