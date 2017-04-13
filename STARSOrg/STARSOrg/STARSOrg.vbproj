@@ -48,8 +48,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportViewer.WinForms.10.0.40219.1\lib\Microsoft.ReportViewer.WinForms.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio 14.0\ReportViewer\Microsoft.ReportViewer.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -106,12 +106,6 @@
     <Compile Include="frmEvents.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmEventsReport.Designer.vb">
-      <DependentUpon>frmEventsReport.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmEventsReport.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmEventsRSVP.Designer.vb">
       <DependentUpon>frmEventsRSVP.vb</DependentUpon>
     </Compile>
@@ -135,6 +129,12 @@
       <DependentUpon>frmMembers.vb</DependentUpon>
     </Compile>
     <Compile Include="frmMembers.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportEventsRSVP.Designer.vb">
+      <DependentUpon>frmReportEventsRSVP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportEventsRSVP.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmReport.Designer.vb">
@@ -185,9 +185,6 @@
     <EmbeddedResource Include="frmEvents.resx">
       <DependentUpon>frmEvents.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmEventsReport.resx">
-      <DependentUpon>frmEventsReport.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmEventsRSVP.resx">
       <DependentUpon>frmEventsRSVP.vb</DependentUpon>
     </EmbeddedResource>
@@ -199,6 +196,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMembers.resx">
       <DependentUpon>frmMembers.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportEventsRSVP.resx">
+      <DependentUpon>frmReportEventsRSVP.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmReport.resx">
       <DependentUpon>frmReport.vb</DependentUpon>

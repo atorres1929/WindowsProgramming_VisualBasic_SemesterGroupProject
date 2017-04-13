@@ -50,23 +50,23 @@ Partial Class frmEvents
         Me.chkNewEv = New System.Windows.Forms.CheckBox()
         Me.grpEditEv = New System.Windows.Forms.GroupBox()
         Me.txtLocation = New System.Windows.Forms.TextBox()
-        Me.txtEvTypeID = New System.Windows.Forms.TextBox()
         Me.mskEndDate = New System.Windows.Forms.MaskedTextBox()
         Me.mskStartDate = New System.Windows.Forms.MaskedTextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.txtSemID = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.btnSave = New System.Windows.Forms.Button()
         Me.txtEventDesc = New System.Windows.Forms.TextBox()
-        Me.txtEventID = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.grpEvents = New System.Windows.Forms.GroupBox()
         Me.lstEvents = New System.Windows.Forms.ListBox()
+        Me.cboSemesterID = New System.Windows.Forms.ComboBox()
+        Me.cboEventTypeID = New System.Windows.Forms.ComboBox()
+        Me.txtEventID = New System.Windows.Forms.TextBox()
         Me.ToolStrip1.SuspendLayout()
         Me.grpNewEv.SuspendLayout()
         Me.grpEditEv.SuspendLayout()
@@ -306,20 +306,20 @@ Partial Class frmEvents
         '
         'grpEditEv
         '
+        Me.grpEditEv.Controls.Add(Me.txtEventID)
+        Me.grpEditEv.Controls.Add(Me.cboEventTypeID)
+        Me.grpEditEv.Controls.Add(Me.cboSemesterID)
         Me.grpEditEv.Controls.Add(Me.txtLocation)
-        Me.grpEditEv.Controls.Add(Me.txtEvTypeID)
         Me.grpEditEv.Controls.Add(Me.mskEndDate)
         Me.grpEditEv.Controls.Add(Me.mskStartDate)
         Me.grpEditEv.Controls.Add(Me.Label8)
         Me.grpEditEv.Controls.Add(Me.Label7)
         Me.grpEditEv.Controls.Add(Me.Label6)
         Me.grpEditEv.Controls.Add(Me.Label5)
-        Me.grpEditEv.Controls.Add(Me.txtSemID)
         Me.grpEditEv.Controls.Add(Me.Label4)
         Me.grpEditEv.Controls.Add(Me.btnCancel)
         Me.grpEditEv.Controls.Add(Me.btnSave)
         Me.grpEditEv.Controls.Add(Me.txtEventDesc)
-        Me.grpEditEv.Controls.Add(Me.txtEventID)
         Me.grpEditEv.Controls.Add(Me.Label3)
         Me.grpEditEv.Controls.Add(Me.Label2)
         Me.grpEditEv.Location = New System.Drawing.Point(346, 116)
@@ -337,18 +337,10 @@ Partial Class frmEvents
         Me.txtLocation.Size = New System.Drawing.Size(198, 20)
         Me.txtLocation.TabIndex = 16
         '
-        'txtEvTypeID
-        '
-        Me.txtEvTypeID.Location = New System.Drawing.Point(103, 232)
-        Me.txtEvTypeID.MaxLength = 15
-        Me.txtEvTypeID.Name = "txtEvTypeID"
-        Me.txtEvTypeID.Size = New System.Drawing.Size(198, 20)
-        Me.txtEvTypeID.TabIndex = 15
-        '
         'mskEndDate
         '
         Me.mskEndDate.Location = New System.Drawing.Point(103, 297)
-        Me.mskEndDate.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.mskEndDate.Margin = New System.Windows.Forms.Padding(2)
         Me.mskEndDate.Mask = "00/00/0000"
         Me.mskEndDate.Name = "mskEndDate"
         Me.mskEndDate.Size = New System.Drawing.Size(198, 20)
@@ -358,7 +350,7 @@ Partial Class frmEvents
         'mskStartDate
         '
         Me.mskStartDate.Location = New System.Drawing.Point(103, 264)
-        Me.mskStartDate.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.mskStartDate.Margin = New System.Windows.Forms.Padding(2)
         Me.mskStartDate.Mask = "00/00/0000"
         Me.mskStartDate.Name = "mskStartDate"
         Me.mskStartDate.Size = New System.Drawing.Size(198, 20)
@@ -401,14 +393,6 @@ Partial Class frmEvents
         Me.Label5.TabIndex = 9
         Me.Label5.Text = "Location"
         '
-        'txtSemID
-        '
-        Me.txtSemID.Location = New System.Drawing.Point(103, 200)
-        Me.txtSemID.MaxLength = 15
-        Me.txtSemID.Name = "txtSemID"
-        Me.txtSemID.Size = New System.Drawing.Size(198, 20)
-        Me.txtSemID.TabIndex = 8
-        '
         'Label4
         '
         Me.Label4.AutoSize = True
@@ -438,20 +422,12 @@ Partial Class frmEvents
         '
         'txtEventDesc
         '
-        Me.txtEventDesc.Location = New System.Drawing.Point(103, 47)
+        Me.txtEventDesc.Location = New System.Drawing.Point(103, 50)
         Me.txtEventDesc.MaxLength = 100
         Me.txtEventDesc.Multiline = True
         Me.txtEventDesc.Name = "txtEventDesc"
         Me.txtEventDesc.Size = New System.Drawing.Size(198, 138)
         Me.txtEventDesc.TabIndex = 3
-        '
-        'txtEventID
-        '
-        Me.txtEventID.Location = New System.Drawing.Point(103, 20)
-        Me.txtEventID.MaxLength = 15
-        Me.txtEventID.Name = "txtEventID"
-        Me.txtEventID.Size = New System.Drawing.Size(198, 20)
-        Me.txtEventID.TabIndex = 2
         '
         'Label3
         '
@@ -489,6 +465,30 @@ Partial Class frmEvents
         Me.lstEvents.Size = New System.Drawing.Size(264, 290)
         Me.lstEvents.TabIndex = 0
         '
+        'cboSemesterID
+        '
+        Me.cboSemesterID.FormattingEnabled = True
+        Me.cboSemesterID.Location = New System.Drawing.Point(103, 200)
+        Me.cboSemesterID.Name = "cboSemesterID"
+        Me.cboSemesterID.Size = New System.Drawing.Size(198, 21)
+        Me.cboSemesterID.TabIndex = 22
+        '
+        'cboEventTypeID
+        '
+        Me.cboEventTypeID.FormattingEnabled = True
+        Me.cboEventTypeID.Location = New System.Drawing.Point(103, 232)
+        Me.cboEventTypeID.Name = "cboEventTypeID"
+        Me.cboEventTypeID.Size = New System.Drawing.Size(198, 21)
+        Me.cboEventTypeID.TabIndex = 23
+        '
+        'txtEventID
+        '
+        Me.txtEventID.Location = New System.Drawing.Point(103, 22)
+        Me.txtEventID.MaxLength = 15
+        Me.txtEventID.Name = "txtEventID"
+        Me.txtEventID.Size = New System.Drawing.Size(198, 20)
+        Me.txtEventID.TabIndex = 24
+        '
         'frmEvents
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -499,7 +499,7 @@ Partial Class frmEvents
         Me.Controls.Add(Me.grpNewEv)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ToolStrip1)
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "frmEvents"
         Me.Text = "frmEvents"
         Me.ToolStrip1.ResumeLayout(False)
@@ -543,7 +543,6 @@ Partial Class frmEvents
     Friend WithEvents btnCancel As Button
     Friend WithEvents btnSave As Button
     Friend WithEvents txtEventDesc As TextBox
-    Friend WithEvents txtEventID As TextBox
     Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents grpEvents As GroupBox
@@ -552,10 +551,11 @@ Partial Class frmEvents
     Friend WithEvents Label7 As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents Label5 As Label
-    Friend WithEvents txtSemID As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents mskEndDate As MaskedTextBox
     Friend WithEvents mskStartDate As MaskedTextBox
     Friend WithEvents txtLocation As TextBox
-    Friend WithEvents txtEvTypeID As TextBox
+    Friend WithEvents cboEventTypeID As ComboBox
+    Friend WithEvents cboSemesterID As ComboBox
+    Friend WithEvents txtEventID As TextBox
 End Class
