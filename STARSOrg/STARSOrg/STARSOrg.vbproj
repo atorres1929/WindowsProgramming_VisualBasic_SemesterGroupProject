@@ -47,8 +47,10 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
-    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.WinForms.10.0.40219.1\lib\Microsoft.ReportViewer.WinForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -75,6 +77,8 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CAudit.vb" />
+    <Compile Include="CAudits.vb" />
     <Compile Include="CDB.vb" />
     <Compile Include="CEvent.vb" />
     <Compile Include="CEvents.vb" />
@@ -82,6 +86,14 @@
     <Compile Include="CMembers.vb" />
     <Compile Include="CRole.vb" />
     <Compile Include="CRoles.vb" />
+    <Compile Include="CSecurity.vb" />
+    <Compile Include="CSecuritys.vb" />
+    <Compile Include="frmChangePassword.Designer.vb">
+      <DependentUpon>frmChangePassword.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmChangePassword.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmCourse.Designer.vb">
       <DependentUpon>frmCourse.vb</DependentUpon>
     </Compile>
@@ -164,6 +176,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmChangePassword.resx">
+      <DependentUpon>frmChangePassword.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCourse.resx">
       <DependentUpon>frmCourse.vb</DependentUpon>
     </EmbeddedResource>
@@ -214,6 +229,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Resources\STARS National LOGO.png" />
   </ItemGroup>
   <ItemGroup>
