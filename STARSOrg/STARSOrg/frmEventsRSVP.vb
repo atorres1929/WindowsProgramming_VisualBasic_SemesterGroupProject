@@ -6,7 +6,8 @@
     End Sub
 
     Private Sub tsbRole_Click(sender As Object, e As EventArgs) Handles tsbRole.Click
-        'nothing to do here - already on the Role screen
+        intNextAction = ACTION_ROLE
+        Me.Hide()
     End Sub
 
     Private Sub tsbHome_Click(sender As Object, e As EventArgs) Handles tsbHome.Click
@@ -35,8 +36,7 @@
     End Sub
 
     Private Sub tsbRSVP_Click(sender As Object, e As EventArgs) Handles tsbRSVP.Click
-        intNextAction = ACTION_RSVP
-        Me.Hide()
+        'current screen
     End Sub
 
     Private Sub tsbSemester_Click(sender As Object, e As EventArgs) Handles tsbSemester.Click

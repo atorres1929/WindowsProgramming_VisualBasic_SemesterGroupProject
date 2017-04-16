@@ -1,4 +1,5 @@
-﻿Public Class CEvent
+﻿Imports System.Data.SqlClient
+Public Class CEvent
     Private _mstrEventID As String
     Private _mstrEventDescription As String
     Private _mstrEventTypeID As String
@@ -11,7 +12,6 @@
     Public Sub New()
         _mstrEventID = ""
         _mstrEventDescription = ""
-        _mstrEventTypeID = ""
         _mstrEventTypeID = ""
         _mstrSemesterID = ""
         _mstrStartDate = ""
@@ -85,4 +85,23 @@
         End Set
     End Property
 #End Region
+    Public ReadOnly Property GetSaveParameters() As ArrayList
+        Get
+            Dim params As New ArrayList
+            params.Add(New SqlParameter("eventID", _mstrEventID))
+            params.Add(New SqlParameter("eventDescription", _mstrEventDescription))
+            params.Add(New SqlParameter("eventTypeID", _mstrEventTypeID))
+            params.Add(New SqlParameter("semesterID", _mstrSemesterID))
+            params.Add(New SqlParameter("startDate", _mstrEndDate))
+            params.Add(New SqlParameter("endDate", _mstrEndDate))
+            params.Add(New SqlParameter("location", _mstrLocation))
+            Return params
+        End Get
+    End Property
+    Public Function Save() As Integer
+        If isNewEvent Then
+            Return 0 'TODO
+        End If
+        Return 0 'TODO
+    End Function
 End Class

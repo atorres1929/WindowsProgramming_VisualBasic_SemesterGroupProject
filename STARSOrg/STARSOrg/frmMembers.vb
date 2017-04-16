@@ -75,27 +75,27 @@ Public Class frmMembers
 
     Private Sub frmMembers_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         ClearScreenControls(Me)
-        LoadMembers()
+        'LoadMembers()
         ' makes the member info not useable
         grpMemberInfo.Enabled = False
     End Sub
 
     'load the members from database
-    Private Sub LoadMembers()
-        Dim objReader As SqlDataReader
-        lstMemberList.Items.Clear()
-        Try
-            objReader = objMembers.GetAllMembers
-            Do While objReader.Read
-                lstMemberList.Items.Add(objReader.Item("PID", "FName", "LName", "MI", "Email", "Phone"))
-        Catch ex As Exception
+    'Private Sub LoadMembers()
+    '    Dim objReader As SqlDataReader
+    '    lstMemberList.Items.Clear()
+    '    Try
+    '        objReader = objMembers.GetAllMembers
+    '        Do While objReader.Read
+    '            lstMemberList.Items.Add(objReader.Item("PID", "FName", "LName", "MI", "Email", "Phone"))
+    '    Catch ex As Exception
 
-        End Try
+    '    End Try
 
-        If objMembers.CurrentObject.PID <> " " Then
-            lstMemberList.SelectedIndex = lstMemberList.FindStringExact(objMembers.CurrentObject.PID)
-        End If
-    End Sub
+    '    If objMembers.CurrentObject.PID <> " " Then
+    '        lstMemberList.SelectedIndex = lstMemberList.FindStringExact(objMembers.CurrentObject.PID)
+    '    End If
+    'End Sub
 
 
 End Class
