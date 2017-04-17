@@ -63,7 +63,6 @@ Partial Class frmMembers
         Me.Label5 = New System.Windows.Forms.Label()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.btnSave = New System.Windows.Forms.Button()
-        Me.txtMemberRole = New System.Windows.Forms.TextBox()
         Me.txtMemberLast = New System.Windows.Forms.TextBox()
         Me.txtMemberFirst = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -74,6 +73,11 @@ Partial Class frmMembers
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.txtSearchMember = New System.Windows.Forms.TextBox()
         Me.errP = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.cboRole = New System.Windows.Forms.ComboBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.txtMiddle = New System.Windows.Forms.TextBox()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.sslStatus = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStrip1.SuspendLayout()
         Me.grpMembers.SuspendLayout()
         Me.grpNewMember.SuspendLayout()
@@ -81,6 +85,7 @@ Partial Class frmMembers
         CType(Me.picMemberPic, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpSearch.SuspendLayout()
         CType(Me.errP, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'ToolStrip1
@@ -306,7 +311,7 @@ Partial Class frmMembers
         '
         'btnReport
         '
-        Me.btnReport.Location = New System.Drawing.Point(242, 237)
+        Me.btnReport.Location = New System.Drawing.Point(242, 229)
         Me.btnReport.Name = "btnReport"
         Me.btnReport.Size = New System.Drawing.Size(101, 36)
         Me.btnReport.TabIndex = 19
@@ -342,6 +347,9 @@ Partial Class frmMembers
         '
         'grpMemberInfo
         '
+        Me.grpMemberInfo.Controls.Add(Me.txtMiddle)
+        Me.grpMemberInfo.Controls.Add(Me.Label9)
+        Me.grpMemberInfo.Controls.Add(Me.cboRole)
         Me.grpMemberInfo.Controls.Add(Me.txtPanterID)
         Me.grpMemberInfo.Controls.Add(Me.Label8)
         Me.grpMemberInfo.Controls.Add(Me.cboSemester)
@@ -352,7 +360,6 @@ Partial Class frmMembers
         Me.grpMemberInfo.Controls.Add(Me.Label5)
         Me.grpMemberInfo.Controls.Add(Me.btnCancel)
         Me.grpMemberInfo.Controls.Add(Me.btnSave)
-        Me.grpMemberInfo.Controls.Add(Me.txtMemberRole)
         Me.grpMemberInfo.Controls.Add(Me.txtMemberLast)
         Me.grpMemberInfo.Controls.Add(Me.txtMemberFirst)
         Me.grpMemberInfo.Controls.Add(Me.Label4)
@@ -368,7 +375,7 @@ Partial Class frmMembers
         '
         'txtPanterID
         '
-        Me.txtPanterID.Location = New System.Drawing.Point(253, 133)
+        Me.txtPanterID.Location = New System.Drawing.Point(254, 59)
         Me.txtPanterID.MaxLength = 7
         Me.txtPanterID.Name = "txtPanterID"
         Me.txtPanterID.Size = New System.Drawing.Size(205, 20)
@@ -377,7 +384,7 @@ Partial Class frmMembers
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(160, 140)
+        Me.Label8.Location = New System.Drawing.Point(161, 66)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(58, 13)
         Me.Label8.TabIndex = 17
@@ -402,7 +409,7 @@ Partial Class frmMembers
         '
         'mtxtPhoneNumber
         '
-        Me.mtxtPhoneNumber.Location = New System.Drawing.Point(253, 235)
+        Me.mtxtPhoneNumber.Location = New System.Drawing.Point(253, 258)
         Me.mtxtPhoneNumber.Mask = "(999)000-0000"
         Me.mtxtPhoneNumber.Name = "mtxtPhoneNumber"
         Me.mtxtPhoneNumber.Size = New System.Drawing.Size(205, 20)
@@ -411,7 +418,7 @@ Partial Class frmMembers
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(160, 242)
+        Me.Label6.Location = New System.Drawing.Point(160, 265)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(78, 13)
         Me.Label6.TabIndex = 13
@@ -419,7 +426,7 @@ Partial Class frmMembers
         '
         'txtEmail
         '
-        Me.txtEmail.Location = New System.Drawing.Point(253, 200)
+        Me.txtEmail.Location = New System.Drawing.Point(253, 191)
         Me.txtEmail.MaxLength = 50
         Me.txtEmail.Name = "txtEmail"
         Me.txtEmail.Size = New System.Drawing.Size(205, 20)
@@ -428,7 +435,7 @@ Partial Class frmMembers
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(160, 207)
+        Me.Label5.Location = New System.Drawing.Point(161, 198)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(32, 13)
         Me.Label5.TabIndex = 9
@@ -452,17 +459,9 @@ Partial Class frmMembers
         Me.btnSave.Text = "Save"
         Me.btnSave.UseVisualStyleBackColor = True
         '
-        'txtMemberRole
-        '
-        Me.txtMemberRole.Location = New System.Drawing.Point(253, 168)
-        Me.txtMemberRole.MaxLength = 15
-        Me.txtMemberRole.Name = "txtMemberRole"
-        Me.txtMemberRole.Size = New System.Drawing.Size(205, 20)
-        Me.txtMemberRole.TabIndex = 6
-        '
         'txtMemberLast
         '
-        Me.txtMemberLast.Location = New System.Drawing.Point(253, 98)
+        Me.txtMemberLast.Location = New System.Drawing.Point(253, 128)
         Me.txtMemberLast.MaxLength = 75
         Me.txtMemberLast.Name = "txtMemberLast"
         Me.txtMemberLast.Size = New System.Drawing.Size(205, 20)
@@ -470,7 +469,7 @@ Partial Class frmMembers
         '
         'txtMemberFirst
         '
-        Me.txtMemberFirst.Location = New System.Drawing.Point(253, 59)
+        Me.txtMemberFirst.Location = New System.Drawing.Point(253, 92)
         Me.txtMemberFirst.MaxLength = 50
         Me.txtMemberFirst.Name = "txtMemberFirst"
         Me.txtMemberFirst.Size = New System.Drawing.Size(205, 20)
@@ -479,7 +478,7 @@ Partial Class frmMembers
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(160, 175)
+        Me.Label4.Location = New System.Drawing.Point(160, 231)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(29, 13)
         Me.Label4.TabIndex = 3
@@ -488,7 +487,7 @@ Partial Class frmMembers
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(160, 105)
+        Me.Label3.Location = New System.Drawing.Point(160, 135)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(58, 13)
         Me.Label3.TabIndex = 2
@@ -497,7 +496,7 @@ Partial Class frmMembers
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(160, 66)
+        Me.Label2.Location = New System.Drawing.Point(160, 99)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(57, 13)
         Me.Label2.TabIndex = 1
@@ -543,11 +542,52 @@ Partial Class frmMembers
         '
         Me.errP.ContainerControl = Me
         '
+        'cboRole
+        '
+        Me.cboRole.FormattingEnabled = True
+        Me.cboRole.Location = New System.Drawing.Point(253, 223)
+        Me.cboRole.Name = "cboRole"
+        Me.cboRole.Size = New System.Drawing.Size(205, 21)
+        Me.cboRole.TabIndex = 19
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(160, 166)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(65, 13)
+        Me.Label9.TabIndex = 20
+        Me.Label9.Text = "Middle Initial"
+        '
+        'txtMiddle
+        '
+        Me.txtMiddle.Location = New System.Drawing.Point(253, 159)
+        Me.txtMiddle.MaxLength = 75
+        Me.txtMiddle.Name = "txtMiddle"
+        Me.txtMiddle.Size = New System.Drawing.Size(205, 20)
+        Me.txtMiddle.TabIndex = 21
+        '
+        'StatusStrip1
+        '
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.sslStatus})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 520)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.Size = New System.Drawing.Size(877, 22)
+        Me.StatusStrip1.TabIndex = 8
+        Me.StatusStrip1.Text = "StatusStrip1"
+        '
+        'sslStatus
+        '
+        Me.sslStatus.AutoSize = False
+        Me.sslStatus.Name = "sslStatus"
+        Me.sslStatus.Size = New System.Drawing.Size(800, 17)
+        '
         'frmMembers
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(877, 542)
+        Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.grpSearch)
         Me.Controls.Add(Me.grpMemberInfo)
         Me.Controls.Add(Me.grpNewMember)
@@ -567,7 +607,10 @@ Partial Class frmMembers
         Me.grpSearch.ResumeLayout(False)
         Me.grpSearch.PerformLayout()
         CType(Me.errP, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.StatusStrip1.ResumeLayout(False)
+        Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -602,7 +645,6 @@ Partial Class frmMembers
     Friend WithEvents grpMemberInfo As GroupBox
     Friend WithEvents btnCancel As Button
     Friend WithEvents btnSave As Button
-    Friend WithEvents txtMemberRole As TextBox
     Friend WithEvents txtMemberLast As TextBox
     Friend WithEvents txtMemberFirst As TextBox
     Friend WithEvents Label4 As Label
@@ -622,4 +664,9 @@ Partial Class frmMembers
     Friend WithEvents Label8 As Label
     Friend WithEvents errP As ErrorProvider
     Friend WithEvents btnReport As Button
+    Friend WithEvents cboRole As ComboBox
+    Friend WithEvents txtMiddle As TextBox
+    Friend WithEvents Label9 As Label
+    Friend WithEvents StatusStrip1 As StatusStrip
+    Friend WithEvents sslStatus As ToolStripStatusLabel
 End Class

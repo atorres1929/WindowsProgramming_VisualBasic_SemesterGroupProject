@@ -2,6 +2,7 @@
 Public Class CMembers
     Private _Member As CMember
     Private _Role As CRole
+    '  TODO   Private _Semester As CSemester
 
 
     Public Sub New()
@@ -26,6 +27,8 @@ Public Class CMembers
     Public Sub Clear()
         _Member = New CMember
         _Role = New CRole
+        'TODO    _Semester = New CSemester
+
 
     End Sub
 
@@ -38,6 +41,15 @@ Public Class CMembers
         Return myDB.GetDataReaderBySP("dbo.sp_GetAllMembers", Nothing)
     End Function
 
+    Public Function GetMemberByPID(strPID As String) As CMember
+        Dim params As New ArrayList
+        params.Add(New SqlParameter("PID", strPID))
+        FillObject(myDB.GetDataReaderBySP("dbo.sp_GetMemberByPID", params))
+
+        Return _Member
+    End Function
+
+    'TODO somewhat complete still have questions
     'fill the personal information of the member that is on th elist
     Private Function FillObject(sqlDR As SqlDataReader) As CMember
         Using sqlDR
@@ -55,9 +67,11 @@ Public Class CMembers
                 With _Role
                     .RoleID = sqlDR.Item("RoleID") & ""
                 End With
+                'TODO    With _Semester
+                ' .SemesterDescription = sqlDR.Item("SemesterDescription") & ""
+                'End With
             End If
             sqlDR.Close()
-            ' Return _Role
             Return _Member
 
         End Using

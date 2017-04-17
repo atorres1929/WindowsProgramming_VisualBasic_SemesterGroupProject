@@ -2,6 +2,9 @@
 Public Class frmMembers
     Private objMembers As CMembers
 
+    Private blnClearing As Boolean
+    Private blnReloading As Boolean
+
 #Region "Toolbar"
     Private Sub tsbMember_Click(sender As Object, e As EventArgs) Handles tsbMember.Click
         'intNextAction = ACTION_MEMBER
@@ -69,33 +72,172 @@ Public Class frmMembers
 
 
 #End Region
+
     Private Sub frmMembers_Load(sender As Object, e As EventArgs) Handles Me.Load
         objMembers = New CMembers
     End Sub
 
     Private Sub frmMembers_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         ClearScreenControls(Me)
-        'LoadMembers()
+        LoadMembers()
         ' makes the member info not useable
+        LoadRoles()
         grpMemberInfo.Enabled = False
     End Sub
 
+    'populate the combo box
+    Private Sub LoadRoles()
+        cboRole.Items.Add("Admin")
+        cboRole.Items.Add("Alumni")
+        cboRole.Items.Add("Guest")
+        cboRole.Items.Add("Member")
+        cboRole.Items.Add("Officer")
+        cboRole.Items.Add("Outreach")
+        cboRole.Items.Add("Tutor - Paid")
+        cboRole.Items.Add("Tutor - Vol")
+    End Sub
     'load the members from database
-    'Private Sub LoadMembers()
-    '    Dim objReader As SqlDataReader
-    '    lstMemberList.Items.Clear()
-    '    Try
-    '        objReader = objMembers.GetAllMembers
-    '        Do While objReader.Read
-    '            lstMemberList.Items.Add(objReader.Item("PID", "FName", "LName", "MI", "Email", "Phone"))
-    '    Catch ex As Exception
+    Private Sub LoadMembers()
+        Dim objReader As SqlDataReader
+        lstMemberList.Items.Clear()
+        Try
+            objReader = objMembers.GetAllMembers
+            Do While objReader.Read
+                lstMemberList.Items.Add(objReader.Item("PID"))
+            Loop
+        Catch ex As Exception
+            Throw ex
+        End Try
 
-    '    End Try
+        If objMembers.CurrentObject.PantherID <> " " Then
+            lstMemberList.SelectedIndex = lstMemberList.FindStringExact(objMembers.CurrentObject.PantherID)
+        End If
+    End Sub
 
-    '    If objMembers.CurrentObject.PID <> " " Then
-    '        lstMemberList.SelectedIndex = lstMemberList.FindStringExact(objMembers.CurrentObject.PID)
-    '    End If
-    'End Sub
+    Private Sub chkNewMember_CheckedChanged(sender As Object, e As EventArgs) Handles chkNewMember.CheckedChanged
+        If blnClearing Then
+            Exit Sub
+        End If
+        'if turned on
+        If chkNewMember.Checked Then
+            ClearScreenControls(grpMemberInfo)
+            'unselect from llistbox
+            lstMemberList.SelectedIndex = -1
+            'gray out the listbox
+            grpMembers.Enabled = False
+            'enable editing of info
+            grpMemberInfo.Enabled = True
+            objMembers.CreateNewMember()
+            txtPanterID.Focus()
+        Else
+            'if cancled return to prior state
+            grpMembers.Enabled = True
+            grpMemberInfo.Enabled = False
+            objMembers.CurrentObject.IsNewMember = False
+
+        End If
+    End Sub
+
+    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+        Dim intResult As Integer
+        Dim blnError As Boolean
+
+        'if you clicked save
+
+        'input validation for PantherID txtbox
+        If Not ValidateTextBoxLength(txtPanterID, errP) Then
+            blnError = True
+        End If
+        'input validation for first name
+        If Not ValidateTextBoxLength(txtMemberFirst, errP) Then
+            blnError = True
+        End If
+        'input validation for last name
+        If Not ValidateTextBoxLength(txtMemberLast, errP) Then
+            blnError = True
+        End If
+        'input validation for email
+        If Not ValidateTextBoxLength(txtEmail, errP) Then
+            blnError = True
+        End If
+        'input validation for role comobo
+        If Not ValidateCombo(cboRole, errP) Then
+            blnError = True
+        End If
+        If blnError Then
+            Exit Sub
+        End If
+        'input validation for phone number
+        'TODO validate maskedtxtbox phone number
+        'If Not ValidateMaskedTextBoxDate(mtxtPhoneNumber, errP) Then
+        '    blnError = True
+        'End If
+        With objMembers.CurrentObject
+            .PantherID = Trim(txtPanterID.Text)
+            .FirstName = Trim(txtMemberFirst.Text)
+            .LastName = Trim(txtMemberLast.Text)
+            .Email = Trim(txtEmail.Text)
+            .MiddleIn = Trim(txtMiddle.Text)
+            .PhoneNumber = Text
+            .RoleID = Text
+            .Semester = Text
+        End With
+
+        Try
+            Me.Cursor = Cursors.WaitCursor
+            intResult = objMembers.Save
+            If intResult = 1 Then
+                sslStatus.text = "Member Record Saved"
+            End If
+            If intResult = -1 Then 'Panther Id is not unique
+                MessageBox.Show("Panther ID Must be Unique: Unable to Save Member Record", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                sslStatus.Text = "ERROR"
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Role ID Must be Unique: " & ex.ToString, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            sslStatus.Text = "Error"
+        End Try
+        Me.Cursor = Cursors.Default
+        blnReloading = True
+        LoadMembers()
+        chkNewMember.Checked = False
+        grpMembers.Enabled = True
+    End Sub
 
 
+    'TODO cancel button
+
+    Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+        blnClearing = True
+        sslStatus.Text = ""
+        chkNewMember.Checked = False
+        errP.Clear()
+        If lstMemberList.SelectedIndex <> -1 Then 'reload the selected record
+            LoadSelectedRecord()
+        Else
+            grpMemberInfo.Enabled = False
+        End If
+        blnClearing = False
+        'objMembers.CurrentObject.IsNewRole = False
+        'grpMembers.Enabled = True
+    End Sub
+
+    Private Sub LoadSelectedRecord()
+        Try
+            objMembers.GetMemberByPID(lstMemberList.SelectedItem.ToString)
+            With objMembers.CurrentObject
+                txtPanterID.Text = .PantherID
+                txtMemberFirst.Text = .FirstName
+                txtMemberLast.Text = .LastName
+                txtMiddle.Text = .MiddleIn
+                txtEmail.Text = .Email
+                cboRole.Text = .RoleID
+                cboSemester.Text = .Semester
+                mtxtPhoneNumber.Text = .PhoneNumber
+
+            End With
+        Catch ex As Exception
+            MessageBox.Show("Error loading Member Values", "Program error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
 End Class
