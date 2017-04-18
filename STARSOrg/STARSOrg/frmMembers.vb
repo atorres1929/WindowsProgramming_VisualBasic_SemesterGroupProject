@@ -1,7 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Public Class frmMembers
     Private objMembers As CMembers
-
     Private blnClearing As Boolean
     Private blnReloading As Boolean
 
@@ -80,7 +79,7 @@ Public Class frmMembers
     Private Sub frmMembers_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         ClearScreenControls(Me)
         LoadMembers()
-        ' makes the member info not useable
+        'loads combo box
         LoadRoles()
         grpMemberInfo.Enabled = False
     End Sub
@@ -104,6 +103,7 @@ Public Class frmMembers
             objReader = objMembers.GetAllMembers
             Do While objReader.Read
                 lstMemberList.Items.Add(objReader.Item("PID"))
+
             Loop
         Catch ex As Exception
             Throw ex
@@ -167,11 +167,6 @@ Public Class frmMembers
         If blnError Then
             Exit Sub
         End If
-        'input validation for phone number
-        'TODO validate maskedtxtbox phone number
-        'If Not ValidateMaskedTextBoxDate(mtxtPhoneNumber, errP) Then
-        '    blnError = True
-        'End If
         With objMembers.CurrentObject
             .PantherID = Trim(txtPanterID.Text)
             .FirstName = Trim(txtMemberFirst.Text)
@@ -194,8 +189,8 @@ Public Class frmMembers
                 sslStatus.Text = "ERROR"
             End If
         Catch ex As Exception
-            MessageBox.Show("Role ID Must be Unique: " & ex.ToString, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            sslStatus.Text = "Error"
+            'MessageBox.Show("Role ID Must be Unique: " & ex.ToString, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            'sslStatus.Text = "Error"
         End Try
         Me.Cursor = Cursors.Default
         blnReloading = True
@@ -218,8 +213,8 @@ Public Class frmMembers
             grpMemberInfo.Enabled = False
         End If
         blnClearing = False
-        'objMembers.CurrentObject.IsNewRole = False
-        'grpMembers.Enabled = True
+        objMembers.CurrentObject.IsNewMember = False
+        ' grpMembers.Enabled = True
     End Sub
 
     Private Sub LoadSelectedRecord()
@@ -238,6 +233,38 @@ Public Class frmMembers
             End With
         Catch ex As Exception
             MessageBox.Show("Error loading Member Values", "Program error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub lstMemberList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstMemberList.SelectedIndexChanged
+        If blnClearing Then
+            Exit Sub
+        End If
+
+        If lstMemberList.SelectedIndex = -1 Then
+            Exit Sub
+        End If
+
+        chkNewMember.Checked = False
+        'LoadSelectedMember()
+        grpMemberInfo.Enabled = True
+    End Sub
+
+    Private Sub LoadSelectedMember()
+
+        Try
+            objMembers.GetMemberByPID(lstMemberList.SelectedItem.ToString)
+            With objMembers.CurrentObject
+                txtPanterID.Text = .PantherID
+                txtMemberFirst.Text = .FirstName
+                txtMemberLast.Text = .LastName
+                txtMiddle.Text = .MiddleIn
+                txtEmail.Text = .Email
+                'cboSemester = .Semester
+                'cboRole = .RoleID
+            End With
+        Catch ex As Exception
+            MessageBox.Show("Error loading MEMBERS", "Program error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 End Class

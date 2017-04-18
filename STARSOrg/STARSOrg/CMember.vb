@@ -12,7 +12,6 @@ Public Class CMember
 
     Private _IsNewMember As Boolean
 
-    's
     'do i pass the string location of the picture
     Private _mstrPicture As String
 
@@ -132,7 +131,7 @@ Public Class CMember
             params.Add(New SqlParameter("PhotoPath", _mstrPicture))
             params.Add(New SqlParameter("RoleID", _mstrRoleID))
             ' one for the combo box 
-            params.Add(New SqlParameter("Semester", _mstrSemster))
+            params.Add(New SqlParameter("SemesterID", _mstrSemster))
 
             Return params
         End Get

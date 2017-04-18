@@ -65,7 +65,14 @@ Public Class frmRoles
         tsbProxy.DisplayStyle = ToolStripItemDisplayStyle.Image
     End Sub
 #End Region
-
+    Private Sub frmRoles_Load(sender As Object, e As EventArgs) Handles Me.Load
+        objRoles = New CRoles
+    End Sub
+    Private Sub frmRoles_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+        ClearScreenControls(Me)
+        LoadRoles()
+        grpEdit.Enabled = False
+    End Sub
     Private Sub LoadRoles()
         Dim objReader As SqlDataReader
         lstRoles.Items.Clear()
@@ -85,16 +92,9 @@ Public Class frmRoles
         blnReloading = False
     End Sub
 
-    Private Sub frmRoles_Load(sender As Object, e As EventArgs) Handles Me.Load
-        objRoles = New CRoles
 
-    End Sub
 
-    Private Sub frmRoles_Shown(sender As Object, e As EventArgs) Handles Me.Shown
-        ClearScreenControls(Me)
-        LoadRoles()
-        grpEdit.Enabled = False
-    End Sub
+
 
     Private Sub lstRoles_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstRoles.SelectedIndexChanged
         If blnClearing Then
