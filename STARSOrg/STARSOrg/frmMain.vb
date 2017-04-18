@@ -4,6 +4,7 @@
     Private MemberInfo As frmMembers
     Private EventsInfo As frmEvents
     Private RSVPInfo As frmEventsRSVP
+    Private AdminConsole As frmAdminConsole
 #Region "Toolbar"
     Private Sub tsbMember_Click(sender As Object, e As EventArgs) Handles tsbMember.Click
         Me.Hide()
@@ -61,7 +62,7 @@
             Case ACTION_EVENT
                 tsbEvent.PerformClick()
             Case ACTION_HELP
-                tsbHelp.PerformClick()
+                tsbAdmin.PerformClick()
             Case ACTION_HOME
                 tsbHome.PerformClick()
             Case ACTION_LOGOUT
@@ -89,6 +90,7 @@
         EventsInfo = New frmEvents
         RSVPInfo = New frmEventsRSVP
         LoginScreen = New frmLogin
+        AdminConsole = New frmAdminConsole
         'open the database
         Try
             myDB.OpenDB()
@@ -124,5 +126,13 @@
 
     Private Sub frmMain_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         LoginScreen.ShowDialog()
+    End Sub
+
+    Private Sub tsbAdmin_Click(sender As Object, e As EventArgs) Handles tsbAdmin.Click
+        AdminConsole.ShowDialog()
+    End Sub
+
+    Private Sub tsbHelp_Click(sender As Object, e As EventArgs) Handles tsbHelp.Click
+
     End Sub
 End Class

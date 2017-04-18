@@ -83,6 +83,7 @@ Public Class CSecurity
         params.Add(New SqlParameter("username", _mstrUserID))
         params.Add(New SqlParameter("password", _mstrPassword))
         params.Add(New SqlParameter("newPassword", _mstrNewPassword))
+        Return params
     End Function
 
     Public Function Login() As Integer

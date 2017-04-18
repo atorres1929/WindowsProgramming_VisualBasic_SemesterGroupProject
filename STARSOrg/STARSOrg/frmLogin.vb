@@ -9,7 +9,7 @@
         If txtUserID.Text = "" Or txtPassword.Text = "" Then
             errP.SetError(txtUserID, "Username must be supplied")
             errP.SetError(txtPassword, "Password must be supplied")
-        ElseIf Security.Login = 1 Then 'succesful login
+        ElseIf Security.Login = 1 Then 'no sql errors when logging in
             Me.Close()
         Else
             errP.SetError(txtUserID, "Username or Password Incorrect!")
@@ -40,6 +40,7 @@
             txtUserID.Enabled = True
             txtPassword.Enabled = True
             txtUserID.Text = ""
+            txtPassword.Text = ""
         End If
     End Sub
 End Class

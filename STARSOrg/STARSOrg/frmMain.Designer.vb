@@ -42,11 +42,12 @@ Partial Class frmMain
         Me.ToolStripSeparator12 = New System.Windows.Forms.ToolStripSeparator()
         Me.tsbLogOut = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator8 = New System.Windows.Forms.ToolStripSeparator()
-        Me.tsbHelp = New System.Windows.Forms.ToolStripButton()
+        Me.tsbAdmin = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator9 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripSeparator11 = New System.Windows.Forms.ToolStripSeparator()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.tsbHelp = New System.Windows.Forms.ToolStripButton()
         Me.ToolStrip1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -55,7 +56,7 @@ Partial Class frmMain
         '
         Me.ToolStrip1.AutoSize = False
         Me.ToolStrip1.BackColor = System.Drawing.Color.White
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSeparator7, Me.tsbHome, Me.ToolStripSeparator6, Me.tsbMember, Me.ToolStripSeparator4, Me.tsbRole, Me.ToolStripSeparator5, Me.tsbEvent, Me.ToolStripSeparator3, Me.tsbRSVP, Me.ToolStripSeparator2, Me.tsbCourse, Me.ToolStripSeparator1, Me.tsbSemester, Me.ToolStripSeparator10, Me.tsbTutor, Me.ToolStripSeparator12, Me.tsbLogOut, Me.ToolStripSeparator8, Me.tsbHelp, Me.ToolStripSeparator9, Me.ToolStripSeparator11})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSeparator7, Me.tsbHome, Me.ToolStripSeparator6, Me.tsbMember, Me.ToolStripSeparator4, Me.tsbRole, Me.ToolStripSeparator5, Me.tsbEvent, Me.ToolStripSeparator3, Me.tsbRSVP, Me.ToolStripSeparator2, Me.tsbCourse, Me.ToolStripSeparator1, Me.tsbSemester, Me.ToolStripSeparator10, Me.tsbTutor, Me.ToolStripSeparator12, Me.tsbLogOut, Me.ToolStripSeparator8, Me.tsbHelp, Me.ToolStripSeparator9, Me.ToolStripSeparator11, Me.tsbAdmin})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(808, 50)
@@ -224,17 +225,16 @@ Partial Class frmMain
         Me.ToolStripSeparator8.Name = "ToolStripSeparator8"
         Me.ToolStripSeparator8.Size = New System.Drawing.Size(10, 50)
         '
-        'tsbHelp
+        'tsbAdmin
         '
-        Me.tsbHelp.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.tsbHelp.AutoSize = False
-        Me.tsbHelp.BackgroundImage = Global.STARSOrg.My.Resources.Resources.help
-        Me.tsbHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.tsbHelp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.tsbHelp.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.tsbHelp.Name = "tsbHelp"
-        Me.tsbHelp.Size = New System.Drawing.Size(48, 48)
-        Me.tsbHelp.Text = "HELP"
+        Me.tsbAdmin.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.tsbAdmin.AutoSize = False
+        Me.tsbAdmin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.tsbAdmin.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.tsbAdmin.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbAdmin.Name = "tsbAdmin"
+        Me.tsbAdmin.Size = New System.Drawing.Size(48, 48)
+        Me.tsbAdmin.Text = "Admin"
         '
         'ToolStripSeparator9
         '
@@ -271,6 +271,18 @@ Partial Class frmMain
         Me.PictureBox1.TabIndex = 1
         Me.PictureBox1.TabStop = False
         '
+        'tsbHelp
+        '
+        Me.tsbHelp.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.tsbHelp.AutoSize = False
+        Me.tsbHelp.BackgroundImage = Global.STARSOrg.My.Resources.Resources.help
+        Me.tsbHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.tsbHelp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbHelp.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbHelp.Name = "tsbHelp"
+        Me.tsbHelp.Size = New System.Drawing.Size(48, 48)
+        Me.tsbHelp.Text = "HELP"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -303,7 +315,7 @@ Partial Class frmMain
     Friend WithEvents tsbSemester As ToolStripButton
     Friend WithEvents tsbTutor As ToolStripButton
     Friend WithEvents tsbLogOut As ToolStripButton
-    Friend WithEvents tsbHelp As ToolStripButton
+    Friend WithEvents tsbAdmin As ToolStripButton
     Friend WithEvents ToolStripSeparator7 As ToolStripSeparator
     Friend WithEvents ToolStripSeparator6 As ToolStripSeparator
     Friend WithEvents ToolStripSeparator4 As ToolStripSeparator
@@ -316,4 +328,5 @@ Partial Class frmMain
     Friend WithEvents ToolStripSeparator8 As ToolStripSeparator
     Friend WithEvents ToolStripSeparator9 As ToolStripSeparator
     Friend WithEvents ToolStripSeparator11 As ToolStripSeparator
+    Friend WithEvents tsbHelp As ToolStripButton
 End Class
