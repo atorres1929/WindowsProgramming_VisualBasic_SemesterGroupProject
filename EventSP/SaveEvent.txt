@@ -1,0 +1,32 @@
+CREATE PROCEDURE [dbo].sp_SaveEvent
+	@eventID nvarchar(4),
+	@eventDescription nvarchar(500),
+	@startDate smalldatetime,
+	@endDate smalldatetime,
+	@location nvarchar(50)
+AS
+	Declare @countExists int
+	Select @countExists = Count(0) FROM EVENT WHERE EventID=@eventID
+	if (@countExists=0)
+	BEGIN
+		INSERT INTO EVENT
+		(EventID
+		,EventDescription
+		,EventTypeID
+		,SemesterID
+		,StartDate
+		,EndDate
+		,Location
+		)
+		VALUES
+		(@eventID
+		,@eventDescription
+		)
+	END
+	ELSE
+	BEGIN
+		UPDATE EVENT
+		SET EventDescription=@eventDescription, StartDate=@startDate <<<<<
+		WHERE EventID=@eventID
+	END
+RETURN @@error

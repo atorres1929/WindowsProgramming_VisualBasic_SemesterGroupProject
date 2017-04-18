@@ -4,11 +4,12 @@ Public Class CEvent
     Private _mstrEventDescription As String
     Private _mstrEventTypeID As String
     Private _mstrSemesterID As String
-    Private _mstrStartDate As String
-    Private _mstrEndDate As String
+    Private _mstrStartDate As Date
+    Private _mstrEndDate As Date
     Private _mstrLocation As String
     Private _isNewEvent As Boolean
 
+    'constructor
     Public Sub New()
         _mstrEventID = ""
         _mstrEventDescription = ""
@@ -52,20 +53,20 @@ Public Class CEvent
             _mstrSemesterID = strVal
         End Set
     End Property
-    Public Property StartDate As String
+    Public Property StartDate As Date
         Get
             Return _mstrStartDate
         End Get
-        Set(strVal As String)
-            _mstrStartDate = strVal
+        Set(datVal As Date)
+            _mstrStartDate = datVal
         End Set
     End Property
-    Public Property EndDate As String
+    Public Property EndDate As Date
         Get
             Return _mstrEndDate
         End Get
-        Set(strVal As String)
-            _mstrEndDate = strVal
+        Set(datVal As Date)
+            _mstrEndDate = datVal
         End Set
     End Property
     Public Property Location As String
@@ -100,8 +101,13 @@ Public Class CEvent
     End Property
     Public Function Save() As Integer
         If isNewEvent Then
-            Return 0 'TODO
+            Dim params As New ArrayList
+            params.Add(New SqlParameter("eventID", _mstrEventID))
+            Dim strRes As String = myDB.GetSingleValueFromSP("sp_CheckEventIDExists", params)
+            If Not strRes = 0 Then
+                Return -1 'not new event
+            End If
         End If
-        Return 0 'TODO
+        Return myDB.ExecSP("sp_SaveEvent", GetSaveParameters)
     End Function
 End Class
