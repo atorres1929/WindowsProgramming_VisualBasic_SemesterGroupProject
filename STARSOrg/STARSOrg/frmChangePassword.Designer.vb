@@ -22,6 +22,7 @@ Partial Class frmChangePassword
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtUsername = New System.Windows.Forms.TextBox()
         Me.txtCurrentPassword = New System.Windows.Forms.TextBox()
@@ -33,6 +34,8 @@ Partial Class frmChangePassword
         Me.Label5 = New System.Windows.Forms.Label()
         Me.btnChangePassword = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
+        Me.errP = New System.Windows.Forms.ErrorProvider(Me.components)
+        CType(Me.errP, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -79,11 +82,11 @@ Partial Class frmChangePassword
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.Label2.Location = New System.Drawing.Point(101, 70)
+        Me.Label2.Location = New System.Drawing.Point(126, 70)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(90, 20)
+        Me.Label2.Size = New System.Drawing.Size(68, 20)
         Me.Label2.TabIndex = 5
-        Me.Label2.Text = "Panther ID:"
+        Me.Label2.Text = "User ID:"
         '
         'Label3
         '
@@ -135,6 +138,10 @@ Partial Class frmChangePassword
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
+        'errP
+        '
+        Me.errP.ContainerControl = Me
+        '
         'frmChangePassword
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -153,7 +160,9 @@ Partial Class frmChangePassword
         Me.Controls.Add(Me.txtUsername)
         Me.Controls.Add(Me.Label1)
         Me.Name = "frmChangePassword"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Change Password"
+        CType(Me.errP, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -170,4 +179,5 @@ Partial Class frmChangePassword
     Friend WithEvents Label5 As Label
     Friend WithEvents btnChangePassword As Button
     Friend WithEvents btnCancel As Button
+    Friend WithEvents errP As ErrorProvider
 End Class

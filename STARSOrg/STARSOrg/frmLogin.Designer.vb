@@ -22,6 +22,7 @@ Partial Class frmLogin
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.btnExit = New System.Windows.Forms.Button()
         Me.txtUserID = New System.Windows.Forms.TextBox()
         Me.txtPassword = New System.Windows.Forms.TextBox()
@@ -31,6 +32,8 @@ Partial Class frmLogin
         Me.btnChangePassword = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.errP = New System.Windows.Forms.ErrorProvider(Me.components)
+        CType(Me.errP, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnExit
@@ -101,11 +104,11 @@ Partial Class frmLogin
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.Label2.Location = New System.Drawing.Point(4, 80)
+        Me.Label2.Location = New System.Drawing.Point(22, 80)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(86, 20)
+        Me.Label2.Size = New System.Drawing.Size(68, 20)
         Me.Label2.TabIndex = 7
-        Me.Label2.Text = "PantherID:"
+        Me.Label2.Text = "User ID:"
         '
         'Label3
         '
@@ -116,6 +119,10 @@ Partial Class frmLogin
         Me.Label3.Size = New System.Drawing.Size(82, 20)
         Me.Label3.TabIndex = 8
         Me.Label3.Text = "Password:"
+        '
+        'errP
+        '
+        Me.errP.ContainerControl = Me
         '
         'frmLogin
         '
@@ -133,7 +140,9 @@ Partial Class frmLogin
         Me.Controls.Add(Me.txtUserID)
         Me.Controls.Add(Me.btnExit)
         Me.Name = "frmLogin"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Login"
+        CType(Me.errP, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -148,4 +157,5 @@ Partial Class frmLogin
     Friend WithEvents btnChangePassword As Button
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
+    Friend WithEvents errP As ErrorProvider
 End Class

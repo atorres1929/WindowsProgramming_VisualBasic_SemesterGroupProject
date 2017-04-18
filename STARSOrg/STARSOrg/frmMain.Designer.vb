@@ -36,8 +36,8 @@ Partial Class frmMain
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.tsbCourse = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripSeparator10 = New System.Windows.Forms.ToolStripSeparator()
         Me.tsbSemester = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator10 = New System.Windows.Forms.ToolStripSeparator()
         Me.tsbTutor = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator12 = New System.Windows.Forms.ToolStripSeparator()
         Me.tsbLogOut = New System.Windows.Forms.ToolStripButton()
@@ -170,12 +170,6 @@ Partial Class frmMain
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
         Me.ToolStripSeparator1.Size = New System.Drawing.Size(10, 50)
         '
-        'ToolStripSeparator10
-        '
-        Me.ToolStripSeparator10.AutoSize = False
-        Me.ToolStripSeparator10.Name = "ToolStripSeparator10"
-        Me.ToolStripSeparator10.Size = New System.Drawing.Size(10, 50)
-        '
         'tsbSemester
         '
         Me.tsbSemester.AutoSize = False
@@ -186,6 +180,12 @@ Partial Class frmMain
         Me.tsbSemester.Name = "tsbSemester"
         Me.tsbSemester.Size = New System.Drawing.Size(48, 48)
         Me.tsbSemester.Text = "SEMESTER"
+        '
+        'ToolStripSeparator10
+        '
+        Me.ToolStripSeparator10.AutoSize = False
+        Me.ToolStripSeparator10.Name = "ToolStripSeparator10"
+        Me.ToolStripSeparator10.Size = New System.Drawing.Size(10, 50)
         '
         'tsbTutor
         '
@@ -281,6 +281,7 @@ Partial Class frmMain
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Name = "frmMain"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FIU STARS"
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()

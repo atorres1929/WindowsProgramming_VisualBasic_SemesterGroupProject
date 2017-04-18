@@ -123,9 +123,6 @@
     End Sub
 
     Private Sub frmMain_Shown(sender As Object, e As EventArgs) Handles Me.Shown
-        'Me.Enabled = False
-        'LoginScreen.Show()
-        'LoginScreen.Focus()
-        'LoginScreen.Location = New Point(Me.Location.X + Me.Width / 4, Me.Location.Y + Me.Height / 4)
+        LoginScreen.ShowDialog()
     End Sub
 End Class
