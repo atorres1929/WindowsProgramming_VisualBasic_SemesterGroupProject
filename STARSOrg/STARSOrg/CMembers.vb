@@ -1,13 +1,9 @@
 ﻿Imports System.Data.SqlClient
 Public Class CMembers
     Private _Member As CMember
-    Private _Role As CRole
-    '  TODO   Private _Semester As CSemester
-
 
     Public Sub New()
         _Member = New CMember
-        _Role = New CRole
     End Sub
 
     Public ReadOnly Property CurrentObject() As CMember
@@ -20,16 +16,11 @@ Public Class CMembers
     Public Sub CreateNewMember()
         Clear()
         _Member.IsNewMember = True
-
     End Sub
 
     'clear screen
     Public Sub Clear()
         _Member = New CMember
-        _Role = New CRole
-        'TODO    _Semester = New CSemester
-
-
     End Sub
 
     'calls save function in frmMember
@@ -45,12 +36,11 @@ Public Class CMembers
         Dim params As New ArrayList
         params.Add(New SqlParameter("PID", strPID))
         FillObject(myDB.GetDataReaderBySP("dbo.sp_GetMemberByPID", params))
-
         Return _Member
     End Function
 
     'TODO somewhat complete still have questions
-    'fill the personal information of the member that is on th elist
+    'fill the personal information of the member that is on the list
     Private Function FillObject(sqlDR As SqlDataReader) As CMember
         Using sqlDR
             If sqlDR.Read() Then
@@ -62,18 +52,16 @@ Public Class CMembers
                     .Email = sqlDR.Item("Email") & ""
                     .PhoneNumber = sqlDR.Item("Phone") & ""
                     .Picture = sqlDR.Item("PhotoPath") & ""
-
                 End With
-                With _Role
-                    .RoleID = sqlDR.Item("RoleID") & ""
-                End With
-                'TODO    With _Semester
-                ' .SemesterDescription = sqlDR.Item("SemesterDescription") & ""
+                'With _Role
+                '    .RoleID = sqlDR.Item("RoleID") & ""
+                'End With
+                'With _Semester
+                '    .SemesterDescription = sqlDR.Item("SemesterDescription") & ""
                 'End With
             End If
             sqlDR.Close()
             Return _Member
-
         End Using
     End Function
 End Class

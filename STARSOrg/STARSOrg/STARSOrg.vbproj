@@ -83,6 +83,7 @@
     <Compile Include="CEvent.vb" />
     <Compile Include="CEvents.vb" />
     <Compile Include="CMember.vb" />
+    <Compile Include="CMemberRoles.vb" />
     <Compile Include="CMembers.vb" />
     <Compile Include="CRole.vb" />
     <Compile Include="CRoles.vb" />
@@ -180,6 +181,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="CMemberRole.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="frmAdminConsole.resx">
