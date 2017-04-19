@@ -79,8 +79,9 @@ Public Class frmMembers
     Private Sub frmMembers_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         ClearScreenControls(Me)
         LoadMembers()
-        'loads combo box
-        LoadRoles()
+
+
+
         grpMemberInfo.Enabled = False
     End Sub
 
@@ -106,7 +107,7 @@ Public Class frmMembers
 
             Loop
         Catch ex As Exception
-            Throw ex
+            Throw
         End Try
 
         If objMembers.CurrentObject.PantherID <> " " Then
@@ -129,6 +130,9 @@ Public Class frmMembers
             grpMemberInfo.Enabled = True
             objMembers.CreateNewMember()
             txtPanterID.Focus()
+            'to avoid endless role addtions
+            cboRole.Items.Clear()
+            LoadRoles()
         Else
             'if cancled return to prior state
             grpMembers.Enabled = True
@@ -173,7 +177,7 @@ Public Class frmMembers
             .LastName = Trim(txtMemberLast.Text)
             .Email = Trim(txtEmail.Text)
             .MiddleIn = Trim(txtMiddle.Text)
-            .PhoneNumber = Text
+            .PhoneNumber = txtPhoneNumber.Text
             .RoleID = Text
             .Semester = Text
         End With
@@ -200,7 +204,6 @@ Public Class frmMembers
     End Sub
 
 
-    'TODO cancel button
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
         blnClearing = True
@@ -226,10 +229,12 @@ Public Class frmMembers
                 txtMemberLast.Text = .LastName
                 txtMiddle.Text = .MiddleIn
                 txtEmail.Text = .Email
-                cboRole.Text = .RoleID
-                cboSemester.Text = .Semester
-                mtxtPhoneNumber.Text = .PhoneNumber
-
+                txtPhoneNumber.Text = .PhoneNumber
+                'TODO load picture
+                cboRole.Items.Clear()
+                LoadRoles()
+                'cboRole.Text = .RoleID
+                'cboSemester.Text = .Semester
             End With
         Catch ex As Exception
             MessageBox.Show("Error loading Member Values", "Program error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -246,7 +251,7 @@ Public Class frmMembers
         End If
 
         chkNewMember.Checked = False
-        'LoadSelectedMember()
+        LoadSelectedMember()
         grpMemberInfo.Enabled = True
     End Sub
 
@@ -260,6 +265,7 @@ Public Class frmMembers
                 txtMemberLast.Text = .LastName
                 txtMiddle.Text = .MiddleIn
                 txtEmail.Text = .Email
+                txtPhoneNumber.Text = .PhoneNumber
                 'cboSemester = .Semester
                 'cboRole = .RoleID
             End With
@@ -267,4 +273,12 @@ Public Class frmMembers
             MessageBox.Show("Error loading MEMBERS", "Program error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
+    'TODO search btn
+
+    'Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
+    '    Dim searchRESULT As String = txtSearchMember.Text
+
+    '    If txtSearchMember Then
+    'End Sub
 End Class

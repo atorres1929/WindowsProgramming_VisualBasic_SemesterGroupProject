@@ -128,10 +128,10 @@ Public Class CMember
             params.Add(New SqlParameter("MI", _mstrMiddleIn))
             params.Add(New SqlParameter("Email", _mstrEmail))
             params.Add(New SqlParameter("Phone", _mstrPhoneNumber))
-            params.Add(New SqlParameter("PhotoPath", _mstrPicture))
-            params.Add(New SqlParameter("RoleID", _mstrRoleID))
+            ' params.Add(New SqlParameter("PhotoPath", _mstrPicture))
+            ' params.Add(New SqlParameter("RoleID", _mstrRoleID))
             ' one for the combo box 
-            params.Add(New SqlParameter("SemesterID", _mstrSemster))
+            ' params.Add(New SqlParameter("SemesterID", _mstrSemster))
 
             Return params
         End Get
@@ -141,12 +141,12 @@ Public Class CMember
         If IsNewMember Then
             Dim params As New ArrayList
             params.Add(New SqlParameter("PID", _mstrPantherID))
-            Dim strRESULT As String = myDB.GetSingleValueFromSP("sp_CheckMemberPIDExists", params)
+            Dim strRESULT As String = myDB.GetSingleValueFromSP("sp_CheckMemberPID", params)
             If Not strRESULT = 0 Then
                 Return -1
             End If
         End If
-        'TODO saveMember stored procedure
+
         Return myDB.ExecSP("sp_SaveMember", GetSaveParametersMembers)
     End Function
 End Class

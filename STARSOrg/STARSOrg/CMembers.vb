@@ -57,7 +57,7 @@ Public Class CMembers
                 '    .RoleID = sqlDR.Item("RoleID") & ""
                 'End With
                 'With _Semester
-                '    .SemesterDescription = sqlDR.Item("SemesterDescription") & ""
+                '    .SemesterID = sqlDR.Item("SemesterID") & ""
                 'End With
             End If
             sqlDR.Close()

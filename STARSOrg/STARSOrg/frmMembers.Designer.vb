@@ -53,11 +53,14 @@ Partial Class frmMembers
         Me.chkNewMember = New System.Windows.Forms.CheckBox()
         Me.grpNewMember = New System.Windows.Forms.GroupBox()
         Me.grpMemberInfo = New System.Windows.Forms.GroupBox()
+        Me.txtPhoneNumber = New System.Windows.Forms.TextBox()
+        Me.txtMiddle = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.cboRole = New System.Windows.Forms.ComboBox()
         Me.txtPanterID = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.cboSemester = New System.Windows.Forms.ComboBox()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.mtxtPhoneNumber = New System.Windows.Forms.MaskedTextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.txtEmail = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -73,9 +76,6 @@ Partial Class frmMembers
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.txtSearchMember = New System.Windows.Forms.TextBox()
         Me.errP = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.cboRole = New System.Windows.Forms.ComboBox()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.txtMiddle = New System.Windows.Forms.TextBox()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.sslStatus = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStrip1.SuspendLayout()
@@ -347,6 +347,7 @@ Partial Class frmMembers
         '
         'grpMemberInfo
         '
+        Me.grpMemberInfo.Controls.Add(Me.txtPhoneNumber)
         Me.grpMemberInfo.Controls.Add(Me.txtMiddle)
         Me.grpMemberInfo.Controls.Add(Me.Label9)
         Me.grpMemberInfo.Controls.Add(Me.cboRole)
@@ -354,7 +355,6 @@ Partial Class frmMembers
         Me.grpMemberInfo.Controls.Add(Me.Label8)
         Me.grpMemberInfo.Controls.Add(Me.cboSemester)
         Me.grpMemberInfo.Controls.Add(Me.Label7)
-        Me.grpMemberInfo.Controls.Add(Me.mtxtPhoneNumber)
         Me.grpMemberInfo.Controls.Add(Me.Label6)
         Me.grpMemberInfo.Controls.Add(Me.txtEmail)
         Me.grpMemberInfo.Controls.Add(Me.Label5)
@@ -372,6 +372,39 @@ Partial Class frmMembers
         Me.grpMemberInfo.TabIndex = 6
         Me.grpMemberInfo.TabStop = False
         Me.grpMemberInfo.Text = "Member Information"
+        '
+        'txtPhoneNumber
+        '
+        Me.txtPhoneNumber.Location = New System.Drawing.Point(254, 258)
+        Me.txtPhoneNumber.MaxLength = 13
+        Me.txtPhoneNumber.Name = "txtPhoneNumber"
+        Me.txtPhoneNumber.Size = New System.Drawing.Size(205, 20)
+        Me.txtPhoneNumber.TabIndex = 24
+        '
+        'txtMiddle
+        '
+        Me.txtMiddle.Location = New System.Drawing.Point(253, 159)
+        Me.txtMiddle.MaxLength = 75
+        Me.txtMiddle.Name = "txtMiddle"
+        Me.txtMiddle.Size = New System.Drawing.Size(205, 20)
+        Me.txtMiddle.TabIndex = 21
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(160, 166)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(65, 13)
+        Me.Label9.TabIndex = 20
+        Me.Label9.Text = "Middle Initial"
+        '
+        'cboRole
+        '
+        Me.cboRole.FormattingEnabled = True
+        Me.cboRole.Location = New System.Drawing.Point(253, 223)
+        Me.cboRole.Name = "cboRole"
+        Me.cboRole.Size = New System.Drawing.Size(205, 21)
+        Me.cboRole.TabIndex = 23
         '
         'txtPanterID
         '
@@ -407,14 +440,6 @@ Partial Class frmMembers
         Me.Label7.TabIndex = 15
         Me.Label7.Text = "Semester "
         '
-        'mtxtPhoneNumber
-        '
-        Me.mtxtPhoneNumber.Location = New System.Drawing.Point(253, 258)
-        Me.mtxtPhoneNumber.Mask = "(999)000-0000"
-        Me.mtxtPhoneNumber.Name = "mtxtPhoneNumber"
-        Me.mtxtPhoneNumber.Size = New System.Drawing.Size(205, 20)
-        Me.mtxtPhoneNumber.TabIndex = 14
-        '
         'Label6
         '
         Me.Label6.AutoSize = True
@@ -430,7 +455,7 @@ Partial Class frmMembers
         Me.txtEmail.MaxLength = 50
         Me.txtEmail.Name = "txtEmail"
         Me.txtEmail.Size = New System.Drawing.Size(205, 20)
-        Me.txtEmail.TabIndex = 12
+        Me.txtEmail.TabIndex = 22
         '
         'Label5
         '
@@ -446,7 +471,7 @@ Partial Class frmMembers
         Me.btnCancel.Location = New System.Drawing.Point(309, 303)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(113, 39)
-        Me.btnCancel.TabIndex = 8
+        Me.btnCancel.TabIndex = 26
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
@@ -455,7 +480,7 @@ Partial Class frmMembers
         Me.btnSave.Location = New System.Drawing.Point(136, 303)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(113, 39)
-        Me.btnSave.TabIndex = 7
+        Me.btnSave.TabIndex = 25
         Me.btnSave.Text = "Save"
         Me.btnSave.UseVisualStyleBackColor = True
         '
@@ -465,7 +490,7 @@ Partial Class frmMembers
         Me.txtMemberLast.MaxLength = 75
         Me.txtMemberLast.Name = "txtMemberLast"
         Me.txtMemberLast.Size = New System.Drawing.Size(205, 20)
-        Me.txtMemberLast.TabIndex = 5
+        Me.txtMemberLast.TabIndex = 20
         '
         'txtMemberFirst
         '
@@ -473,7 +498,7 @@ Partial Class frmMembers
         Me.txtMemberFirst.MaxLength = 50
         Me.txtMemberFirst.Name = "txtMemberFirst"
         Me.txtMemberFirst.Size = New System.Drawing.Size(205, 20)
-        Me.txtMemberFirst.TabIndex = 4
+        Me.txtMemberFirst.TabIndex = 19
         '
         'Label4
         '
@@ -541,31 +566,6 @@ Partial Class frmMembers
         'errP
         '
         Me.errP.ContainerControl = Me
-        '
-        'cboRole
-        '
-        Me.cboRole.FormattingEnabled = True
-        Me.cboRole.Location = New System.Drawing.Point(253, 223)
-        Me.cboRole.Name = "cboRole"
-        Me.cboRole.Size = New System.Drawing.Size(205, 21)
-        Me.cboRole.TabIndex = 19
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(160, 166)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(65, 13)
-        Me.Label9.TabIndex = 20
-        Me.Label9.Text = "Middle Initial"
-        '
-        'txtMiddle
-        '
-        Me.txtMiddle.Location = New System.Drawing.Point(253, 159)
-        Me.txtMiddle.MaxLength = 75
-        Me.txtMiddle.Name = "txtMiddle"
-        Me.txtMiddle.Size = New System.Drawing.Size(205, 20)
-        Me.txtMiddle.TabIndex = 21
         '
         'StatusStrip1
         '
@@ -655,7 +655,6 @@ Partial Class frmMembers
     Friend WithEvents txtSearchMember As TextBox
     Friend WithEvents btnSearch As Button
     Friend WithEvents Label7 As Label
-    Friend WithEvents mtxtPhoneNumber As MaskedTextBox
     Friend WithEvents Label6 As Label
     Friend WithEvents txtEmail As TextBox
     Friend WithEvents Label5 As Label
@@ -669,4 +668,5 @@ Partial Class frmMembers
     Friend WithEvents Label9 As Label
     Friend WithEvents StatusStrip1 As StatusStrip
     Friend WithEvents sslStatus As ToolStripStatusLabel
+    Friend WithEvents txtPhoneNumber As TextBox
 End Class
