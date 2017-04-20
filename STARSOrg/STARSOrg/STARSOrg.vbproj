@@ -87,6 +87,8 @@
     <Compile Include="CMembers.vb" />
     <Compile Include="CRole.vb" />
     <Compile Include="CRoles.vb" />
+    <Compile Include="CRSVP.vb" />
+    <Compile Include="CRSVPs.vb" />
     <Compile Include="CSecurity.vb" />
     <Compile Include="CSecuritys.vb" />
     <Compile Include="frmAdminConsole.Designer.vb">

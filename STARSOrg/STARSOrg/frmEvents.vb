@@ -78,7 +78,7 @@ Public Class frmEvents
         Catch ex As Exception
             'should have CDB throw the exception and handle it here instead?
         End Try
-        If objEvents.CurrentObject.EventID <> 0 Then
+        If objEvents.CurrentObject.EventID <> "" Then
             lstEvents.SelectedIndex = lstEvents.FindStringExact(objEvents.CurrentObject.EventID)
         End If
         blnReloading = False
@@ -173,7 +173,7 @@ Public Class frmEvents
         Dim blnError As Boolean
         sslStatus.Text = ""
         'input validation
-        If Not ValidateTextBoxNumeric(txtEventID, errP) Then
+        If Not ValidateTextBoxLength(txtEventID, errP) Then
             blnError = True
         End If
         If Not ValidateTextBoxLength(txtEventDesc, errP) Then
@@ -199,7 +199,7 @@ Public Class frmEvents
         End If
         'load current object
         With objEvents.CurrentObject
-            .EventID = CInt(txtEventID.Text)
+            .EventID = Trim(txtEventID.Text)
             .EventDescription = Trim(txtEventDesc.Text)
             .EventTypeID = cboEventTypeID.SelectedItem.ToString
             .SemesterID = cboSemesterID.SelectedItem.ToString
