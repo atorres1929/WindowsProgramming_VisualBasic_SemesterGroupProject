@@ -82,7 +82,7 @@ Public Class CSecurity
         Return params
     End Function
 
-    Public Function GetNewMemberParameters() As ArrayList
+    Public Function GetMemberParameters() As ArrayList
         Dim params As New ArrayList
         params.Add(New SqlParameter("PID", _mstrPantherID))
         params.Add(New SqlParameter("username", _mstrUserID))

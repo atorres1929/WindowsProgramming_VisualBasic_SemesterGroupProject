@@ -39,8 +39,11 @@ Partial Class frmAdminConsole
         Me.btnChangeMember = New System.Windows.Forms.Button()
         Me.btnDeleteMember = New System.Windows.Forms.Button()
         Me.errP = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.ssStatus = New System.Windows.Forms.StatusStrip()
+        Me.ssl = New System.Windows.Forms.ToolStripStatusLabel()
         Me.GroupBox1.SuspendLayout()
         CType(Me.errP, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ssStatus.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
@@ -194,11 +197,26 @@ Partial Class frmAdminConsole
         '
         Me.errP.ContainerControl = Me
         '
+        'ssStatus
+        '
+        Me.ssStatus.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ssl})
+        Me.ssStatus.Location = New System.Drawing.Point(0, 365)
+        Me.ssStatus.Name = "ssStatus"
+        Me.ssStatus.Size = New System.Drawing.Size(698, 22)
+        Me.ssStatus.TabIndex = 30
+        Me.ssStatus.Text = "StatusStrip1"
+        '
+        'ssl
+        '
+        Me.ssl.Name = "ssl"
+        Me.ssl.Size = New System.Drawing.Size(0, 17)
+        '
         'frmAdminConsole
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(698, 368)
+        Me.ClientSize = New System.Drawing.Size(698, 387)
+        Me.Controls.Add(Me.ssStatus)
         Me.Controls.Add(Me.btnDeleteMember)
         Me.Controls.Add(Me.btnChangeMember)
         Me.Controls.Add(Me.lsbMembers)
@@ -212,7 +230,10 @@ Partial Class frmAdminConsole
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.errP, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ssStatus.ResumeLayout(False)
+        Me.ssStatus.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -232,4 +253,6 @@ Partial Class frmAdminConsole
     Friend WithEvents btnChangeMember As Button
     Friend WithEvents btnDeleteMember As Button
     Friend WithEvents errP As ErrorProvider
+    Friend WithEvents ssStatus As StatusStrip
+    Friend WithEvents ssl As ToolStripStatusLabel
 End Class

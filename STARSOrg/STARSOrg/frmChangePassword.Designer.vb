@@ -50,6 +50,7 @@ Partial Class frmChangePassword
         'txtUsername
         '
         Me.txtUsername.Location = New System.Drawing.Point(209, 72)
+        Me.txtUsername.MaxLength = 15
         Me.txtUsername.Name = "txtUsername"
         Me.txtUsername.Size = New System.Drawing.Size(283, 20)
         Me.txtUsername.TabIndex = 1
@@ -57,6 +58,7 @@ Partial Class frmChangePassword
         'txtCurrentPassword
         '
         Me.txtCurrentPassword.Location = New System.Drawing.Point(209, 109)
+        Me.txtCurrentPassword.MaxLength = 8
         Me.txtCurrentPassword.Name = "txtCurrentPassword"
         Me.txtCurrentPassword.Size = New System.Drawing.Size(283, 20)
         Me.txtCurrentPassword.TabIndex = 2
@@ -65,6 +67,7 @@ Partial Class frmChangePassword
         'txtNewPassword
         '
         Me.txtNewPassword.Location = New System.Drawing.Point(209, 150)
+        Me.txtNewPassword.MaxLength = 8
         Me.txtNewPassword.Name = "txtNewPassword"
         Me.txtNewPassword.Size = New System.Drawing.Size(283, 20)
         Me.txtNewPassword.TabIndex = 3
@@ -73,6 +76,7 @@ Partial Class frmChangePassword
         'txtVerifyPassword
         '
         Me.txtVerifyPassword.Location = New System.Drawing.Point(209, 192)
+        Me.txtVerifyPassword.MaxLength = 8
         Me.txtVerifyPassword.Name = "txtVerifyPassword"
         Me.txtVerifyPassword.Size = New System.Drawing.Size(283, 20)
         Me.txtVerifyPassword.TabIndex = 4

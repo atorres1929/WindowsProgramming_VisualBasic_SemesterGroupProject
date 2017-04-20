@@ -68,3 +68,7 @@ End Class
 
 'Questions
 'A member must exist before being added by admin?
+'Error validation okay?
+'1. Can't enter same UserID
+'2. Can't enter same Panther ID
+'^ only when adding, not updating

@@ -19,7 +19,7 @@
         ElseIf txtNewPassword.Text <> txtVerifyPassword.Text Then
             errP.SetError(txtNewPassword, "Passwords do not match!")
             errP.SetError(txtVerifyPassword, "Passwords do not match!")
-        ElseIf txtUsername.Text = "Guest" Then
+        ElseIf txtUsername.Text.ToLower = "guest" Then
             errP.SetError(txtUsername, "Cannot change guest password!")
         ElseIf txtNewPassword.Text = txtVerifyPassword.Text
             Security.UserID = txtUsername.Text
