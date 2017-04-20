@@ -28,6 +28,10 @@ Public Class CMembers
         Return _Member.Save
     End Function
 
+    Public Function SearchMember() As SqlDataReader
+        Return myDB.GetDataReaderBySP("dbo.SearchMember", Nothing)
+    End Function
+
     Public Function GetAllMembers() As SqlDataReader
         Return myDB.GetDataReaderBySP("dbo.sp_GetAllMembers", Nothing)
     End Function
@@ -64,4 +68,6 @@ Public Class CMembers
             Return _Member
         End Using
     End Function
+
+
 End Class

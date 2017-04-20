@@ -80,8 +80,6 @@ Public Class frmMembers
         ClearScreenControls(Me)
         LoadMembers()
 
-
-
         grpMemberInfo.Enabled = False
     End Sub
 
@@ -274,11 +272,10 @@ Public Class frmMembers
         End Try
     End Sub
 
+
     'TODO search btn
 
-    'Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
-    '    Dim searchRESULT As String = txtSearchMember.Text
-
-    '    If txtSearchMember Then
-    'End Sub
+    Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
+        objMembers.SearchMember()
+    End Sub
 End Class
