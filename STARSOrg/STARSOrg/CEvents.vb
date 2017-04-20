@@ -23,6 +23,12 @@ Public Class CEvents
     Public Function GetAllEvents() As SqlDataReader
         Return myDB.GetDataReaderBySP("dbo.sp_GetAllEvents", Nothing)
     End Function
+    Public Function GetAllEventTypeIDs() As SqlDataReader
+        Return myDB.GetDataReaderBySP("dbo.sp_GetAllEventTypeIDs", Nothing)
+    End Function
+    Public Function GetAllSemesterIDs() As SqlDataReader
+        Return myDB.GetDataReaderBySP("dbo.sp_GetAllSemesterIDs", Nothing)
+    End Function
     Public Function GetEventByID(strID As String) As CEvent
         Dim params As New ArrayList
         params.Add(New SqlParameter("eventID", strID))

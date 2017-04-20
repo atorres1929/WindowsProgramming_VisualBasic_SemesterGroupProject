@@ -66,7 +66,7 @@ Public Class frmEvents
     End Sub
 #End Region
 
-    Public Sub LoadEvents()
+    Private Sub LoadEvents()
         Dim objReader As SqlDataReader
         lstEvents.Items.Clear()
         Try
@@ -78,10 +78,55 @@ Public Class frmEvents
         Catch ex As Exception
             'should have CDB throw the exception and handle it here instead?
         End Try
-        If objEvents.CurrentObject.EventID <> "" Then
+        If objEvents.CurrentObject.EventID <> 0 Then
             lstEvents.SelectedIndex = lstEvents.FindStringExact(objEvents.CurrentObject.EventID)
         End If
         blnReloading = False
+    End Sub
+
+    Private Sub LoadEventTypeIDs()
+        Dim objReader As SqlDataReader
+        cboEventTypeID.Items.Clear()
+        Try
+            objReader = objEvents.GetAllEventTypeIDs
+            Do While objReader.Read
+                cboEventTypeID.Items.Add(objReader.Item("EventTypeID"))
+            Loop
+            objReader.Close()
+        Catch ex As Exception
+            'should have CDB throw the exception and handle it here instead?
+        End Try
+    End Sub
+
+    Private Sub LoadSemesterIDs()
+        Dim objReader As SqlDataReader
+        cboSemesterID.Items.Clear()
+        Try
+            objReader = objEvents.GetAllSemesterIDs
+            Do While objReader.Read
+                cboSemesterID.Items.Add(objReader.Item("SemesterID"))
+            Loop
+            objReader.Close()
+        Catch ex As Exception
+            'should have CDB throw the exception and handle it here instead?
+        End Try
+    End Sub
+
+    Private Sub LoadSelectedRecord()
+        Try
+            objEvents.GetEventByID(lstEvents.SelectedItem.ToString)
+            With objEvents.CurrentObject
+                txtEventID.Text = .EventID
+                txtEventDesc.Text = .EventDescription
+                cboEventTypeID.SelectedItem = .EventTypeID
+                cboSemesterID.SelectedItem = .SemesterID
+                mskStartDate.Text = .StartDate
+                mskEndDate.Text = .EndDate
+                txtLocation.Text = .Location
+            End With
+        Catch ex As Exception
+            MessageBox.Show("Error loading Event values", "Program error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Private Sub frmEvents_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -91,6 +136,8 @@ Public Class frmEvents
     Private Sub frmEvents_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         ClearScreenControls(Me)
         LoadEvents()
+        LoadEventTypeIDs()
+        LoadSemesterIDs()
         'grpEditEv.Enabled = False
         'check business rules
     End Sub
@@ -100,7 +147,9 @@ Public Class frmEvents
             Exit Sub
         End If
         chkNewEv.Checked = False
-        'TODO: 2 more lines
+        'TODO: Fix when login info is obtained
+        LoadSelectedRecord()
+        grpEditEv.Enabled = True
     End Sub
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
@@ -109,7 +158,94 @@ Public Class frmEvents
         chkNewEv.Checked = False
         errP.Clear()
         If lstEvents.SelectedIndex <> -1 Then
-            'TODO
+            'TODO: Fix rest of cancel when login info is obtained
+            LoadSelectedRecord()
+        Else
+            grpEditEv.Enabled = False
+        End If
+        blnClearing = False
+        objEvents.CurrentObject.isNewEvent = False
+        grpEvents.Enabled = True
+    End Sub
+
+    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+        Dim intResult As Integer
+        Dim blnError As Boolean
+        sslStatus.Text = ""
+        'input validation
+        If Not ValidateTextBoxNumeric(txtEventID, errP) Then
+            blnError = True
+        End If
+        If Not ValidateTextBoxLength(txtEventDesc, errP) Then
+            blnError = True
+        End If
+        If Not ValidateCombo(cboEventTypeID, errP) Then
+            blnError = True
+        End If
+        If Not ValidateCombo(cboSemesterID, errP) Then
+            blnError = True
+        End If
+        If Not ValidateMaskedTextBoxDate(mskStartDate, errP) Then
+            blnError = True
+        End If
+        If Not ValidateMaskedTextBoxDate(mskEndDate, errP) Then
+            blnError = True
+        End If
+        If Not ValidateTextBoxLength(txtLocation, errP) Then
+            blnError = True
+        End If
+        If blnError Then
+            Exit Sub
+        End If
+        'load current object
+        With objEvents.CurrentObject
+            .EventID = CInt(txtEventID.Text)
+            .EventDescription = Trim(txtEventDesc.Text)
+            .EventTypeID = cboEventTypeID.SelectedItem.ToString
+            .SemesterID = cboSemesterID.SelectedItem.ToString
+            .StartDate = CDate(mskStartDate.Text)
+            .EndDate = CDate(mskEndDate.Text)
+            .Location = Trim(txtLocation.Text)
+        End With
+        Try
+            Me.Cursor = Cursors.WaitCursor
+            intResult = objEvents.Save
+            If intResult = 1 Then
+                sslStatus.Text = "Event Record Saved"
+            End If
+            If intResult = -1 Then 'ID exists
+                MessageBox.Show("Event ID Must be Unique: Unable to Save Event Record", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                sslStatus.Text = "Error"
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Event ID Must be Unique: " & ex.ToString, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            sslStatus.Text = "Error"
+        End Try
+        Me.Cursor = Cursors.Default
+        blnReloading = True
+        LoadEvents()
+        LoadEventTypeIDs()
+        LoadSemesterIDs()
+        chkNewEv.Checked = False
+        grpEvents.Enabled = True
+    End Sub
+
+    Private Sub chkNewEv_CheckedChanged(sender As Object, e As EventArgs) Handles chkNewEv.CheckedChanged
+        If blnClearing Then
+            Exit Sub
+        End If
+        If chkNewEv.Checked Then
+            sslStatus.Text = ""
+            ClearScreenControls(grpEditEv)
+            lstEvents.SelectedIndex = -1
+            grpEvents.Enabled = False
+            grpEditEv.Enabled = True
+            objEvents.CreatNewEvent()
+            txtEventID.Focus()
+        Else
+            grpEvents.Enabled = True
+            grpEditEv.Enabled = False
+            objEvents.CurrentObject.isNewEvent = False
         End If
     End Sub
 End Class

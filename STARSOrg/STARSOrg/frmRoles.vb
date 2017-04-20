@@ -91,11 +91,6 @@ Public Class frmRoles
         End If
         blnReloading = False
     End Sub
-
-
-
-
-
     Private Sub lstRoles_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstRoles.SelectedIndexChanged
         If blnClearing Then
             Exit Sub

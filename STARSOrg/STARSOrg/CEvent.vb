@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Public Class CEvent
-    Private _mstrEventID As String
+    Private _mstrEventID As Integer
     Private _mstrEventDescription As String
     Private _mstrEventTypeID As String
     Private _mstrSemesterID As String
@@ -11,22 +11,22 @@ Public Class CEvent
 
     'constructor
     Public Sub New()
-        _mstrEventID = ""
+        '_mstrEventID = 0
         _mstrEventDescription = ""
         _mstrEventTypeID = ""
         _mstrSemesterID = ""
-        _mstrStartDate = ""
-        _mstrEndDate = ""
+        '_mstrStartDate = ""
+        '_mstrEndDate = ""
         _mstrLocation = ""
     End Sub
 
 #Region "Properties"
-    Public Property EventID As String
+    Public Property EventID As Integer
         Get
             Return _mstrEventID
         End Get
-        Set(strVal As String)
-            _mstrEventID = strVal
+        Set(intVal As Integer)
+            _mstrEventID = intVal
         End Set
     End Property
     Public Property EventDescription As String

@@ -353,8 +353,9 @@ Partial Class frmEvents
         '
         'cboEventTypeID
         '
+        Me.cboEventTypeID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboEventTypeID.FormattingEnabled = True
-        Me.cboEventTypeID.Location = New System.Drawing.Point(206, 446)
+        Me.cboEventTypeID.Location = New System.Drawing.Point(206, 385)
         Me.cboEventTypeID.Margin = New System.Windows.Forms.Padding(6)
         Me.cboEventTypeID.Name = "cboEventTypeID"
         Me.cboEventTypeID.Size = New System.Drawing.Size(392, 33)
@@ -362,8 +363,9 @@ Partial Class frmEvents
         '
         'cboSemesterID
         '
+        Me.cboSemesterID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboSemesterID.FormattingEnabled = True
-        Me.cboSemesterID.Location = New System.Drawing.Point(206, 385)
+        Me.cboSemesterID.Location = New System.Drawing.Point(206, 446)
         Me.cboSemesterID.Margin = New System.Windows.Forms.Padding(6)
         Me.cboSemesterID.Name = "cboSemesterID"
         Me.cboSemesterID.Size = New System.Drawing.Size(392, 33)
@@ -401,7 +403,7 @@ Partial Class frmEvents
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(38, 452)
+        Me.Label8.Location = New System.Drawing.Point(38, 388)
         Me.Label8.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(147, 25)
@@ -441,7 +443,7 @@ Partial Class frmEvents
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(38, 390)
+        Me.Label4.Location = New System.Drawing.Point(38, 449)
         Me.Label4.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(129, 25)

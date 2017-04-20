@@ -1,6 +1,8 @@
 CREATE PROCEDURE [dbo].sp_SaveEvent
-	@eventID nvarchar(4),
+	@eventID int,
 	@eventDescription nvarchar(500),
+	@eventTypeID nvarchar(15),
+	@semesterID nvarchar(4),
 	@startDate smalldatetime,
 	@endDate smalldatetime,
 	@location nvarchar(50)
@@ -21,12 +23,22 @@ AS
 		VALUES
 		(@eventID
 		,@eventDescription
+		,@eventTypeID
+		,@semesterID
+		,@startDate
+		,@endDate
+		,@location
 		)
 	END
 	ELSE
 	BEGIN
 		UPDATE EVENT
-		SET EventDescription=@eventDescription, StartDate=@startDate <<<<<
+		SET EventDescription=@eventDescription,
+			EventTypeID=@eventTypeID, 
+			SemesterID=@semesterID,
+			StartDate=@startDate,
+			EndDate=@endDate,
+			Location=@location
 		WHERE EventID=@eventID
 	END
 RETURN @@error
