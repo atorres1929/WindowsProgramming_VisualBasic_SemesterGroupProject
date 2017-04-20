@@ -126,6 +126,11 @@
 
     Private Sub frmMain_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         LoginScreen.ShowDialog()
+        If isAdmin Then
+            tsbAdmin.Visible = True
+        Else
+            tsbAdmin.Visible = False
+        End If
     End Sub
 
     Private Sub tsbAdmin_Click(sender As Object, e As EventArgs) Handles tsbAdmin.Click

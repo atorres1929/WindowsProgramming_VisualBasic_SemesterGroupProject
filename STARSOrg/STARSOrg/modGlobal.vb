@@ -18,5 +18,6 @@
     'variables
     Public intNextAction As Integer
     Public myDB As New CDB
+    Public isAdmin As Boolean
 
 End Module

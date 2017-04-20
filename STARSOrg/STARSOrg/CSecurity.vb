@@ -7,14 +7,19 @@ Public Class CSecurity
     Private _mstrPassword As String
     Private _mstrNewPassword As String
     Private _mstrSecRole As String
-    Private _IsNewSecurity As Boolean
+
+#Region "SecRoles"
+    Public ADMIN = "ADMIN"
+    Public OFFICER = "OFFICER"
+    Public MEMBER = "MEMBER"
+    Public GUEST = "GUEST"
+#End Region
 
     Public Sub New()
         _mstrPantherID = ""
         _mstrUserID = ""
         _mstrPassword = ""
         _mstrSecRole = ""
-        _IsNewSecurity = False
     End Sub
 
     Public Property PantherID As String
@@ -62,15 +67,6 @@ Public Class CSecurity
         End Set
     End Property
 
-    Public Property IsNewSecurity As Boolean
-        Get
-            Return _IsNewSecurity
-        End Get
-        Set(isNewSecurity As Boolean)
-            _IsNewSecurity = isNewSecurity
-        End Set
-    End Property
-
     Public Function GetLoginParameters() As ArrayList
         Dim params As New ArrayList
         params.Add(New SqlParameter("username", _mstrUserID))
@@ -86,14 +82,26 @@ Public Class CSecurity
         Return params
     End Function
 
+    Public Function GetNewMemberParameters() As ArrayList
+        Dim params As New ArrayList
+        params.Add(New SqlParameter("PID", _mstrPantherID))
+        params.Add(New SqlParameter("username", _mstrUserID))
+        params.Add(New SqlParameter("password", _mstrPassword))
+        params.Add(New SqlParameter("secrole", _mstrSecRole))
+        Return params
+    End Function
+
     Public Function Login() As Integer
-        Return myDB.ExecSP("sp_Login", GetLoginParameters)
+        Return myDB.ExecSP("sp_Login", GetLoginParameters())
     End Function
 
     Public Function UpdatePassword() As Integer
         Return myDB.ExecSP("sp_UpdatePassword", GetUpdatePasswordParameters)
     End Function
 
+    Public Overrides Function ToString() As String
+        Return PantherID
+    End Function
 
 
 End Class

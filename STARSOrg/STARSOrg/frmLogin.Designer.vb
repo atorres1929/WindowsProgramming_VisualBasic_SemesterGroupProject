@@ -49,6 +49,7 @@ Partial Class frmLogin
         'txtUserID
         '
         Me.txtUserID.Location = New System.Drawing.Point(96, 82)
+        Me.txtUserID.MaxLength = 15
         Me.txtUserID.Name = "txtUserID"
         Me.txtUserID.Size = New System.Drawing.Size(231, 20)
         Me.txtUserID.TabIndex = 1
@@ -56,6 +57,7 @@ Partial Class frmLogin
         'txtPassword
         '
         Me.txtPassword.Location = New System.Drawing.Point(96, 118)
+        Me.txtPassword.MaxLength = 8
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.Size = New System.Drawing.Size(231, 20)
         Me.txtPassword.TabIndex = 2
