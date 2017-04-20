@@ -1,4 +1,8 @@
-﻿Public Class frmEventsRSVP
+﻿Imports System.Data.SqlClient
+Public Class frmEventsRSVP
+    Private objEvents As CEvents
+    Private blnClearing As Boolean
+    Private blnReloading As Boolean
 #Region "Toolbar"
     Private Sub tsbMember_Click(sender As Object, e As EventArgs) Handles tsbMember.Click
         intNextAction = ACTION_MEMBER
@@ -61,5 +65,36 @@
         tsbProxy.DisplayStyle = ToolStripItemDisplayStyle.Image
     End Sub
 #End Region
+    Private Sub LoadEvents()
+        Dim objReader As SqlDataReader
+        lstEvents.Items.Clear()
+        Try
+            objReader = objEvents.GetAllEvents
+            Do While objReader.Read
+                lstEvents.Items.Add(objReader.Item("EventID"))
+            Loop
+            objReader.Close()
+        Catch ex As Exception
+            'should have CDB throw the exception and handle it here instead?
+        End Try
+        If objEvents.CurrentObject.EventID <> 0 Then
+            lstEvents.SelectedIndex = lstEvents.FindStringExact(objEvents.CurrentObject.EventID)
+        End If
+        blnReloading = False
+    End Sub
 
+    Private Sub LoadSelectedRecord()
+        Try
+            objEvents.GetEventByID(lstEvents.SelectedItem.ToString)
+            With objEvents.CurrentObject
+                txtEventID.Text = .EventID
+            End With
+        Catch ex As Exception
+            MessageBox.Show("Error loading Event values", "Program error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub btnRSVP_Click(sender As Object, e As EventArgs) Handles btnRSVP.Click
+
+    End Sub
 End Class
