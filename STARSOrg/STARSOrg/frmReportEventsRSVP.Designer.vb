@@ -22,27 +22,41 @@ Partial Class frmReportEventsRSVP
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
+        Me.rpvReport = New Microsoft.Reporting.WinForms.ReportViewer()
+        Me.btnClose = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
-        'ReportViewer1
+        'rpvReport
         '
-        Me.ReportViewer1.Location = New System.Drawing.Point(128, 142)
-        Me.ReportViewer1.Name = "ReportViewer1"
-        Me.ReportViewer1.Size = New System.Drawing.Size(396, 246)
-        Me.ReportViewer1.TabIndex = 0
+        Me.rpvReport.Location = New System.Drawing.Point(91, 75)
+        Me.rpvReport.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.rpvReport.Name = "rpvReport"
+        Me.rpvReport.Size = New System.Drawing.Size(962, 639)
+        Me.rpvReport.TabIndex = 0
         '
-        'frmReport
+        'btnClose
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.btnClose.Location = New System.Drawing.Point(466, 746)
+        Me.btnClose.Name = "btnClose"
+        Me.btnClose.Size = New System.Drawing.Size(171, 57)
+        Me.btnClose.TabIndex = 1
+        Me.btnClose.Text = "Close"
+        Me.btnClose.UseVisualStyleBackColor = True
+        '
+        'frmReportEventsRSVP
+        '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(648, 539)
-        Me.Controls.Add(Me.ReportViewer1)
-        Me.Name = "frmReport"
-        Me.Text = "frmReport"
+        Me.ClientSize = New System.Drawing.Size(1106, 838)
+        Me.Controls.Add(Me.btnClose)
+        Me.Controls.Add(Me.rpvReport)
+        Me.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.Name = "frmReportEventsRSVP"
+        Me.Text = "Event RSVPs Report"
         Me.ResumeLayout(False)
 
     End Sub
 
-    Friend WithEvents ReportViewer1 As Microsoft.Reporting.WinForms.ReportViewer
+    Friend WithEvents rpvReport As Microsoft.Reporting.WinForms.ReportViewer
+    Friend WithEvents btnClose As Button
 End Class

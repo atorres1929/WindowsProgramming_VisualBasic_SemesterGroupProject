@@ -22,6 +22,7 @@ Partial Class frmEventsRSVP
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
         Me.tsbHome = New System.Windows.Forms.ToolStripButton()
@@ -47,6 +48,7 @@ Partial Class frmEventsRSVP
         Me.ToolStripSeparator11 = New System.Windows.Forms.ToolStripSeparator()
         Me.grpEvents = New System.Windows.Forms.GroupBox()
         Me.lstEvents = New System.Windows.Forms.ListBox()
+        Me.btnReport = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnRSVP = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -56,16 +58,17 @@ Partial Class frmEventsRSVP
         Me.grpRSVP = New System.Windows.Forms.GroupBox()
         Me.btnClear = New System.Windows.Forms.Button()
         Me.txtEventID = New System.Windows.Forms.TextBox()
-        Me.btnReport = New System.Windows.Forms.Button()
+        Me.txtEmail = New System.Windows.Forms.TextBox()
         Me.txtLast = New System.Windows.Forms.TextBox()
         Me.txtFirst = New System.Windows.Forms.TextBox()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.sslStatus = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.txtEmail = New System.Windows.Forms.TextBox()
+        Me.errP = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.ToolStrip1.SuspendLayout()
         Me.grpEvents.SuspendLayout()
         Me.grpRSVP.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
+        CType(Me.errP, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ToolStrip1
@@ -76,7 +79,8 @@ Partial Class frmEventsRSVP
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSeparator7, Me.tsbHome, Me.ToolStripSeparator6, Me.tsbMember, Me.ToolStripSeparator4, Me.tsbRole, Me.ToolStripSeparator5, Me.tsbEvent, Me.ToolStripSeparator3, Me.tsbRSVP, Me.ToolStripSeparator2, Me.tsbCourse, Me.ToolStripSeparator1, Me.tsbSemester, Me.ToolStripSeparator10, Me.tsbTutor, Me.ToolStripSeparator12, Me.tsbLogOut, Me.ToolStripSeparator8, Me.tsbHelp, Me.ToolStripSeparator9, Me.ToolStripSeparator11})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(695, 50)
+        Me.ToolStrip1.Padding = New System.Windows.Forms.Padding(0, 0, 2, 0)
+        Me.ToolStrip1.Size = New System.Drawing.Size(1390, 96)
         Me.ToolStrip1.TabIndex = 2
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -270,9 +274,12 @@ Partial Class frmEventsRSVP
         'grpEvents
         '
         Me.grpEvents.Controls.Add(Me.lstEvents)
-        Me.grpEvents.Location = New System.Drawing.Point(12, 117)
+        Me.grpEvents.Controls.Add(Me.btnReport)
+        Me.grpEvents.Location = New System.Drawing.Point(24, 225)
+        Me.grpEvents.Margin = New System.Windows.Forms.Padding(6)
         Me.grpEvents.Name = "grpEvents"
-        Me.grpEvents.Size = New System.Drawing.Size(297, 224)
+        Me.grpEvents.Padding = New System.Windows.Forms.Padding(6)
+        Me.grpEvents.Size = New System.Drawing.Size(594, 444)
         Me.grpEvents.TabIndex = 8
         Me.grpEvents.TabStop = False
         Me.grpEvents.Text = "EVENTS"
@@ -280,29 +287,42 @@ Partial Class frmEventsRSVP
         'lstEvents
         '
         Me.lstEvents.FormattingEnabled = True
-        Me.lstEvents.Location = New System.Drawing.Point(6, 19)
+        Me.lstEvents.ItemHeight = 25
+        Me.lstEvents.Location = New System.Drawing.Point(12, 37)
+        Me.lstEvents.Margin = New System.Windows.Forms.Padding(6)
         Me.lstEvents.Name = "lstEvents"
-        Me.lstEvents.Size = New System.Drawing.Size(285, 199)
+        Me.lstEvents.Size = New System.Drawing.Size(566, 304)
         Me.lstEvents.TabIndex = 0
+        '
+        'btnReport
+        '
+        Me.btnReport.Location = New System.Drawing.Point(191, 363)
+        Me.btnReport.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnReport.Name = "btnReport"
+        Me.btnReport.Size = New System.Drawing.Size(190, 52)
+        Me.btnReport.TabIndex = 19
+        Me.btnReport.Text = "View Report"
+        Me.btnReport.UseVisualStyleBackColor = True
         '
         'Label1
         '
         Me.Label1.BackColor = System.Drawing.Color.White
         Me.Label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(12, 62)
+        Me.Label1.Location = New System.Drawing.Point(24, 119)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(671, 35)
+        Me.Label1.Size = New System.Drawing.Size(1340, 65)
         Me.Label1.TabIndex = 9
         Me.Label1.Text = "EVENT RSVP"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'btnRSVP
         '
-        Me.btnRSVP.Location = New System.Drawing.Point(203, 159)
-        Me.btnRSVP.Margin = New System.Windows.Forms.Padding(2)
+        Me.btnRSVP.Location = New System.Drawing.Point(402, 307)
+        Me.btnRSVP.Margin = New System.Windows.Forms.Padding(4)
         Me.btnRSVP.Name = "btnRSVP"
-        Me.btnRSVP.Size = New System.Drawing.Size(95, 27)
+        Me.btnRSVP.Size = New System.Drawing.Size(190, 52)
         Me.btnRSVP.TabIndex = 10
         Me.btnRSVP.Text = "RSVP"
         Me.btnRSVP.UseVisualStyleBackColor = True
@@ -310,36 +330,40 @@ Partial Class frmEventsRSVP
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(29, 39)
+        Me.Label2.Location = New System.Drawing.Point(58, 75)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(49, 13)
+        Me.Label2.Size = New System.Drawing.Size(93, 25)
         Me.Label2.TabIndex = 11
         Me.Label2.Text = "Event ID"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(29, 70)
+        Me.Label3.Location = New System.Drawing.Point(58, 135)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(57, 13)
+        Me.Label3.Size = New System.Drawing.Size(116, 25)
         Me.Label3.TabIndex = 12
         Me.Label3.Text = "First Name"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(29, 99)
+        Me.Label4.Location = New System.Drawing.Point(58, 190)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(58, 13)
+        Me.Label4.Size = New System.Drawing.Size(115, 25)
         Me.Label4.TabIndex = 13
         Me.Label4.Text = "Last Name"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(29, 125)
+        Me.Label5.Location = New System.Drawing.Point(58, 240)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(32, 13)
+        Me.Label5.Size = New System.Drawing.Size(65, 25)
         Me.Label5.TabIndex = 14
         Me.Label5.Text = "Email"
         '
@@ -347,7 +371,6 @@ Partial Class frmEventsRSVP
         '
         Me.grpRSVP.Controls.Add(Me.btnClear)
         Me.grpRSVP.Controls.Add(Me.txtEventID)
-        Me.grpRSVP.Controls.Add(Me.btnReport)
         Me.grpRSVP.Controls.Add(Me.txtEmail)
         Me.grpRSVP.Controls.Add(Me.txtLast)
         Me.grpRSVP.Controls.Add(Me.txtFirst)
@@ -356,65 +379,69 @@ Partial Class frmEventsRSVP
         Me.grpRSVP.Controls.Add(Me.Label4)
         Me.grpRSVP.Controls.Add(Me.Label3)
         Me.grpRSVP.Controls.Add(Me.Label2)
-        Me.grpRSVP.Location = New System.Drawing.Point(352, 117)
+        Me.grpRSVP.Location = New System.Drawing.Point(704, 225)
+        Me.grpRSVP.Margin = New System.Windows.Forms.Padding(6)
         Me.grpRSVP.Name = "grpRSVP"
-        Me.grpRSVP.Size = New System.Drawing.Size(331, 224)
+        Me.grpRSVP.Padding = New System.Windows.Forms.Padding(6)
+        Me.grpRSVP.Size = New System.Drawing.Size(662, 444)
         Me.grpRSVP.TabIndex = 15
         Me.grpRSVP.TabStop = False
         Me.grpRSVP.Text = "RSVP"
         '
         'btnClear
         '
-        Me.btnClear.Location = New System.Drawing.Point(100, 159)
-        Me.btnClear.Margin = New System.Windows.Forms.Padding(2)
+        Me.btnClear.Location = New System.Drawing.Point(200, 307)
+        Me.btnClear.Margin = New System.Windows.Forms.Padding(4)
         Me.btnClear.Name = "btnClear"
-        Me.btnClear.Size = New System.Drawing.Size(95, 27)
+        Me.btnClear.Size = New System.Drawing.Size(190, 52)
         Me.btnClear.TabIndex = 26
         Me.btnClear.Text = "Clear"
         Me.btnClear.UseVisualStyleBackColor = True
         '
         'txtEventID
         '
-        Me.txtEventID.Enabled = False
-        Me.txtEventID.Location = New System.Drawing.Point(100, 36)
+        Me.txtEventID.Location = New System.Drawing.Point(200, 69)
+        Me.txtEventID.Margin = New System.Windows.Forms.Padding(6)
         Me.txtEventID.MaxLength = 15
         Me.txtEventID.Name = "txtEventID"
-        Me.txtEventID.Size = New System.Drawing.Size(198, 20)
+        Me.txtEventID.Size = New System.Drawing.Size(392, 31)
         Me.txtEventID.TabIndex = 25
         '
-        'btnReport
+        'txtEmail
         '
-        Me.btnReport.Location = New System.Drawing.Point(146, 190)
-        Me.btnReport.Margin = New System.Windows.Forms.Padding(2)
-        Me.btnReport.Name = "btnReport"
-        Me.btnReport.Size = New System.Drawing.Size(95, 27)
-        Me.btnReport.TabIndex = 19
-        Me.btnReport.Text = "View Report"
-        Me.btnReport.UseVisualStyleBackColor = True
+        Me.txtEmail.Location = New System.Drawing.Point(200, 235)
+        Me.txtEmail.Margin = New System.Windows.Forms.Padding(6)
+        Me.txtEmail.MaxLength = 15
+        Me.txtEmail.Name = "txtEmail"
+        Me.txtEmail.Size = New System.Drawing.Size(392, 31)
+        Me.txtEmail.TabIndex = 18
         '
         'txtLast
         '
-        Me.txtLast.Location = New System.Drawing.Point(100, 96)
+        Me.txtLast.Location = New System.Drawing.Point(200, 185)
+        Me.txtLast.Margin = New System.Windows.Forms.Padding(6)
         Me.txtLast.MaxLength = 15
         Me.txtLast.Name = "txtLast"
-        Me.txtLast.Size = New System.Drawing.Size(198, 20)
+        Me.txtLast.Size = New System.Drawing.Size(392, 31)
         Me.txtLast.TabIndex = 17
         '
         'txtFirst
         '
-        Me.txtFirst.Location = New System.Drawing.Point(100, 67)
+        Me.txtFirst.Location = New System.Drawing.Point(200, 129)
+        Me.txtFirst.Margin = New System.Windows.Forms.Padding(6)
         Me.txtFirst.MaxLength = 15
         Me.txtFirst.Name = "txtFirst"
-        Me.txtFirst.Size = New System.Drawing.Size(198, 20)
+        Me.txtFirst.Size = New System.Drawing.Size(392, 31)
         Me.txtFirst.TabIndex = 16
         '
         'StatusStrip1
         '
         Me.StatusStrip1.ImageScalingSize = New System.Drawing.Size(32, 32)
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.sslStatus})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 351)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 707)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(695, 38)
+        Me.StatusStrip1.Padding = New System.Windows.Forms.Padding(2, 0, 28, 0)
+        Me.StatusStrip1.Size = New System.Drawing.Size(1390, 38)
         Me.StatusStrip1.TabIndex = 16
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -425,25 +452,21 @@ Partial Class frmEventsRSVP
         Me.sslStatus.Size = New System.Drawing.Size(675, 33)
         Me.sslStatus.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'txtEmail
+        'errP
         '
-        Me.txtEmail.Location = New System.Drawing.Point(100, 122)
-        Me.txtEmail.MaxLength = 15
-        Me.txtEmail.Name = "txtEmail"
-        Me.txtEmail.Size = New System.Drawing.Size(198, 20)
-        Me.txtEmail.TabIndex = 18
+        Me.errP.ContainerControl = Me
         '
         'frmEventsRSVP
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(695, 389)
+        Me.ClientSize = New System.Drawing.Size(1390, 745)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.grpRSVP)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.grpEvents)
         Me.Controls.Add(Me.ToolStrip1)
-        Me.Margin = New System.Windows.Forms.Padding(2)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmEventsRSVP"
         Me.Text = "frmEventsRSVP"
         Me.ToolStrip1.ResumeLayout(False)
@@ -453,6 +476,7 @@ Partial Class frmEventsRSVP
         Me.grpRSVP.PerformLayout()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
+        CType(Me.errP, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -498,4 +522,5 @@ Partial Class frmEventsRSVP
     Friend WithEvents sslStatus As ToolStripStatusLabel
     Friend WithEvents btnClear As Button
     Friend WithEvents txtEmail As TextBox
+    Friend WithEvents errP As ErrorProvider
 End Class

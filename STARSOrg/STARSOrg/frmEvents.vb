@@ -157,12 +157,9 @@ Public Class frmEvents
         sslStatus.Text = ""
         chkNewEv.Checked = False
         errP.Clear()
-        If lstEvents.SelectedIndex <> -1 Then
-            'TODO: Fix rest of cancel when login info is obtained
-            LoadSelectedRecord()
-        Else
-            grpEditEv.Enabled = False
-        End If
+        ClearScreenControls(grpEditEv)
+        'TODO: Fix rest of cancel when login info is obtained
+        grpEditEv.Enabled = False
         blnClearing = False
         objEvents.CurrentObject.isNewEvent = False
         grpEvents.Enabled = True
