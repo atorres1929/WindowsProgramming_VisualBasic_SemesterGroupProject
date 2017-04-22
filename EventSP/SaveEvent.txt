@@ -1,5 +1,5 @@
 CREATE PROCEDURE [dbo].sp_SaveEvent
-	@eventID int,
+	@eventID nvarchar(15),
 	@eventDescription nvarchar(500),
 	@eventTypeID nvarchar(15),
 	@semesterID nvarchar(4),

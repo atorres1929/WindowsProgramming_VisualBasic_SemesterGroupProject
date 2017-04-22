@@ -1,5 +1,5 @@
 CREATE PROCEDURE [dbo].sp_GetEventByID
-	@eventID nvarchar(4)
+	@eventID nvarchar(15)
 AS
 	SELECT * FROM EVENT
 	WHERE EventID=@eventID
