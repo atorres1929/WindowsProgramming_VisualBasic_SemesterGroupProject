@@ -79,6 +79,8 @@
   <ItemGroup>
     <Compile Include="CAudit.vb" />
     <Compile Include="CAudits.vb" />
+    <Compile Include="CCourse.vb" />
+    <Compile Include="CCourses.vb" />
     <Compile Include="CDB.vb" />
     <Compile Include="CEvent.vb" />
     <Compile Include="CEvents.vb" />
@@ -91,6 +93,8 @@
     <Compile Include="CRSVPs.vb" />
     <Compile Include="CSecurity.vb" />
     <Compile Include="CSecuritys.vb" />
+    <Compile Include="CSemester.vb" />
+    <Compile Include="CSemesters.vb" />
     <Compile Include="frmAdminConsole.Designer.vb">
       <DependentUpon>frmAdminConsole.vb</DependentUpon>
     </Compile>
@@ -103,10 +107,10 @@
     <Compile Include="frmChangePassword.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCourse.Designer.vb">
-      <DependentUpon>frmCourse.vb</DependentUpon>
+    <Compile Include="frmCourses.designer.vb">
+      <DependentUpon>frmCourses.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmCourse.vb">
+    <Compile Include="frmCourses.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmEvents.Designer.vb">
@@ -156,10 +160,10 @@
     <Compile Include="frmRoles.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSemester.Designer.vb">
-      <DependentUpon>frmSemester.vb</DependentUpon>
+    <Compile Include="frmSemesters.designer.vb">
+      <DependentUpon>frmSemesters.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmSemester.vb">
+    <Compile Include="frmSemesters.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="modDB.vb" />
@@ -195,8 +199,8 @@
     <EmbeddedResource Include="frmChangePassword.resx">
       <DependentUpon>frmChangePassword.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCourse.resx">
-      <DependentUpon>frmCourse.vb</DependentUpon>
+    <EmbeddedResource Include="frmCourses.resx">
+      <DependentUpon>frmCourses.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEvents.resx">
       <DependentUpon>frmEvents.vb</DependentUpon>
@@ -222,8 +226,8 @@
     <EmbeddedResource Include="frmRoles.resx">
       <DependentUpon>frmRoles.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSemester.resx">
-      <DependentUpon>frmSemester.vb</DependentUpon>
+    <EmbeddedResource Include="frmSemesters.resx">
+      <DependentUpon>frmSemesters.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
