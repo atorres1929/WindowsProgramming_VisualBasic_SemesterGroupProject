@@ -146,6 +146,10 @@
     <Compile Include="frmReportEventsRSVP.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmReportMembers.Designer.vb">
+      <DependentUpon>frmReportMembers.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportMembers.vb" />
     <Compile Include="frmRoles.Designer.vb">
       <DependentUpon>frmRoles.vb</DependentUpon>
     </Compile>
@@ -206,6 +210,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmReportEventsRSVP.resx">
       <DependentUpon>frmReportEventsRSVP.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportMembers.resx">
+      <DependentUpon>frmReportMembers.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRoles.resx">
       <DependentUpon>frmRoles.vb</DependentUpon>

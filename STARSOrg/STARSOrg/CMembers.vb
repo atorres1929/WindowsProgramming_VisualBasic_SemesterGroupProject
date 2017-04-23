@@ -28,8 +28,11 @@ Public Class CMembers
         Return _Member.Save
     End Function
 
-    Public Function SearchMember() As SqlDataReader
-        Return myDB.GetDataReaderBySP("dbo.SearchMember", Nothing)
+    Public Function SearchMember(Search As String) As CMember
+        Dim paramSearch As New ArrayList
+        paramSearch.Add(New SqlParameter("Search", Search))
+        FillObject(myDB.GetDataReaderBySP("dbo.sp_SearchMembers", paramSearch))
+        Return _Member
     End Function
 
     Public Function GetAllMembers() As SqlDataReader
@@ -43,7 +46,6 @@ Public Class CMembers
         Return _Member
     End Function
 
-    'TODO somewhat complete still have questions
     'fill the personal information of the member that is on the list
     Private Function FillObject(sqlDR As SqlDataReader) As CMember
         Using sqlDR
@@ -57,12 +59,6 @@ Public Class CMembers
                     .PhoneNumber = sqlDR.Item("Phone") & ""
                     .Picture = sqlDR.Item("PhotoPath") & ""
                 End With
-                'With _Role
-                '    .RoleID = sqlDR.Item("RoleID") & ""
-                'End With
-                'With _Semester
-                '    .SemesterID = sqlDR.Item("SemesterID") & ""
-                'End With
             End If
             sqlDR.Close()
             Return _Member

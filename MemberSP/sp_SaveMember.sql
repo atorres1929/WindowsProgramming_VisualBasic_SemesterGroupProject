@@ -5,9 +5,9 @@ alter PROCEDURE [dbo].sp_SaveMember
 	@MI nvarchar(1),
 	@Email nvarchar(50),
 	@Phone nvarchar(13)
-	/*,
-	@PhotoPath nvarchar(300),
-	@RoleID nvarchar(15)*/
+	,
+	@PhotoPath nvarchar(300)
+	/*@RoleID nvarchar(15)*/
 AS
 
 Declare @countExists int
@@ -16,9 +16,9 @@ if (@countExists=0)
 
 begin 
 insert into MEMBER
-(PID,FName,LName,MI,Email,Phone)/*,PhotoPath)*/
+(PID,FName,LName,MI,Email,Phone,PhotoPath)
 values
-(@PID,@FName,@LName,@MI,@Email,@Phone)/*,@PhotoPath)*/
+(@PID,@FName,@LName,@MI,@Email,@Phone,@PhotoPath)
 end
 
 
@@ -30,9 +30,8 @@ set FName=@FName,
 LName=@LName,
 MI=@MI,
 Email=@Email,
-Phone=@Phone
-/*,
-PhotoPath=@PhotoPath*/
+Phone=@Phone,
+PhotoPath=@PhotoPath
 
 where MEMBER.PID=@PID
 

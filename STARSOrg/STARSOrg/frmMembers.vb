@@ -110,6 +110,7 @@ Public Class frmMembers
         If objMembers.CurrentObject.PantherID <> " " Then
             lstMemberList.SelectedIndex = lstMemberList.FindStringExact(objMembers.CurrentObject.PantherID)
         End If
+        objReader.Close()
     End Sub
 
     Private Sub chkNewMember_CheckedChanged(sender As Object, e As EventArgs) Handles chkNewMember.CheckedChanged
@@ -190,8 +191,8 @@ Public Class frmMembers
                 sslStatus.Text = "ERROR"
             End If
         Catch ex As Exception
-            'MessageBox.Show("Role ID Must be Unique: " & ex.ToString, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            'sslStatus.Text = "Error"
+            MessageBox.Show("Role ID Must be Unique: " & ex.ToString, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            sslStatus.Text = "Error"
         End Try
         Me.Cursor = Cursors.Default
         blnReloading = True
@@ -214,7 +215,7 @@ Public Class frmMembers
         End If
         blnClearing = False
         objMembers.CurrentObject.IsNewMember = False
-        ' grpMembers.Enabled = True
+        grpMembers.Enabled = True
     End Sub
 
     Private Sub LoadSelectedRecord()
@@ -242,11 +243,9 @@ Public Class frmMembers
         If blnClearing Then
             Exit Sub
         End If
-
         If lstMemberList.SelectedIndex = -1 Then
             Exit Sub
         End If
-
         chkNewMember.Checked = False
         LoadSelectedMember()
         grpMemberInfo.Enabled = True
@@ -263,6 +262,7 @@ Public Class frmMembers
                 txtMiddle.Text = .MiddleIn
                 txtEmail.Text = .Email
                 txtPhoneNumber.Text = .PhoneNumber
+
                 'cboSemester = .Semester
                 'cboRole = .RoleID
             End With
@@ -275,6 +275,11 @@ Public Class frmMembers
     'TODO search btn
 
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
-        objMembers.SearchMember()
+        objMembers.SearchMember(txtSearchMember.Text)
     End Sub
+
+    'Private Sub btnReport_Click(sender As Object, e As EventArgs) Handles btnReport.Click
+    '    Dim MemberReport As New frmReportMembers
+    '    MemberReport.display(lstMemberList.ToString)
+    'End Sub
 End Class

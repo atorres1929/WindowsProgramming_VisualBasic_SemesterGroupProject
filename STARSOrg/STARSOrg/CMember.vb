@@ -173,12 +173,11 @@ Public Class CMember
     Public Function SearchMember() As Integer
         Dim paramSearch As New ArrayList
         paramSearch.Add(New SqlParameter("Search", _mstrSearch))
-        Dim strSEARCHRESULT As String = myDB.GetSingleValueFromSP("sp_SearchMemeber", paramSearch)
-
+        Dim strSEARCHRESULT As String = myDB.GetSingleValueFromSP("sp_SearchMemebers", paramSearch)
         If Not strSEARCHRESULT = 0 Then
             Return -1
         End If
-        Return myDB.ExecSP("sp_Search", GetSaveParametersMembers)
+        Return myDB.ExecSP("sp_SearchMembers", GetSaveParametersMembers)
 
     End Function
 End Class
