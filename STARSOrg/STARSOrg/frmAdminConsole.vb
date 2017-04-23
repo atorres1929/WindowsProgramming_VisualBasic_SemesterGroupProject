@@ -20,28 +20,20 @@ Public Class frmAdminConsole
         lsbMembers.SelectedIndex = -1
     End Sub
 
-    'TODO load panther id from members who have no security role
+    'Loads all Members into the list box. Could not use the Securitys.FillObject function because
+    'the reader would close after every fill, I needed the reader to stay open while I loaded all the
+    'members.
+    'I realize I could have made another function in Securitys, but it felt bulky for a function that would
+    'only be used once.
     Private Sub LoadMemberSecurity()
         arrMembers.Clear()
         Dim reader = myDB.GetDataReaderBySP("sp_GetAllMembersInSecurity", Nothing)
         While reader.Read()
             With Security
                 .PantherID = reader.Item("PID") & ""
-                Try
-                    .UserID = reader.Item("UserID") & ""
-                Catch ex As Exception
-                    .UserID = ""
-                End Try
-                Try
-                    .Password = reader.Item("Password") & ""
-                Catch ex As Exception
-                    .Password = ""
-                End Try
-                Try
-                    .SecRole = reader.Item("SecRole") & ""
-                Catch ex As Exception
-                    .SecRole = ""
-                End Try
+                .UserID = reader.Item("UserID") & ""
+                .Password = reader.Item("Password") & ""
+                .SecRole = reader.Item("SecRole") & ""
             End With
             arrMembers.Add(Security)
             Security = New CSecurity
@@ -71,18 +63,19 @@ Public Class frmAdminConsole
     Private Sub btnAddMember_Click(sender As Object, e As EventArgs) Handles btnAddMember.Click
         errP.Clear()
         LoadSecurity()
-        For Each item As CSecurity In arrMembers
-            If item.PantherID = Security.PantherID Then
-                ssl.Text = "You cannot enter a Panther ID that already exists!"
-                errP.SetError(lblPantherID, "You cannot enter a Panther ID that already exists!")
-                Return
-            ElseIf item.UserID = Security.UserID
-                ssl.Text = "You cannot enter a UserID that already exists!"
-                errP.SetError(txtUserID, "You cannot enter a UserID that already exists!")
-                Return
-            End If
-        Next
-        If myDB.ExecSP("sp_AddNewSecurity", Security.GetMemberParameters()) = 1 Then
+        Dim reader = myDB.GetDataReaderBySP("sp_CheckSecurityPIDExists", Security.GetPantherIDParameter)
+        If reader.Read Then
+            ssl.Text = "You cannot enter a Panther ID that already exists!"
+            errP.SetError(lblPantherID, "You cannot enter a Panther ID that already exists!")
+        End If
+        reader.Close()
+        reader = myDB.GetDataReaderBySP("sp_CheckSecurityUserIDExists", Security.GetUserIDParameter)
+        If reader.Read Then
+            ssl.Text = "You cannot enter a UserID that already exists!"
+            errP.SetError(txtUserID, "You cannot enter a UserID that already exists!")
+        End If
+        reader.Close()
+        If myDB.ExecSP("sp_UpdateSecurity", Security.GetUpdatePasswordParameters()) = 1 Then
             LoadMemberSecurity()
             FillListBox()
             lsbMembers.SelectedItem = Security

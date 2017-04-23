@@ -31,15 +31,16 @@ Partial Class frmAdminConsole
         Me.txtUserID = New System.Windows.Forms.TextBox()
         Me.txtPassword = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.lblPantherID = New System.Windows.Forms.Label()
         Me.cboSecRoles = New System.Windows.Forms.ComboBox()
+        Me.btnChangeMember = New System.Windows.Forms.Button()
         Me.btnAddMember = New System.Windows.Forms.Button()
         Me.btnExit = New System.Windows.Forms.Button()
         Me.lsbMembers = New System.Windows.Forms.ListBox()
-        Me.btnChangeMember = New System.Windows.Forms.Button()
         Me.errP = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.ssStatus = New System.Windows.Forms.StatusStrip()
         Me.ssl = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.lblPantherID = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         CType(Me.errP, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ssStatus.SuspendLayout()
@@ -112,6 +113,7 @@ Partial Class frmAdminConsole
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.Controls.Add(Me.lblPantherID)
         Me.GroupBox1.Controls.Add(Me.cboSecRoles)
         Me.GroupBox1.Controls.Add(Me.txtPassword)
@@ -129,6 +131,17 @@ Partial Class frmAdminConsole
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "User Information"
         '
+        'lblPantherID
+        '
+        Me.lblPantherID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblPantherID.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.lblPantherID.Location = New System.Drawing.Point(126, 18)
+        Me.lblPantherID.Name = "lblPantherID"
+        Me.lblPantherID.Size = New System.Drawing.Size(189, 22)
+        Me.lblPantherID.TabIndex = 29
+        Me.lblPantherID.Text = "1234567"
+        Me.lblPantherID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'cboSecRoles
         '
         Me.cboSecRoles.FormattingEnabled = True
@@ -137,6 +150,16 @@ Partial Class frmAdminConsole
         Me.cboSecRoles.Size = New System.Drawing.Size(189, 21)
         Me.cboSecRoles.TabIndex = 16
         Me.cboSecRoles.Text = "Select Security Role"
+        '
+        'btnChangeMember
+        '
+        Me.btnChangeMember.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.btnChangeMember.Location = New System.Drawing.Point(174, 224)
+        Me.btnChangeMember.Name = "btnChangeMember"
+        Me.btnChangeMember.Size = New System.Drawing.Size(151, 34)
+        Me.btnChangeMember.TabIndex = 28
+        Me.btnChangeMember.Text = "Update"
+        Me.btnChangeMember.UseVisualStyleBackColor = True
         '
         'btnAddMember
         '
@@ -166,16 +189,6 @@ Partial Class frmAdminConsole
         Me.lsbMembers.Size = New System.Drawing.Size(337, 264)
         Me.lsbMembers.TabIndex = 27
         '
-        'btnChangeMember
-        '
-        Me.btnChangeMember.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnChangeMember.Location = New System.Drawing.Point(174, 224)
-        Me.btnChangeMember.Name = "btnChangeMember"
-        Me.btnChangeMember.Size = New System.Drawing.Size(151, 34)
-        Me.btnChangeMember.TabIndex = 28
-        Me.btnChangeMember.Text = "Update"
-        Me.btnChangeMember.UseVisualStyleBackColor = True
-        '
         'errP
         '
         Me.errP.ContainerControl = Me
@@ -194,16 +207,15 @@ Partial Class frmAdminConsole
         Me.ssl.Name = "ssl"
         Me.ssl.Size = New System.Drawing.Size(0, 17)
         '
-        'lblPantherID
+        'Label5
         '
-        Me.lblPantherID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblPantherID.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.lblPantherID.Location = New System.Drawing.Point(126, 18)
-        Me.lblPantherID.Name = "lblPantherID"
-        Me.lblPantherID.Size = New System.Drawing.Size(189, 22)
-        Me.lblPantherID.TabIndex = 29
-        Me.lblPantherID.Text = "1234567"
-        Me.lblPantherID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(42, 169)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(258, 39)
+        Me.Label5.TabIndex = 30
+        Me.Label5.Text = "Note: If UserID and Password are Blank, click Save. " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Otherwise, if the UserID an" &
+    "d Password are filled," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "click Update."
         '
         'frmAdminConsole
         '
@@ -245,4 +257,5 @@ Partial Class frmAdminConsole
     Friend WithEvents ssStatus As StatusStrip
     Friend WithEvents ssl As ToolStripStatusLabel
     Friend WithEvents lblPantherID As Label
+    Friend WithEvents Label5 As Label
 End Class

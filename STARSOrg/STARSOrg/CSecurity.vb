@@ -60,6 +60,18 @@ Public Class CSecurity
         End Set
     End Property
 
+    Public Function GetPantherIDParameter() As ArrayList
+        Dim params As New ArrayList
+        params.Add(New SqlParameter("PID", _mstrPantherID))
+        Return params
+    End Function
+
+    Public Function GetUserIDParameter() As ArrayList
+        Dim params As New ArrayList
+        params.Add(New SqlParameter("username", _mstrUserID))
+        Return params
+    End Function
+
     Public Function GetLoginParameters() As ArrayList
         Dim params As New ArrayList
         params.Add(New SqlParameter("username", _mstrUserID))
@@ -69,9 +81,8 @@ Public Class CSecurity
 
     Public Function GetUpdatePasswordParameters() As ArrayList
         Dim params As New ArrayList
+        params.Add(New SqlParameter("PID", _mstrPantherID))
         params.Add(New SqlParameter("username", _mstrUserID))
-        params.Add(New SqlParameter("password", _mstrPassword))
-        params.Add(New SqlParameter("newPassword", _mstrNewPassword))
         Return params
     End Function
 

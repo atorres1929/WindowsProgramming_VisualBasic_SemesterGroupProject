@@ -102,12 +102,11 @@ Public Class frmMembers
             objReader = objMembers.GetAllMembers
             Do While objReader.Read
                 lstMemberList.Items.Add(objReader.Item("PID"))
-
             Loop
         Catch ex As Exception
             Throw
         End Try
-
+        objReader.Close()
         If objMembers.CurrentObject.PantherID <> " " Then
             lstMemberList.SelectedIndex = lstMemberList.FindStringExact(objMembers.CurrentObject.PantherID)
         End If
