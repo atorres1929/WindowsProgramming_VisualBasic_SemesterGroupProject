@@ -1,4 +1,4 @@
-alter PROCEDURE [dbo].sp_SaveMember
+CREATE PROCEDURE [dbo].sp_SaveMember
 	@PID nvarchar(7),
 	@FName nvarchar(50),
 	@LName nvarchar(75),
