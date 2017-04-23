@@ -20,18 +20,31 @@ Public Class frmAdminConsole
         lsbMembers.SelectedIndex = -1
     End Sub
 
+    'TODO load panther id from members who have no security role
     Private Sub LoadMemberSecurity()
         arrMembers.Clear()
-        Dim reader = myDB.GetDataReaderBySP("sp_GetAllSecuritys", Nothing)
+        Dim reader = myDB.GetDataReaderBySP("sp_GetAllMembersInSecurity", Nothing)
         While reader.Read()
-            Security = New CSecurity
             With Security
                 .PantherID = reader.Item("PID") & ""
-                .UserID = reader.Item("UserID") & ""
-                .Password = reader.Item("Password") & ""
-                .SecRole = reader.Item("SecRole") & ""
+                Try
+                    .UserID = reader.Item("UserID") & ""
+                Catch ex As Exception
+                    .UserID = ""
+                End Try
+                Try
+                    .Password = reader.Item("Password") & ""
+                Catch ex As Exception
+                    .Password = ""
+                End Try
+                Try
+                    .SecRole = reader.Item("SecRole") & ""
+                Catch ex As Exception
+                    .SecRole = ""
+                End Try
             End With
             arrMembers.Add(Security)
+            Security = New CSecurity
         End While
         reader.Close()
     End Sub
@@ -49,7 +62,7 @@ Public Class frmAdminConsole
             Return
         End If
         Security = lsbMembers.SelectedItem
-        txtPantherID.Text = Security.PantherID
+        lblPantherID.Text = Security.PantherID
         txtPassword.Text = Security.Password
         txtUserID.Text = Security.UserID
         cboSecRoles.SelectedItem = Security.SecRole
@@ -61,7 +74,7 @@ Public Class frmAdminConsole
         For Each item As CSecurity In arrMembers
             If item.PantherID = Security.PantherID Then
                 ssl.Text = "You cannot enter a Panther ID that already exists!"
-                errP.SetError(txtPantherID, "You cannot enter a Panther ID that already exists!")
+                errP.SetError(lblPantherID, "You cannot enter a Panther ID that already exists!")
                 Return
             ElseIf item.UserID = Security.UserID
                 ssl.Text = "You cannot enter a UserID that already exists!"
@@ -75,7 +88,7 @@ Public Class frmAdminConsole
             lsbMembers.SelectedItem = Security
             ssl.Text = "Add member succeeded"
         Else
-            errP.SetError(txtPantherID, "Member may not exist")
+            errP.SetError(lblPantherID, "Member may not exist")
             ssl.Text = "Add member failed"
         End If
     End Sub
@@ -89,12 +102,12 @@ Public Class frmAdminConsole
             lsbMembers.SelectedItem = Security
             ssl.Text = "Update member succeeded"
         Else
-            errP.SetError(txtPantherID, "Member may not exist")
+            errP.SetError(lblPantherID, "Member may not exist")
             ssl.Text = "Update member failed"
         End If
     End Sub
 
-    Private Sub btnDeleteMember_Click(sender As Object, e As EventArgs) Handles btnDeleteMember.Click
+    Private Sub btnDeleteMember_Click(sender As Object, e As EventArgs)
         errP.Clear()
         LoadSecurity()
         If myDB.ExecSP("sp_DeleteSecurity", Security.GetMemberParameters) = 1 Then
@@ -103,13 +116,13 @@ Public Class frmAdminConsole
             lsbMembers.SelectedItem = -1
             ssl.Text = "Delete member succeeded"
         Else
-            errP.SetError(txtPantherID, "Member may not exist")
+            errP.SetError(lblPantherID, "Member may not exist")
             ssl.Text = "Delete member failed"
         End If
     End Sub
 
     Private Sub LoadSecurity()
-        Security.PantherID = txtPantherID.Text
+        Security.PantherID = lblPantherID.Text
         Security.UserID = txtUserID.Text
         Security.Password = txtPassword.Text
         Security.SecRole = cboSecRoles.SelectedItem

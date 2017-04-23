@@ -20,11 +20,7 @@ Public Class frmLogin
                 Dim param As New ArrayList
                 param.Add(New SqlParameter("username", Security.UserID))
                 Security = Securitys.FillObject(myDB.GetDataReaderBySP("sp_GetCurrentLoginMember", param))
-                If Security.SecRole = Security.ADMIN Then
-                    isAdmin = True
-                Else
-                    isAdmin = False 'ensure that isAdmin is set to false
-                End If
+                currSecRole = Security.SecRole
                 Me.Close()
             Else
                 errP.SetError(txtUserID, "Username or Password Incorrect!")
@@ -65,10 +61,3 @@ Public Class frmLogin
         End If
     End Sub
 End Class
-
-'Questions
-'A member must exist before being added by admin?
-'Error validation okay?
-'1. Can't enter same UserID
-'2. Can't enter same Panther ID
-'^ only when adding, not updating

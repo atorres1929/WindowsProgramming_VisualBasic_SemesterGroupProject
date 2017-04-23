@@ -126,10 +126,10 @@
 
     Private Sub frmMain_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         LoginScreen.ShowDialog()
-        If isAdmin Then
-            tsbAdmin.Visible = True
+        If currSecRole = SEC_ROLE_ADMIN Then
+            tsbAdmin.Enabled = True
         Else
-            tsbAdmin.Visible = False
+            tsbAdmin.Enabled = False
         End If
     End Sub
 

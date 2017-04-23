@@ -28,7 +28,6 @@ Partial Class frmAdminConsole
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.txtPantherID = New System.Windows.Forms.TextBox()
         Me.txtUserID = New System.Windows.Forms.TextBox()
         Me.txtPassword = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -37,10 +36,10 @@ Partial Class frmAdminConsole
         Me.btnExit = New System.Windows.Forms.Button()
         Me.lsbMembers = New System.Windows.Forms.ListBox()
         Me.btnChangeMember = New System.Windows.Forms.Button()
-        Me.btnDeleteMember = New System.Windows.Forms.Button()
         Me.errP = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.ssStatus = New System.Windows.Forms.StatusStrip()
         Me.ssl = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.lblPantherID = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         CType(Me.errP, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ssStatus.SuspendLayout()
@@ -95,14 +94,6 @@ Partial Class frmAdminConsole
         Me.Label6.TabIndex = 5
         Me.Label6.Text = "Security Role"
         '
-        'txtPantherID
-        '
-        Me.txtPantherID.Location = New System.Drawing.Point(126, 20)
-        Me.txtPantherID.MaxLength = 7
-        Me.txtPantherID.Name = "txtPantherID"
-        Me.txtPantherID.Size = New System.Drawing.Size(191, 20)
-        Me.txtPantherID.TabIndex = 12
-        '
         'txtUserID
         '
         Me.txtUserID.Location = New System.Drawing.Point(124, 58)
@@ -121,11 +112,13 @@ Partial Class frmAdminConsole
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.lblPantherID)
         Me.GroupBox1.Controls.Add(Me.cboSecRoles)
         Me.GroupBox1.Controls.Add(Me.txtPassword)
+        Me.GroupBox1.Controls.Add(Me.btnChangeMember)
         Me.GroupBox1.Controls.Add(Me.txtUserID)
-        Me.GroupBox1.Controls.Add(Me.txtPantherID)
         Me.GroupBox1.Controls.Add(Me.Label6)
+        Me.GroupBox1.Controls.Add(Me.btnAddMember)
         Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label2)
@@ -148,11 +141,11 @@ Partial Class frmAdminConsole
         'btnAddMember
         '
         Me.btnAddMember.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnAddMember.Location = New System.Drawing.Point(12, 328)
+        Me.btnAddMember.Location = New System.Drawing.Point(0, 224)
         Me.btnAddMember.Name = "btnAddMember"
         Me.btnAddMember.Size = New System.Drawing.Size(149, 34)
         Me.btnAddMember.TabIndex = 25
-        Me.btnAddMember.Text = "Add New Member"
+        Me.btnAddMember.Text = "Save"
         Me.btnAddMember.UseVisualStyleBackColor = True
         '
         'btnExit
@@ -162,7 +155,7 @@ Partial Class frmAdminConsole
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(123, 30)
         Me.btnExit.TabIndex = 26
-        Me.btnExit.Text = "Exit"
+        Me.btnExit.Text = "Close"
         Me.btnExit.UseVisualStyleBackColor = True
         '
         'lsbMembers
@@ -176,22 +169,12 @@ Partial Class frmAdminConsole
         'btnChangeMember
         '
         Me.btnChangeMember.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnChangeMember.Location = New System.Drawing.Point(167, 328)
+        Me.btnChangeMember.Location = New System.Drawing.Point(174, 224)
         Me.btnChangeMember.Name = "btnChangeMember"
         Me.btnChangeMember.Size = New System.Drawing.Size(151, 34)
         Me.btnChangeMember.TabIndex = 28
-        Me.btnChangeMember.Text = "Change Member"
+        Me.btnChangeMember.Text = "Update"
         Me.btnChangeMember.UseVisualStyleBackColor = True
-        '
-        'btnDeleteMember
-        '
-        Me.btnDeleteMember.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnDeleteMember.Location = New System.Drawing.Point(327, 328)
-        Me.btnDeleteMember.Name = "btnDeleteMember"
-        Me.btnDeleteMember.Size = New System.Drawing.Size(151, 34)
-        Me.btnDeleteMember.TabIndex = 29
-        Me.btnDeleteMember.Text = "Delete Member"
-        Me.btnDeleteMember.UseVisualStyleBackColor = True
         '
         'errP
         '
@@ -211,17 +194,25 @@ Partial Class frmAdminConsole
         Me.ssl.Name = "ssl"
         Me.ssl.Size = New System.Drawing.Size(0, 17)
         '
+        'lblPantherID
+        '
+        Me.lblPantherID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblPantherID.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.lblPantherID.Location = New System.Drawing.Point(126, 18)
+        Me.lblPantherID.Name = "lblPantherID"
+        Me.lblPantherID.Size = New System.Drawing.Size(189, 22)
+        Me.lblPantherID.TabIndex = 29
+        Me.lblPantherID.Text = "1234567"
+        Me.lblPantherID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'frmAdminConsole
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(698, 387)
         Me.Controls.Add(Me.ssStatus)
-        Me.Controls.Add(Me.btnDeleteMember)
-        Me.Controls.Add(Me.btnChangeMember)
         Me.Controls.Add(Me.lsbMembers)
         Me.Controls.Add(Me.btnExit)
-        Me.Controls.Add(Me.btnAddMember)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label1)
         Me.Name = "frmAdminConsole"
@@ -242,7 +233,6 @@ Partial Class frmAdminConsole
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Label6 As Label
-    Friend WithEvents txtPantherID As TextBox
     Friend WithEvents txtUserID As TextBox
     Friend WithEvents txtPassword As TextBox
     Friend WithEvents GroupBox1 As GroupBox
@@ -251,8 +241,8 @@ Partial Class frmAdminConsole
     Friend WithEvents btnExit As Button
     Friend WithEvents lsbMembers As ListBox
     Friend WithEvents btnChangeMember As Button
-    Friend WithEvents btnDeleteMember As Button
     Friend WithEvents errP As ErrorProvider
     Friend WithEvents ssStatus As StatusStrip
     Friend WithEvents ssl As ToolStripStatusLabel
+    Friend WithEvents lblPantherID As Label
 End Class

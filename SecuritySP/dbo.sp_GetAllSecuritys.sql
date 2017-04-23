@@ -1,4 +1,0 @@
-﻿CREATE PROCEDURE [dbo].sp_GetAllSecuritys
-AS
-	SELECT * FROM SECURITY
-RETURN 0

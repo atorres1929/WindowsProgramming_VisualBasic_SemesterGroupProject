@@ -15,9 +15,16 @@
     Public Const ACTION_LOGOUT As Integer = 10
 #End Region
 
+#Region "SecRoles"
+    Public SEC_ROLE_ADMIN = "ADMIN"
+    Public SEC_ROLE_OFFICER = "OFFICER"
+    Public SEC_ROLE_MEMBER = "MEMBER"
+    Public SEC_ROLE_GUEST = "GUEST"
+#End Region
+
     'variables
     Public intNextAction As Integer
     Public myDB As New CDB
-    Public isAdmin As Boolean
+    Public currSecRole As String
 
 End Module

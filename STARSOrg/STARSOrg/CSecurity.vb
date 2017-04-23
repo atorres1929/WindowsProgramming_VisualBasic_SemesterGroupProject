@@ -8,13 +8,6 @@ Public Class CSecurity
     Private _mstrNewPassword As String
     Private _mstrSecRole As String
 
-#Region "SecRoles"
-    Public ADMIN = "ADMIN"
-    Public OFFICER = "OFFICER"
-    Public MEMBER = "MEMBER"
-    Public GUEST = "GUEST"
-#End Region
-
     Public Sub New()
         _mstrPantherID = ""
         _mstrUserID = ""
