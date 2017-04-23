@@ -28,11 +28,10 @@ Public Class CMembers
         Return _Member.Save
     End Function
 
-    Public Function SearchMember(Search As String) As CMember
+    Public Function SearchMember(strLName As String) As SqlDataReader
         Dim paramSearch As New ArrayList
-        paramSearch.Add(New SqlParameter("Search", Search))
-        FillObject(myDB.GetDataReaderBySP("dbo.sp_SearchMembers", paramSearch))
-        Return _Member
+        paramSearch.Add(New SqlParameter("LName", strLName))
+        Return (myDB.GetDataReaderBySP("dbo.sp_SearchMembers", paramSearch))
     End Function
 
     Public Function GetAllMembers() As SqlDataReader

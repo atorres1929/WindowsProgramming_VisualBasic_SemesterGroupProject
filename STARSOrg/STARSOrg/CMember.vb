@@ -126,8 +126,7 @@ Public Class CMember
         _mstrPantherID = ""
         _mstrPhoneNumber = ""
         _mstrPicture = ""
-        _mstrRoleID = ""
-        _mstrSemster = ""
+
 
     End Sub
 
@@ -141,10 +140,6 @@ Public Class CMember
             params.Add(New SqlParameter("Email", _mstrEmail))
             params.Add(New SqlParameter("Phone", _mstrPhoneNumber))
             params.Add(New SqlParameter("PhotoPath", _mstrPicture))
-            'params.Add(New SqlParameter("RoleID", _mstrRoleID))
-            '' one for the combo box 
-            'params.Add(New SqlParameter("SemesterID", _mstrSemster))
-
             Return params
         End Get
     End Property
@@ -162,17 +157,17 @@ Public Class CMember
         Return myDB.ExecSP("sp_SaveMember", GetSaveParametersMembers)
     End Function
 
-    Public ReadOnly Property GetSearchParameter() As ArrayList
-        Get
-            Dim paramSearch As ArrayList
-            paramSearch.Add(New SqlParameter("Search", _mstrSearch))
-            Return paramSearch
-        End Get
-    End Property
+    'Public ReadOnly Property GetSearchParameter() As ArrayList
+    '    Get
+    '        Dim paramSearch As ArrayList
+    '        paramSearch.Add(New SqlParameter("LName", _mstrSearch))
+    '        Return paramSearch
+    '    End Get
+    'End Property
 
     Public Function SearchMember() As Integer
         Dim paramSearch As New ArrayList
-        paramSearch.Add(New SqlParameter("Search", _mstrSearch))
+        paramSearch.Add(New SqlParameter("LNAme", _mstrSearch))
         Dim strSEARCHRESULT As String = myDB.GetSingleValueFromSP("sp_SearchMemebers", paramSearch)
         If Not strSEARCHRESULT = 0 Then
             Return -1

@@ -3,6 +3,7 @@ Public Class frmMembers
     Private objMembers As CMembers
     Private blnClearing As Boolean
     Private blnReloading As Boolean
+    Private strFileName As String
 
 #Region "Toolbar"
     Private Sub tsbMember_Click(sender As Object, e As EventArgs) Handles tsbMember.Click
@@ -74,6 +75,8 @@ Public Class frmMembers
 
     Private Sub frmMembers_Load(sender As Object, e As EventArgs) Handles Me.Load
         objMembers = New CMembers
+        errP.Clear()
+        LoadMembers()
     End Sub
 
     Private Sub frmMembers_Shown(sender As Object, e As EventArgs) Handles Me.Shown
@@ -101,16 +104,17 @@ Public Class frmMembers
         Try
             objReader = objMembers.GetAllMembers
             Do While objReader.Read
-                lstMemberList.Items.Add(objReader.Item("PID"))
+                lstMemberList.Items.Add(objReader.Item("PID") & ", " & (objReader.Item("LName") & ", " & (objReader.Item("FName"))))
             Loop
+            objReader.Close()
         Catch ex As Exception
-            Throw
+            ' Throw
         End Try
-        objReader.Close()
+
         If objMembers.CurrentObject.PantherID <> " " Then
             lstMemberList.SelectedIndex = lstMemberList.FindStringExact(objMembers.CurrentObject.PantherID)
         End If
-        objReader.Close()
+        blnReloading = False
     End Sub
 
     Private Sub chkNewMember_CheckedChanged(sender As Object, e As EventArgs) Handles chkNewMember.CheckedChanged
@@ -143,7 +147,7 @@ Public Class frmMembers
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         Dim intResult As Integer
         Dim blnError As Boolean
-
+        errP.Clear()
         'if you clicked save
 
         'input validation for PantherID txtbox
@@ -162,27 +166,23 @@ Public Class frmMembers
         If Not ValidateTextBoxLength(txtEmail, errP) Then
             blnError = True
         End If
-        'input validation for role comobo
-        If Not ValidateCombo(cboRole, errP) Then
-            blnError = True
-        End If
         If blnError Then
             Exit Sub
         End If
-        With objMembers.CurrentObject
-            .PantherID = Trim(txtPanterID.Text)
-            .FirstName = Trim(txtMemberFirst.Text)
-            .LastName = Trim(txtMemberLast.Text)
-            .Email = Trim(txtEmail.Text)
-            .MiddleIn = Trim(txtMiddle.Text)
-            .PhoneNumber = txtPhoneNumber.Text
-            .RoleID = Text
-            .Semester = Text
-        End With
-
         Try
+            With objMembers.CurrentObject
+                .PantherID = Trim(txtPanterID.Text)
+                .FirstName = Trim(txtMemberFirst.Text)
+                .LastName = Trim(txtMemberLast.Text)
+                .Email = Trim(txtEmail.Text)
+                .MiddleIn = Trim(txtMiddle.Text)
+                .PhoneNumber = txtPhoneNumber.Text
+                .Picture = Trim(picMemberPic.ImageLocation)
+            End With
+
             Me.Cursor = Cursors.WaitCursor
             intResult = objMembers.Save
+
             If intResult = 1 Then
                 sslStatus.text = "Member Record Saved"
             End If
@@ -200,6 +200,7 @@ Public Class frmMembers
         chkNewMember.Checked = False
         grpMembers.Enabled = True
     End Sub
+
 
 
 
@@ -229,10 +230,10 @@ Public Class frmMembers
                 txtEmail.Text = .Email
                 txtPhoneNumber.Text = .PhoneNumber
                 'TODO load picture
+                picMemberPic.ImageLocation = .Picture
                 cboRole.Items.Clear()
                 LoadRoles()
-                'cboRole.Text = .RoleID
-                'cboSemester.Text = .Semester
+
             End With
         Catch ex As Exception
             MessageBox.Show("Error loading Member Values", "Program error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -263,19 +264,59 @@ Public Class frmMembers
                 txtEmail.Text = .Email
                 txtPhoneNumber.Text = .PhoneNumber
 
-                'cboSemester = .Semester
-                'cboRole = .RoleID
             End With
         Catch ex As Exception
             MessageBox.Show("Error loading MEMBERS", "Program error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
-
-    'TODO search btn
-
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
-        objMembers.SearchMember(txtSearchMember.Text)
+        LoadMembersListBoxBySearch()
+    End Sub
+
+    Private Sub LoadMembersListBoxBySearch()
+        Dim objReader As SqlDataReader
+        lstMemberList.Items.Clear()
+        Try
+            objReader = objMembers.SearchMember(txtSearchMember.Text)
+            Do While objReader.Read
+                lstMemberList.Items.Add(objReader.Item("PID") & ", " & (objReader.Item("LName") & ", " & (objReader.Item("FName"))))
+            Loop
+            objReader.close()
+
+        Catch ex As Exception
+            MessageBox.Show("ERROR LOADING MEMBERS:" & ex.ToString, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+        If objMembers.CurrentObject.PantherID <> "" Then
+            lstMemberList.SelectedIndex = lstMemberList.FindStringExact(objMembers.CurrentObject.PantherID)
+        End If
+        blnReloading = False
+    End Sub
+
+    Private Sub btnBrowse_Click(sender As Object, e As EventArgs) Handles btnBrowse.Click
+        OpenFile()
+    End Sub
+
+    Private Sub OpenFile()
+        Dim intResult As Integer
+        ofdOpen.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory & "Photos"
+        ofdOpen.Filter = "All Files (*.*)|*.*|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif"
+        intResult = ofdOpen.ShowDialog
+        If intResult = DialogResult.Cancel Then
+            Exit Sub
+
+        End If
+        strFileName = ofdOpen.FileName
+
+        Try
+            OpenPicture(strFileName)
+        Catch ex As Exception
+            MessageBox.Show("ERROR")
+        End Try
+    End Sub
+
+    Private Sub OpenPicture(strFileName As String)
+        picMemberPic.ImageLocation = strFileName
     End Sub
 
     'Private Sub btnReport_Click(sender As Object, e As EventArgs) Handles btnReport.Click

@@ -53,6 +53,7 @@ Partial Class frmMembers
         Me.chkNewMember = New System.Windows.Forms.CheckBox()
         Me.grpNewMember = New System.Windows.Forms.GroupBox()
         Me.grpMemberInfo = New System.Windows.Forms.GroupBox()
+        Me.btnBrowse = New System.Windows.Forms.Button()
         Me.txtPhoneNumber = New System.Windows.Forms.TextBox()
         Me.txtMiddle = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
@@ -78,6 +79,7 @@ Partial Class frmMembers
         Me.errP = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.sslStatus = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ofdOpen = New System.Windows.Forms.OpenFileDialog()
         Me.ToolStrip1.SuspendLayout()
         Me.grpMembers.SuspendLayout()
         Me.grpNewMember.SuspendLayout()
@@ -347,6 +349,7 @@ Partial Class frmMembers
         '
         'grpMemberInfo
         '
+        Me.grpMemberInfo.Controls.Add(Me.btnBrowse)
         Me.grpMemberInfo.Controls.Add(Me.txtPhoneNumber)
         Me.grpMemberInfo.Controls.Add(Me.txtMiddle)
         Me.grpMemberInfo.Controls.Add(Me.Label9)
@@ -372,6 +375,15 @@ Partial Class frmMembers
         Me.grpMemberInfo.TabIndex = 6
         Me.grpMemberInfo.TabStop = False
         Me.grpMemberInfo.Text = "Member Information"
+        '
+        'btnBrowse
+        '
+        Me.btnBrowse.Location = New System.Drawing.Point(18, 191)
+        Me.btnBrowse.Name = "btnBrowse"
+        Me.btnBrowse.Size = New System.Drawing.Size(59, 23)
+        Me.btnBrowse.TabIndex = 27
+        Me.btnBrowse.Text = "Browse..."
+        Me.btnBrowse.UseVisualStyleBackColor = True
         '
         'txtPhoneNumber
         '
@@ -583,11 +595,16 @@ Partial Class frmMembers
         Me.sslStatus.Name = "sslStatus"
         Me.sslStatus.Size = New System.Drawing.Size(800, 17)
         '
+        'ofdOpen
+        '
+        Me.ofdOpen.FileName = "OpenFileDialog1"
+        '
         'frmMembers
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(877, 542)
+        Me.ControlBox = False
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.grpSearch)
         Me.Controls.Add(Me.grpMemberInfo)
@@ -670,4 +687,6 @@ Partial Class frmMembers
     Friend WithEvents StatusStrip1 As StatusStrip
     Friend WithEvents sslStatus As ToolStripStatusLabel
     Friend WithEvents txtPhoneNumber As TextBox
+    Friend WithEvents btnBrowse As Button
+    Friend WithEvents ofdOpen As OpenFileDialog
 End Class
