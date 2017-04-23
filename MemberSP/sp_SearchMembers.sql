@@ -1,6 +1,5 @@
-CREATE PROCEDURE [dbo].sp_SearchMembers
-	@Search nvarchar(75)
+CREATE PROCEDURE [dbo].sp_SearchMemberByLastName
+	@LName nvarchar(75)
 AS
-	SELECT LName from MEMBER
-	where MEMBER.LName like @Search
+	SELECT * from MEMBER where LName like(CONCAT(@LName, '%'))
 RETURN 0

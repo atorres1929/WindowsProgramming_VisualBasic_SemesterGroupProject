@@ -76,7 +76,7 @@ Public Class frmMembers
     Private Sub frmMembers_Load(sender As Object, e As EventArgs) Handles Me.Load
         objMembers = New CMembers
         errP.Clear()
-        LoadMembers()
+
     End Sub
 
     Private Sub frmMembers_Shown(sender As Object, e As EventArgs) Handles Me.Shown
