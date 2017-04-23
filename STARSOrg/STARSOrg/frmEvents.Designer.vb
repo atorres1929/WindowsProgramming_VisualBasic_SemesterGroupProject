@@ -296,9 +296,9 @@ Partial Class frmEvents
         '
         Me.grpNewEv.Controls.Add(Me.chkNewEv)
         Me.grpNewEv.Location = New System.Drawing.Point(40, 223)
-        Me.grpNewEv.Margin = New System.Windows.Forms.Padding(6)
+        Me.grpNewEv.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.grpNewEv.Name = "grpNewEv"
-        Me.grpNewEv.Padding = New System.Windows.Forms.Padding(6)
+        Me.grpNewEv.Padding = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.grpNewEv.Size = New System.Drawing.Size(584, 115)
         Me.grpNewEv.TabIndex = 4
         Me.grpNewEv.TabStop = False
@@ -308,7 +308,7 @@ Partial Class frmEvents
         '
         Me.chkNewEv.AutoSize = True
         Me.chkNewEv.Location = New System.Drawing.Point(44, 46)
-        Me.chkNewEv.Margin = New System.Windows.Forms.Padding(6)
+        Me.chkNewEv.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.chkNewEv.Name = "chkNewEv"
         Me.chkNewEv.Size = New System.Drawing.Size(209, 29)
         Me.chkNewEv.TabIndex = 0
@@ -334,9 +334,9 @@ Partial Class frmEvents
         Me.grpEditEv.Controls.Add(Me.Label3)
         Me.grpEditEv.Controls.Add(Me.Label2)
         Me.grpEditEv.Location = New System.Drawing.Point(692, 223)
-        Me.grpEditEv.Margin = New System.Windows.Forms.Padding(6)
+        Me.grpEditEv.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.grpEditEv.Name = "grpEditEv"
-        Me.grpEditEv.Padding = New System.Windows.Forms.Padding(6)
+        Me.grpEditEv.Padding = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.grpEditEv.Size = New System.Drawing.Size(672, 767)
         Me.grpEditEv.TabIndex = 6
         Me.grpEditEv.TabStop = False
@@ -345,7 +345,7 @@ Partial Class frmEvents
         'txtEventID
         '
         Me.txtEventID.Location = New System.Drawing.Point(206, 42)
-        Me.txtEventID.Margin = New System.Windows.Forms.Padding(6)
+        Me.txtEventID.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.txtEventID.MaxLength = 15
         Me.txtEventID.Name = "txtEventID"
         Me.txtEventID.Size = New System.Drawing.Size(392, 31)
@@ -356,7 +356,7 @@ Partial Class frmEvents
         Me.cboEventTypeID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboEventTypeID.FormattingEnabled = True
         Me.cboEventTypeID.Location = New System.Drawing.Point(206, 385)
-        Me.cboEventTypeID.Margin = New System.Windows.Forms.Padding(6)
+        Me.cboEventTypeID.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.cboEventTypeID.Name = "cboEventTypeID"
         Me.cboEventTypeID.Size = New System.Drawing.Size(392, 33)
         Me.cboEventTypeID.TabIndex = 23
@@ -366,7 +366,7 @@ Partial Class frmEvents
         Me.cboSemesterID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboSemesterID.FormattingEnabled = True
         Me.cboSemesterID.Location = New System.Drawing.Point(206, 446)
-        Me.cboSemesterID.Margin = New System.Windows.Forms.Padding(6)
+        Me.cboSemesterID.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.cboSemesterID.Name = "cboSemesterID"
         Me.cboSemesterID.Size = New System.Drawing.Size(392, 33)
         Me.cboSemesterID.TabIndex = 22
@@ -374,7 +374,7 @@ Partial Class frmEvents
         'txtLocation
         '
         Me.txtLocation.Location = New System.Drawing.Point(206, 635)
-        Me.txtLocation.Margin = New System.Windows.Forms.Padding(6)
+        Me.txtLocation.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.txtLocation.MaxLength = 15
         Me.txtLocation.Name = "txtLocation"
         Me.txtLocation.Size = New System.Drawing.Size(392, 31)
@@ -383,7 +383,7 @@ Partial Class frmEvents
         'mskEndDate
         '
         Me.mskEndDate.Location = New System.Drawing.Point(206, 571)
-        Me.mskEndDate.Margin = New System.Windows.Forms.Padding(4)
+        Me.mskEndDate.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.mskEndDate.Mask = "00/00/0000"
         Me.mskEndDate.Name = "mskEndDate"
         Me.mskEndDate.Size = New System.Drawing.Size(392, 31)
@@ -393,8 +393,8 @@ Partial Class frmEvents
         'mskStartDate
         '
         Me.mskStartDate.Location = New System.Drawing.Point(206, 508)
-        Me.mskStartDate.Margin = New System.Windows.Forms.Padding(4)
-        Me.mskStartDate.Mask = "00/00/0000"
+        Me.mskStartDate.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.mskStartDate.Mask = "99/99/9999"
         Me.mskStartDate.Name = "mskStartDate"
         Me.mskStartDate.Size = New System.Drawing.Size(392, 31)
         Me.mskStartDate.TabIndex = 13
@@ -443,7 +443,7 @@ Partial Class frmEvents
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(38, 449)
+        Me.Label4.Location = New System.Drawing.Point(38, 448)
         Me.Label4.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(129, 25)
@@ -453,7 +453,7 @@ Partial Class frmEvents
         'btnCancel
         '
         Me.btnCancel.Location = New System.Drawing.Point(438, 706)
-        Me.btnCancel.Margin = New System.Windows.Forms.Padding(6)
+        Me.btnCancel.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(160, 40)
         Me.btnCancel.TabIndex = 5
@@ -463,7 +463,7 @@ Partial Class frmEvents
         'btnSave
         '
         Me.btnSave.Location = New System.Drawing.Point(206, 706)
-        Me.btnSave.Margin = New System.Windows.Forms.Padding(6)
+        Me.btnSave.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(160, 40)
         Me.btnSave.TabIndex = 4
@@ -473,7 +473,7 @@ Partial Class frmEvents
         'txtEventDesc
         '
         Me.txtEventDesc.Location = New System.Drawing.Point(206, 96)
-        Me.txtEventDesc.Margin = New System.Windows.Forms.Padding(6)
+        Me.txtEventDesc.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.txtEventDesc.MaxLength = 100
         Me.txtEventDesc.Multiline = True
         Me.txtEventDesc.Name = "txtEventDesc"
@@ -504,9 +504,9 @@ Partial Class frmEvents
         '
         Me.grpEvents.Controls.Add(Me.lstEvents)
         Me.grpEvents.Location = New System.Drawing.Point(40, 379)
-        Me.grpEvents.Margin = New System.Windows.Forms.Padding(6)
+        Me.grpEvents.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.grpEvents.Name = "grpEvents"
-        Me.grpEvents.Padding = New System.Windows.Forms.Padding(6)
+        Me.grpEvents.Padding = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.grpEvents.Size = New System.Drawing.Size(584, 612)
         Me.grpEvents.TabIndex = 7
         Me.grpEvents.TabStop = False
@@ -517,7 +517,7 @@ Partial Class frmEvents
         Me.lstEvents.FormattingEnabled = True
         Me.lstEvents.ItemHeight = 25
         Me.lstEvents.Location = New System.Drawing.Point(30, 42)
-        Me.lstEvents.Margin = New System.Windows.Forms.Padding(6)
+        Me.lstEvents.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.lstEvents.Name = "lstEvents"
         Me.lstEvents.Size = New System.Drawing.Size(524, 554)
         Me.lstEvents.TabIndex = 0
@@ -526,7 +526,7 @@ Partial Class frmEvents
         '
         Me.StatusStrip1.ImageScalingSize = New System.Drawing.Size(32, 32)
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.sslStatus})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 1008)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 1039)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Padding = New System.Windows.Forms.Padding(2, 0, 28, 0)
         Me.StatusStrip1.Size = New System.Drawing.Size(1390, 38)
@@ -548,16 +548,16 @@ Partial Class frmEvents
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1390, 1046)
+        Me.ClientSize = New System.Drawing.Size(1390, 1077)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.grpEvents)
         Me.Controls.Add(Me.grpEditEv)
         Me.Controls.Add(Me.grpNewEv)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ToolStrip1)
-        Me.Margin = New System.Windows.Forms.Padding(4)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "frmEvents"
-        Me.Text = "frmEvents"
+        Me.Text = "Events"
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
         Me.grpNewEv.ResumeLayout(False)

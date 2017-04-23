@@ -5,11 +5,6 @@ Public Class CRole
     Private _mstrRoleDescription As String
     Private _isNewRole As Boolean
 
-    'constructor
-    Public Sub New()
-        _mstrRoleID = ""
-        _mstrRoleDescription = ""
-    End Sub
 #Region "Properties"
     Public Property RoleID As String
         Get
@@ -36,6 +31,12 @@ Public Class CRole
         End Set
     End Property
 #End Region
+
+    'constructor
+    Public Sub New()
+        _mstrRoleID = ""
+        _mstrRoleDescription = ""
+    End Sub
     Public ReadOnly Property GetSaveParameters() As ArrayList
         Get
             Dim params As New ArrayList

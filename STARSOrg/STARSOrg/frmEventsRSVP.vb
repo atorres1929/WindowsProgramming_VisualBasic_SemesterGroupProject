@@ -1,6 +1,7 @@
 ﻿Imports System.Data.SqlClient
 Public Class frmEventsRSVP
     Private objEvents As CEvents
+    Private objRSVPs As CRSVPs
     Private blnClearing As Boolean
     Private blnReloading As Boolean
 #Region "Toolbar"
@@ -77,7 +78,7 @@ Public Class frmEventsRSVP
         Catch ex As Exception
             'should have CDB throw the exception and handle it here instead?
         End Try
-        If objEvents.CurrentObject.EventID <> 0 Then
+        If objEvents.CurrentObject.EventID <> "" Then
             lstEvents.SelectedIndex = lstEvents.FindStringExact(objEvents.CurrentObject.EventID)
         End If
         blnReloading = False
@@ -95,6 +96,79 @@ Public Class frmEventsRSVP
     End Sub
 
     Private Sub btnRSVP_Click(sender As Object, e As EventArgs) Handles btnRSVP.Click
+        Dim intResult As Integer
+        Dim blnError As Boolean
+        sslStatus.Text = ""
+        'input validation
+        If Not ValidateTextBoxLength(txtEventID, errP) Then
+            blnError = True
+        End If
+        If Not ValidateTextBoxLength(txtFirst, errP) Then
+            blnError = True
+        End If
+        If Not ValidateTextBoxLength(txtLast, errP) Then
+            blnError = True
+        End If
+        If Not ValidateTextBoxLength(txtEmail, errP) Then
+            blnError = True
+        End If
+        If blnError Then
+            Exit Sub
+        End If
+        'save current object?
+        With objRSVPs.CurrentObject
+            .EventID = Trim(txtEventID.Text)
+            .FName = Trim(txtFirst.Text)
+            .LName = Trim(txtLast.Text)
+            .Email = Trim(txtEmail.Text)
+        End With
+        Try
+            Me.Cursor = Cursors.WaitCursor
+            intResult = objRSVPs.Save
+            If intResult = 1 Then
+                sslStatus.Text = "RSVP Record Saved"
+            End If
+            If intResult = -1 Then 'couldn't save?
+                'TODO: insert error where date has occured???
+                MessageBox.Show("RSVP could not be done", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                sslStatus.Text = "Error"
+            End If
+        Catch ex As Exception
+            MessageBox.Show("RSVP Save Error: " & ex.ToString, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            sslStatus.Text = "Error"
+        End Try
+        Me.Cursor = Cursors.Default
+        blnReloading = True
+        LoadEvents()
+    End Sub
 
+    Private Sub frmEventsRSVP_Load(sender As Object, e As EventArgs) Handles Me.Load
+        objEvents = New CEvents
+        objRSVPs = New CRSVPs
+    End Sub
+
+    Private Sub frmEventsRSVP_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+        ClearScreenControls(Me)
+        LoadEvents()
+    End Sub
+
+    Private Sub lstEvents_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstEvents.SelectedIndexChanged
+        If blnClearing Or lstEvents.SelectedIndex = -1 Then
+            Exit Sub
+        End If
+        LoadSelectedRecord()
+    End Sub
+
+    Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
+        blnClearing = True
+        sslStatus.Text = ""
+        errP.clear()
+        ClearScreenControls(grpRSVP)
+        blnClearing = False
+    End Sub
+
+    Private Sub btnReport_Click(sender As Object, e As EventArgs) Handles btnReport.Click
+        Dim RoleReport As New frmReportEventsRSVP
+        RoleReport.Display(lstEvents.SelectedItem.ToString)
     End Sub
 End Class

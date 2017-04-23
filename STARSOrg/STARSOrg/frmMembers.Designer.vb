@@ -559,6 +559,7 @@ Partial Class frmMembers
         'txtSearchMember
         '
         Me.txtSearchMember.Location = New System.Drawing.Point(6, 31)
+        Me.txtSearchMember.MaxLength = 75
         Me.txtSearchMember.Name = "txtSearchMember"
         Me.txtSearchMember.Size = New System.Drawing.Size(231, 20)
         Me.txtSearchMember.TabIndex = 0

@@ -10,12 +10,24 @@ Public Class CMember
     Private _mstrRoleID As String
     Private _mstrSemster As String
 
+    Private _mstrSearch As String
+
     Private _IsNewMember As Boolean
 
     'do i pass the string location of the picture
     Private _mstrPicture As String
 
 #Region "Member Properties"
+
+    Public Property Search As String
+        Get
+            Return _mstrSearch
+
+        End Get
+        Set(strVal As String)
+            _mstrSearch = strVal
+        End Set
+    End Property
     Public Property Semester As String
         Get
             Return _mstrSemster
@@ -128,10 +140,10 @@ Public Class CMember
             params.Add(New SqlParameter("MI", _mstrMiddleIn))
             params.Add(New SqlParameter("Email", _mstrEmail))
             params.Add(New SqlParameter("Phone", _mstrPhoneNumber))
-            ' params.Add(New SqlParameter("PhotoPath", _mstrPicture))
-            ' params.Add(New SqlParameter("RoleID", _mstrRoleID))
-            ' one for the combo box 
-            ' params.Add(New SqlParameter("SemesterID", _mstrSemster))
+            params.Add(New SqlParameter("PhotoPath", _mstrPicture))
+            'params.Add(New SqlParameter("RoleID", _mstrRoleID))
+            '' one for the combo box 
+            'params.Add(New SqlParameter("SemesterID", _mstrSemster))
 
             Return params
         End Get
@@ -148,5 +160,25 @@ Public Class CMember
         End If
 
         Return myDB.ExecSP("sp_SaveMember", GetSaveParametersMembers)
+    End Function
+
+    Public ReadOnly Property GetSearchParameter() As ArrayList
+        Get
+            Dim paramSearch As ArrayList
+            paramSearch.Add(New SqlParameter("Search", _mstrSearch))
+            Return paramSearch
+        End Get
+    End Property
+
+    Public Function SearchMember() As Integer
+        Dim paramSearch As New ArrayList
+        paramSearch.Add(New SqlParameter("Search", _mstrSearch))
+        Dim strSEARCHRESULT As String = myDB.GetSingleValueFromSP("sp_SearchMemeber", paramSearch)
+
+        If Not strSEARCHRESULT = 0 Then
+            Return -1
+        End If
+        Return myDB.ExecSP("sp_Search", GetSaveParametersMembers)
+
     End Function
 End Class
