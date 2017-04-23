@@ -35,6 +35,19 @@ Public Class CEvents
         FillObject(myDB.GetDataReaderBySP("dbo.sp_GetEventByID", params))
         Return _Event
     End Function
+    Public Function GetEventDateByID(strID As String) As Date
+        Dim sqlDR As SqlDataReader
+        Dim params As New ArrayList
+        params.Add(New SqlParameter("eventID", strID))
+        sqlDR = myDB.GetDataReaderBySP("dbo.sp_GetEventByID", params)
+        Using sqlDR
+            If sqlDR.Read() Then
+                Return sqlDR.Item("EndDate")
+            Else 'error fake date
+                Return CDate("00/00/0000")
+            End If
+        End Using
+    End Function
     Private Function FillObject(sqlDR As SqlDataReader) As CEvent
         Using sqlDR
             If sqlDR.Read() Then 'found record

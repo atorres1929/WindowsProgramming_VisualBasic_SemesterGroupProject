@@ -4,11 +4,10 @@ Public Class CRSVP
     Private _mstrFName As String
     Private _mstrLName As String
     Private _mstrEmail As String
-    'Private eventNotPassed As Boolean
 
     'constructor
     Public Sub New()
-        _mstrEventID = "" 'may need to be referenced
+        _mstrEventID = ""
         _mstrFName = ""
         _mstrLName = ""
         _mstrEmail = ""
@@ -61,7 +60,6 @@ Public Class CRSVP
     Public Function Save() As Integer
         Return myDB.ExecSP("sp_SaveRSVP", GetSaveParameters)
     End Function
-
     Public Function GetReportData(strID As String) As SqlDataAdapter
         Dim params As New ArrayList
         params.Add(New SqlParameter("eventID", strID))

@@ -400,6 +400,7 @@ Partial Class frmEventsRSVP
         '
         'txtEventID
         '
+        Me.txtEventID.Enabled = False
         Me.txtEventID.Location = New System.Drawing.Point(200, 69)
         Me.txtEventID.Margin = New System.Windows.Forms.Padding(6)
         Me.txtEventID.MaxLength = 15

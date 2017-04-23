@@ -76,7 +76,7 @@ Public Class frmEvents
             Loop
             objReader.Close()
         Catch ex As Exception
-            'should have CDB throw the exception and handle it here instead?
+            MessageBox.Show("Error in Loading Event", "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
         If objEvents.CurrentObject.EventID <> "" Then
             lstEvents.SelectedIndex = lstEvents.FindStringExact(objEvents.CurrentObject.EventID)
@@ -94,7 +94,7 @@ Public Class frmEvents
             Loop
             objReader.Close()
         Catch ex As Exception
-            'should have CDB throw the exception and handle it here instead?
+            MessageBox.Show("Error in Loading Event Type IDs", "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -108,7 +108,7 @@ Public Class frmEvents
             Loop
             objReader.Close()
         Catch ex As Exception
-            'should have CDB throw the exception and handle it here instead?
+            MessageBox.Show("Error in Loading Semester IDs", "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -120,9 +120,24 @@ Public Class frmEvents
                 txtEventDesc.Text = .EventDescription
                 cboEventTypeID.SelectedItem = .EventTypeID
                 cboSemesterID.SelectedItem = .SemesterID
-                mskStartDate.Text = .StartDate
-                mskEndDate.Text = .EndDate
+                mskStartDate.Text = Format(.StartDate, "MM-dd-yyyy")
+                mskEndDate.Text = Format(.EndDate, "MM-dd-yyyy")
                 txtLocation.Text = .Location
+                If .EndDate < Date.Today Then 'event has occured
+                    txtEventID.Enabled = False
+                    txtEventDesc.Enabled = False
+                    cboSemesterID.Enabled = False
+                    mskStartDate.Enabled = False
+                    mskEndDate.Enabled = False
+                    txtLocation.Enabled = False
+                Else
+                    txtEventID.Enabled = True
+                    txtEventDesc.Enabled = True
+                    cboSemesterID.Enabled = True
+                    mskStartDate.Enabled = True
+                    mskEndDate.Enabled = True
+                    txtLocation.Enabled = True
+                End If
             End With
         Catch ex As Exception
             MessageBox.Show("Error loading Event values", "Program error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -138,8 +153,7 @@ Public Class frmEvents
         LoadEvents()
         LoadEventTypeIDs()
         LoadSemesterIDs()
-        'grpEditEv.Enabled = False
-        'check business rules
+        grpEditEv.Enabled = False
     End Sub
 
     Private Sub lstEvents_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstEvents.SelectedIndexChanged
@@ -147,7 +161,6 @@ Public Class frmEvents
             Exit Sub
         End If
         chkNewEv.Checked = False
-        'TODO: Fix when login info is obtained
         LoadSelectedRecord()
         grpEditEv.Enabled = True
     End Sub
@@ -158,7 +171,7 @@ Public Class frmEvents
         chkNewEv.Checked = False
         errP.Clear()
         ClearScreenControls(grpEditEv)
-        'TODO: Fix rest of cancel when login info is obtained
+        lstEvents.SelectedIndex = -1
         grpEditEv.Enabled = False
         blnClearing = False
         objEvents.CurrentObject.isNewEvent = False
@@ -194,7 +207,7 @@ Public Class frmEvents
         If blnError Then
             Exit Sub
         End If
-        'load current object
+        'save current object
         With objEvents.CurrentObject
             .EventID = Trim(txtEventID.Text)
             .EventDescription = Trim(txtEventDesc.Text)
@@ -231,7 +244,7 @@ Public Class frmEvents
         If blnClearing Then
             Exit Sub
         End If
-        If chkNewEv.Checked Then
+        If chkNewEv.Checked Then 'New Event
             sslStatus.Text = ""
             ClearScreenControls(grpEditEv)
             lstEvents.SelectedIndex = -1

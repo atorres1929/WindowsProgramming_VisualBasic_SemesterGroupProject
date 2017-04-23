@@ -76,7 +76,7 @@ Public Class frmEventsRSVP
             Loop
             objReader.Close()
         Catch ex As Exception
-            'should have CDB throw the exception and handle it here instead?
+            MessageBox.Show("Error in Loading Event", "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
         If objEvents.CurrentObject.EventID <> "" Then
             lstEvents.SelectedIndex = lstEvents.FindStringExact(objEvents.CurrentObject.EventID)
@@ -85,11 +85,18 @@ Public Class frmEventsRSVP
     End Sub
 
     Private Sub LoadSelectedRecord()
+        Dim dteEvent As Date
+        btnRSVP.Enabled = True
+        dteEvent = objEvents.GetEventDateByID(lstEvents.SelectedItem.ToString)
         Try
+            If dteEvent < Date.Today Then
+                MessageBox.Show("Event has occured. RSVP is no longer allowed.", "DATE PASSED: " & dteEvent, MessageBoxButtons.OK)
+                btnRSVP.Enabled = False
+            End If
             objEvents.GetEventByID(lstEvents.SelectedItem.ToString)
-            With objEvents.CurrentObject
-                txtEventID.Text = .EventID
-            End With
+                   With objEvents.CurrentObject
+                       txtEventID.Text = .EventID
+                   End With
         Catch ex As Exception
             MessageBox.Show("Error loading Event values", "Program error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -129,7 +136,6 @@ Public Class frmEventsRSVP
                 sslStatus.Text = "RSVP Record Saved"
             End If
             If intResult = -1 Then 'couldn't save?
-                'TODO: insert error where date has occured???
                 MessageBox.Show("RSVP could not be done", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 sslStatus.Text = "Error"
             End If
@@ -150,6 +156,9 @@ Public Class frmEventsRSVP
     Private Sub frmEventsRSVP_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         ClearScreenControls(Me)
         LoadEvents()
+        If Not currSecRole <> SEC_ROLE_GUEST Then
+            btnReport.Visible = False
+        End If
     End Sub
 
     Private Sub lstEvents_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstEvents.SelectedIndexChanged
@@ -169,6 +178,10 @@ Public Class frmEventsRSVP
 
     Private Sub btnReport_Click(sender As Object, e As EventArgs) Handles btnReport.Click
         Dim RoleReport As New frmReportEventsRSVP
+        If Not lstEvents.SelectedItem <> Nothing Then
+            MessageBox.Show("You must select an Event ID to display its RSVP Report", "User Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
         RoleReport.Display(lstEvents.SelectedItem.ToString)
     End Sub
 End Class
