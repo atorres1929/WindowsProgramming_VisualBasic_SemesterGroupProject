@@ -1,0 +1,6 @@
+CREATE PROCEDURE [dbo].sp_GetRSVPsByEventID
+	@eventID nvarchar(15)
+AS
+	SELECT * FROM EVENT_RSVP
+	WHERE EventID=@eventID
+RETURN 0
