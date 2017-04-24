@@ -144,10 +144,22 @@
     <Compile Include="frmMembers.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmReportCourse.Designer.vb">
+      <DependentUpon>frmReportCourse.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportCourse.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmReportEventsRSVP.Designer.vb">
       <DependentUpon>frmReportEventsRSVP.vb</DependentUpon>
     </Compile>
     <Compile Include="frmReportEventsRSVP.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportSemester.Designer.vb">
+      <DependentUpon>frmReportSemester.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportSemester.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmReportViewerMembers.Designer.vb">
@@ -188,6 +200,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="CMemberRole.vb" />
+    <Compile Include="Reports\frmReport.designer.vb">
+      <DependentUpon>frmReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\frmReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="STARSDBDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -219,8 +237,14 @@
     <EmbeddedResource Include="frmMembers.resx">
       <DependentUpon>frmMembers.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmReportCourse.resx">
+      <DependentUpon>frmReportCourse.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmReportEventsRSVP.resx">
       <DependentUpon>frmReportEventsRSVP.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportSemester.resx">
+      <DependentUpon>frmReportSemester.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmReportViewerMembers.resx">
       <DependentUpon>frmReportViewerMembers.vb</DependentUpon>
@@ -236,6 +260,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\frmReport.resx">
+      <DependentUpon>frmReport.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptEventRSVPs.rdlc" />
   </ItemGroup>

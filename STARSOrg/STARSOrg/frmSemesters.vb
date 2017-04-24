@@ -3,6 +3,7 @@ Public Class frmSemesters
     Private objSemesters As CSemesters
     Private blnClearing As Boolean
     Private blnReloading As Boolean
+    Private reportInfo As frmReportSemester
 #Region "Toolbar"
     Private Sub tsbMember_Click(sender As Object, e As EventArgs) Handles tsbMember.Click
         intNextAction = ACTION_MEMBER
@@ -88,6 +89,7 @@ Public Class frmSemesters
 
     Private Sub frmSemesters_Load(sender As Object, e As EventArgs) Handles Me.Load
         objSemesters = New CSemesters
+        reportInfo = New frmReportSemester
 
     End Sub
 
@@ -193,5 +195,15 @@ Public Class frmSemesters
             grpEdit.Enabled = False
             objSemesters.CurrentObject.IsNewSemester = False
         End If
+    End Sub
+    Private Sub btnReport_Click(sender As Object, e As EventArgs) Handles btnReport.Click
+        reportInfo.lstReport.Items.Clear() 'clear it in case it had previous values
+        With reportInfo.lstReport
+            For Each Semester As CSemester In lstSemesters.Items
+                .Items.Add(Semester.SemesterID & ": " & Semester.SemesterDescription)
+
+            Next
+        End With
+        reportInfo.ShowDialog()
     End Sub
 End Class

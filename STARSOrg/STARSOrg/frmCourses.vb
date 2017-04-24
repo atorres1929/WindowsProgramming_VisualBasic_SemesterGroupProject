@@ -3,6 +3,8 @@ Public Class frmCourses
     Private objCourses As CCourses
     Private blnClearing As Boolean
     Private blnReloading As Boolean
+    Private reportInfo As frmReportCourse
+
 #Region "Toolbar"
     Private Sub tsbMember_Click(sender As Object, e As EventArgs) Handles tsbMember.Click
         intNextAction = ACTION_MEMBER
@@ -88,6 +90,7 @@ Public Class frmCourses
 
     Private Sub frmCourses_Load(sender As Object, e As EventArgs) Handles Me.Load
         objCourses = New CCourses
+        reportInfo = New frmReportCourse
 
     End Sub
 
@@ -114,7 +117,7 @@ Public Class frmCourses
             objCourses.GetCourseByID(lstCourses.SelectedItem.ToString)
             With objCourses.CurrentObject
                 txtCourseID.Text = .CourseID
-                txtDesc.Text = .CourseDescription
+                txtDesc.Text = .CourseName
             End With
         Catch ex As Exception
             MessageBox.Show("Error loading Course values", "Program error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -153,7 +156,7 @@ Public Class frmCourses
         'load the current object with the form's data
         With objCourses.CurrentObject 'our CCourses object
             .CourseID = Trim(txtCourseID.Text)
-            .CourseDescription = Trim(txtDesc.Text)
+            .CourseName = Trim(txtDesc.Text)
         End With
         Try
             Me.Cursor = Cursors.WaitCursor
@@ -193,5 +196,16 @@ Public Class frmCourses
             grpEdit.Enabled = False
             objCourses.CurrentObject.IsNewCourse = False
         End If
+    End Sub
+
+    Private Sub btnReport_Click(sender As Object, e As EventArgs) Handles btnReport.Click
+        reportInfo.lstReport.Items.Clear() 'clear it in case it had previous values
+        With reportInfo.lstReport
+            For Each course As CCourse In lstCourses.Items
+                .Items.Add(course.CourseID & ": " & course.CourseName)
+
+            Next
+        End With
+        reportInfo.ShowDialog()
     End Sub
 End Class
