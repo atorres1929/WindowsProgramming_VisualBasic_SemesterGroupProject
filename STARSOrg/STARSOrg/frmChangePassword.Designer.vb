@@ -129,7 +129,7 @@ Partial Class frmChangePassword
         Me.btnChangePassword.Name = "btnChangePassword"
         Me.btnChangePassword.Size = New System.Drawing.Size(209, 32)
         Me.btnChangePassword.TabIndex = 9
-        Me.btnChangePassword.Text = "Login With New Password"
+        Me.btnChangePassword.Text = "Change Password"
         Me.btnChangePassword.UseVisualStyleBackColor = True
         '
         'btnCancel
