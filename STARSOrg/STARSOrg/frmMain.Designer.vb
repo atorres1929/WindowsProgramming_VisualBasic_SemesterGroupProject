@@ -42,12 +42,12 @@ Partial Class frmMain
         Me.ToolStripSeparator12 = New System.Windows.Forms.ToolStripSeparator()
         Me.tsbLogOut = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator8 = New System.Windows.Forms.ToolStripSeparator()
-        Me.tsbAdmin = New System.Windows.Forms.ToolStripButton()
+        Me.tsbHelp = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator9 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripSeparator11 = New System.Windows.Forms.ToolStripSeparator()
+        Me.tsbAdmin = New System.Windows.Forms.ToolStripButton()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.tsbHelp = New System.Windows.Forms.ToolStripButton()
         Me.ToolStrip1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -225,16 +225,17 @@ Partial Class frmMain
         Me.ToolStripSeparator8.Name = "ToolStripSeparator8"
         Me.ToolStripSeparator8.Size = New System.Drawing.Size(10, 50)
         '
-        'tsbAdmin
+        'tsbHelp
         '
-        Me.tsbAdmin.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.tsbAdmin.AutoSize = False
-        Me.tsbAdmin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.tsbAdmin.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.tsbAdmin.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.tsbAdmin.Name = "tsbAdmin"
-        Me.tsbAdmin.Size = New System.Drawing.Size(48, 48)
-        Me.tsbAdmin.Text = "Admin"
+        Me.tsbHelp.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.tsbHelp.AutoSize = False
+        Me.tsbHelp.BackgroundImage = Global.STARSOrg.My.Resources.Resources.help
+        Me.tsbHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.tsbHelp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbHelp.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbHelp.Name = "tsbHelp"
+        Me.tsbHelp.Size = New System.Drawing.Size(48, 48)
+        Me.tsbHelp.Text = "HELP"
         '
         'ToolStripSeparator9
         '
@@ -248,6 +249,17 @@ Partial Class frmMain
         Me.ToolStripSeparator11.AutoSize = False
         Me.ToolStripSeparator11.Name = "ToolStripSeparator11"
         Me.ToolStripSeparator11.Size = New System.Drawing.Size(10, 50)
+        '
+        'tsbAdmin
+        '
+        Me.tsbAdmin.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.tsbAdmin.AutoSize = False
+        Me.tsbAdmin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.tsbAdmin.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.tsbAdmin.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbAdmin.Name = "tsbAdmin"
+        Me.tsbAdmin.Size = New System.Drawing.Size(48, 48)
+        Me.tsbAdmin.Text = "Admin"
         '
         'Label1
         '
@@ -270,18 +282,6 @@ Partial Class frmMain
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
         Me.PictureBox1.TabIndex = 1
         Me.PictureBox1.TabStop = False
-        '
-        'tsbHelp
-        '
-        Me.tsbHelp.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.tsbHelp.AutoSize = False
-        Me.tsbHelp.BackgroundImage = Global.STARSOrg.My.Resources.Resources.help
-        Me.tsbHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.tsbHelp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.tsbHelp.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.tsbHelp.Name = "tsbHelp"
-        Me.tsbHelp.Size = New System.Drawing.Size(48, 48)
-        Me.tsbHelp.Text = "HELP"
         '
         'frmMain
         '

@@ -149,6 +149,13 @@ Public Class frmEvents
     End Sub
 
     Private Sub frmEvents_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+        'If not an officer or an admin, then can't go to Members, Role, or Events Screen tab
+        If Not (currSecRole = SEC_ROLE_OFFICER Or currSecRole = SEC_ROLE_ADMIN) Then
+            tsbMember.Enabled = False
+            tsbRole.Enabled = False
+            tsbEvent.Enabled = False
+        End If
+
         ClearScreenControls(Me)
         LoadEvents()
         LoadEventTypeIDs()

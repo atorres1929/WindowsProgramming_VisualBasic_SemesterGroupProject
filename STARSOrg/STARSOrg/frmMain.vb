@@ -126,11 +126,20 @@
 
     Private Sub frmMain_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         LoginScreen.ShowDialog()
-        If currSecRole = SEC_ROLE_ADMIN Then
-            tsbAdmin.Enabled = True
+        'If not an admin, can't see admin console
+        If Not currSecRole = SEC_ROLE_ADMIN Then
+            tsbAdmin.Visible = False
         Else
-            tsbAdmin.Enabled = False
+            tsbAdmin.Visible = True
         End If
+
+        'If not an officer or an admin, then can't go to Members, Role, or Events Screen tab
+        If Not (currSecRole = SEC_ROLE_OFFICER Or currSecRole = SEC_ROLE_ADMIN) Then
+            tsbMember.Enabled = False
+            tsbRole.Enabled = False
+            tsbEvent.Enabled = False
+        End If
+
     End Sub
 
     Private Sub tsbAdmin_Click(sender As Object, e As EventArgs) Handles tsbAdmin.Click
