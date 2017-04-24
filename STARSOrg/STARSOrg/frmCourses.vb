@@ -117,7 +117,7 @@ Public Class frmCourses
             objCourses.GetCourseByID(lstCourses.SelectedItem.ToString)
             With objCourses.CurrentObject
                 txtCourseID.Text = .CourseID
-                txtDesc.Text = .CourseName
+                txtDesc.Text = .CourseDescription
             End With
         Catch ex As Exception
             MessageBox.Show("Error loading Course values", "Program error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -156,7 +156,7 @@ Public Class frmCourses
         'load the current object with the form's data
         With objCourses.CurrentObject 'our CCourses object
             .CourseID = Trim(txtCourseID.Text)
-            .CourseName = Trim(txtDesc.Text)
+            .CourseDescription = Trim(txtDesc.Text)
         End With
         Try
             Me.Cursor = Cursors.WaitCursor
@@ -202,7 +202,7 @@ Public Class frmCourses
         reportInfo.lstReport.Items.Clear() 'clear it in case it had previous values
         With reportInfo.lstReport
             For Each course As CCourse In lstCourses.Items
-                .Items.Add(course.CourseID & ": " & course.CourseName)
+                .Items.Add(course.CourseID & ": " & course.CourseDescription)
 
             Next
         End With

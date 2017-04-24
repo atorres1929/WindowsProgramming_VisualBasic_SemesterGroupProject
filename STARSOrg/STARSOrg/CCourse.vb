@@ -1,12 +1,12 @@
 ﻿Imports System.Data.SqlClient
 Public Class CCourse
     Private _mstrCourseID As String
-    Private _mstrCourseName As String
+    Private _mstrCourseDescription As String
     Private _isNewCourse As Boolean
 
     Public Sub New()
         _mstrCourseID = ""
-        _mstrCourseName = ""
+        _mstrCourseDescription = ""
     End Sub
 
 #Region "Properties"
@@ -18,12 +18,12 @@ Public Class CCourse
             _mstrCourseID = strVal
         End Set
     End Property
-    Public Property CourseName As String
+    Public Property CourseDescription As String
         Get
-            Return _mstrCourseName
+            Return _mstrCourseDescription
         End Get
         Set(strVal As String)
-            _mstrCourseName = strVal
+            _mstrCourseDescription = strVal
         End Set
     End Property
     Public Property IsNewCourse As Boolean
@@ -39,10 +39,6 @@ Public Class CCourse
     Public ReadOnly Property GetSaveParameters() As ArrayList
         Get
             Dim params As New ArrayList
-<<<<<<< Updated upstream
-            params.Add(New SqlParameter("courseID", _mstrCourseID))
-            params.Add(New SqlParameter("courseName", _mstrCourseDescription))
-=======
             params.Add(New SqlParameter("CourseID", _mstrCourseID))
             params.Add(New SqlParameter("CourseDescription", _mstrCourseDescription))
             Return params
@@ -62,5 +58,3 @@ Public Class CCourse
         Return myDB.ExecSP("sp_SaveCourse", GetSaveParameters)
     End Function
 End Class
-
-            params.Add(New SqlParameter("CourseName", _mstrCourseName))

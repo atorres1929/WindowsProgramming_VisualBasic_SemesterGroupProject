@@ -85,7 +85,6 @@ Public Class frmRoles
         Catch ex As Exception
             'should have CDB throw the exception and handle it here instead
         End Try
-        objReader.Close()
         'find the new/updated entry in the list if there is one and select it
         If objRoles.CurrentObject.RoleID <> "" Then
             lstRoles.SelectedIndex = lstRoles.FindStringExact(objRoles.CurrentObject.RoleID)
