@@ -16,6 +16,7 @@ Public Class frmMembers
 
     Private Sub tsbRole_Click(sender As Object, e As EventArgs) Handles tsbRole.Click
         intNextAction = ACTION_ROLE
+        Me.Hide()
     End Sub
 
     Private Sub tsbHome_Click(sender As Object, e As EventArgs) Handles tsbHome.Click

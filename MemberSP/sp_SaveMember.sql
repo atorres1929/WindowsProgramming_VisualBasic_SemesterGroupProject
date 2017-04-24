@@ -4,10 +4,9 @@ CREATE PROCEDURE [dbo].sp_SaveMember
 	@LName nvarchar(75),
 	@MI nvarchar(1),
 	@Email nvarchar(50),
-	@Phone nvarchar(13)
-	,
+	@Phone nvarchar(13),
 	@PhotoPath nvarchar(300)
-	/*@RoleID nvarchar(15)*/
+	
 AS
 
 Declare @countExists int

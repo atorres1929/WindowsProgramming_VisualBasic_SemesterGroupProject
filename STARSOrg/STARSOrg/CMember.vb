@@ -175,4 +175,10 @@ Public Class CMember
         Return myDB.ExecSP("sp_SearchMembers", GetSaveParametersMembers)
 
     End Function
+
+    Public Function GetReportData(strID As String) As SqlDataAdapter
+        Dim params As New ArrayList
+        params.Add(New SqlParameter("PID", strID))
+        Return myDB.GetDataAdapterBySP("dbo.sp_GetAllMembers", params)
+    End Function
 End Class
