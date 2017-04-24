@@ -81,8 +81,9 @@ Public Class CSecurity
 
     Public Function GetUpdatePasswordParameters() As ArrayList
         Dim params As New ArrayList
-        params.Add(New SqlParameter("PID", _mstrPantherID))
         params.Add(New SqlParameter("username", _mstrUserID))
+        params.Add(New SqlParameter("password", _mstrPassword))
+        params.Add(New SqlParameter("newPassword", _mstrNewPassword))
         Return params
     End Function
 
@@ -95,6 +96,16 @@ Public Class CSecurity
         Return params
     End Function
 
+    Public Function CheckUserNameAndPassword() As Integer
+        Dim dr = myDB.GetDataReaderBySP("sp_CheckUserNameAndPassword", GetLoginParameters)
+        Dim isGood = dr.Read
+        dr.Close()
+        If isGood Then
+            Return 1
+        Else
+            Return -1
+        End If
+    End Function
     Public Function Login() As Integer
         Return myDB.ExecSP("sp_Login", GetLoginParameters())
     End Function
