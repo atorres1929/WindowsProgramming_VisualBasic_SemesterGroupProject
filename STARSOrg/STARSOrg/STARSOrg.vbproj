@@ -150,10 +150,12 @@
     <Compile Include="frmReportEventsRSVP.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmReportMembers.Designer.vb">
-      <DependentUpon>frmReportMembers.vb</DependentUpon>
+    <Compile Include="frmReportViewerMembers.Designer.vb">
+      <DependentUpon>frmReportViewerMembers.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmReportMembers.vb" />
+    <Compile Include="frmReportViewerMembers.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmRoles.Designer.vb">
       <DependentUpon>frmRoles.vb</DependentUpon>
     </Compile>
@@ -220,8 +222,8 @@
     <EmbeddedResource Include="frmReportEventsRSVP.resx">
       <DependentUpon>frmReportEventsRSVP.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmReportMembers.resx">
-      <DependentUpon>frmReportMembers.vb</DependentUpon>
+    <EmbeddedResource Include="frmReportViewerMembers.resx">
+      <DependentUpon>frmReportViewerMembers.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRoles.resx">
       <DependentUpon>frmRoles.vb</DependentUpon>
@@ -238,6 +240,7 @@
     <EmbeddedResource Include="Reports\rptEventRSVPs.rdlc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
