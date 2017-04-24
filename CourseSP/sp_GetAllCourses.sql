@@ -1,0 +1,4 @@
+CREATE PROCEDURE [dbo].sp_GetAllCourses
+AS
+	SELECT * FROM COURSE
+RETURN 0

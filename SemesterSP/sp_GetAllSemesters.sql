@@ -1,0 +1,4 @@
+CREATE PROCEDURE [dbo].sp_GetAllSemesters
+AS
+	SELECT * FROM SEMESTER
+RETURN 0
