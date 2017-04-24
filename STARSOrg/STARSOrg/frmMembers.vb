@@ -320,8 +320,8 @@ Public Class frmMembers
         picMemberPic.ImageLocation = strFileName
     End Sub
 
-    'Private Sub btnReport_Click(sender As Object, e As EventArgs) Handles btnReport.Click
-    '    Dim MemberReport As New frmReportMembers
-    '    MemberReport.display(lstMemberList.ToString)
-    'End Sub
+    Private Sub btnReport_Click(sender As Object, e As EventArgs) Handles btnReport.Click
+        Dim MemberReport As New frmReportViewerMembers
+        MemberReport.display(lstMemberList.ToString)
+    End Sub
 End Class

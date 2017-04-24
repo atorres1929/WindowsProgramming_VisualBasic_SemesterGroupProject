@@ -44,7 +44,7 @@ Public Class frmSemesters
         Me.Hide()
     End Sub
 
-    Private Sub tsbCourse_Click(sender As Object, e As EventArgs) Handles tsbSemester.Click
+    Private Sub tsbCourse_Click(sender As Object, e As EventArgs) Handles tsbCourse.Click
         intNextAction = ACTION_COURSE
         Me.Hide()
     End Sub
