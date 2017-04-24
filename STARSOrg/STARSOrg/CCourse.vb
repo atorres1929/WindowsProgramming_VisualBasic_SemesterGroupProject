@@ -44,8 +44,7 @@ Public Class CCourse
             params.Add(New SqlParameter("courseName", _mstrCourseDescription))
 =======
             params.Add(New SqlParameter("CourseID", _mstrCourseID))
-            params.Add(New SqlParameter("CourseName", _mstrCourseName))
->>>>>>> Stashed changes
+            params.Add(New SqlParameter("CourseDescription", _mstrCourseDescription))
             Return params
         End Get
     End Property
@@ -63,3 +62,5 @@ Public Class CCourse
         Return myDB.ExecSP("sp_SaveCourse", GetSaveParameters)
     End Function
 End Class
+
+            params.Add(New SqlParameter("CourseName", _mstrCourseName))
