@@ -251,6 +251,7 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+    <None Include="Reports\rptMembers.rdlc" />
     <None Include="STARSDBDataSet.xsc">
       <DependentUpon>STARSDBDataSet.xsd</DependentUpon>
     </None>

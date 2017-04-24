@@ -39,8 +39,8 @@ Public Class CCourse
     Public ReadOnly Property GetSaveParameters() As ArrayList
         Get
             Dim params As New ArrayList
-            params.Add(New SqlParameter("CourseID", _mstrCourseID))
-            params.Add(New SqlParameter("CourseDescription", _mstrCourseDescription))
+            params.Add(New SqlParameter("courseID", _mstrCourseID))
+            params.Add(New SqlParameter("courseName", _mstrCourseDescription))
             Return params
         End Get
     End Property

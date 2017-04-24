@@ -57,7 +57,11 @@ Public Class frmAdminConsole
         lblPantherID.Text = Security.PantherID
         txtPassword.Text = Security.Password
         txtUserID.Text = Security.UserID
-        cboSecRoles.SelectedItem = Security.SecRole
+        If Security.SecRole <> "" Then
+            cboSecRoles.SelectedItem = Security.SecRole
+        Else
+            cboSecRoles.SelectedIndex = -1
+        End If
     End Sub
 
     Private Sub btnAddMember_Click(sender As Object, e As EventArgs) Handles btnAddMember.Click
