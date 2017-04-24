@@ -2,8 +2,6 @@
 Imports Microsoft.Reporting.WinForms
 Public Class frmReportViewerMembers
 
-
-
     Private ds As DataSet
     Private da As SqlDataAdapter
     Private Member As CMember
