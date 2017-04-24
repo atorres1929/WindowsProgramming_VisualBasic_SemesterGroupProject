@@ -24,11 +24,14 @@
         ElseIf txtNewPassword.Text = txtVerifyPassword.Text
             Security.UserID = txtUsername.Text
             Security.Password = txtCurrentPassword.Text
-            If Security.Login = 1 Then
+            If Security.CheckUserNameAndPassword = 1 Then
                 Security.NewPassword = txtNewPassword.Text
                 Security.UpdatePassword()
                 Me.Close()
                 MessageBox.Show("Password Changed")
+            Else
+                errP.SetError(txtUsername, "Check correct UserID")
+                errP.SetError(txtCurrentPassword, "Check correct password")
             End If
         Else
             errP.SetError(txtUsername, "Check correct UserID")
