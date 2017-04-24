@@ -4,6 +4,8 @@
     Private MemberInfo As frmMembers
     Private EventsInfo As frmEvents
     Private RSVPInfo As frmEventsRSVP
+    Private CourseInfo As frmCourses
+    Private SemesterInfo As frmSemesters
     Private AdminConsole As frmAdminConsole
 #Region "Toolbar"
     Private Sub tsbMember_Click(sender As Object, e As EventArgs) Handles tsbMember.Click
@@ -34,6 +36,19 @@
     Private Sub tsbRSVP_Click(sender As Object, e As EventArgs) Handles tsbRSVP.Click
         Me.Hide()
         RSVPInfo.ShowDialog()
+        Me.Show()
+        PerformNextAction()
+    End Sub
+    Private Sub tsbSemester_Click(sender As Object, e As EventArgs) Handles tsbSemester.Click
+        Me.Hide()
+        SemesterInfo.ShowDialog()
+        Me.Show()
+        PerformNextAction()
+    End Sub
+
+    Private Sub tsbCourse_Click(sender As Object, e As EventArgs) Handles tsbCourse.Click
+        Me.Hide()
+        CourseInfo.ShowDialog()
         Me.Show()
         PerformNextAction()
     End Sub
@@ -91,6 +106,8 @@
         RSVPInfo = New frmEventsRSVP
         LoginScreen = New frmLogin
         AdminConsole = New frmAdminConsole
+        CourseInfo = New frmCourses
+        SemesterInfo = New frmSemesters
         'open the database
         Try
             myDB.OpenDB()
@@ -149,4 +166,6 @@
     Private Sub tsbHelp_Click(sender As Object, e As EventArgs) Handles tsbHelp.Click
 
     End Sub
+
+
 End Class
